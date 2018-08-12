@@ -18,7 +18,7 @@ function load(){
     caleandar(calendar, events, settings);
 
     // $('.cld-day').addClass('ui-selectable');
-    $('.cld-day').mouseover(function(){
+    $('.cld-day').on("vmouseover", function(){
         // console.log("|");
         $(this).addClass('ui-selected');
     });
