@@ -18,11 +18,17 @@ function load(){
     caleandar(calendar, events, settings);
 
     // $('.cld-day').addClass('ui-selectable');
-    $('.cld-day').on("vmouseover", function(){
+    $('.cld-day').mouseover(function(){
+        // console.log("|");
         $(this).addClass('ui-selected');
     });
     // $('.cld-day').mouseenter(function(){
     //     $(this).addClass('ui-selected');
     // });
 
+    // $('cld-days').bind("tap", tapHandler );
+ 
+    // function tapHandler( event ){
+    //   $( event.target ).addClass( "tap" );
+    // }
 }
