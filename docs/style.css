@@ -3,3 +3,9 @@ body{
 }
 #caleandar{
 }
+.ui-selected{
+    background-color: green;
+}
+.ui-selecting{
+    background-color: green;
+}

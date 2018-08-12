@@ -12,9 +12,14 @@ function load(){
         EventTargetWholeDay: true,   //(bool) clicking on the whole date will trigger event action, as opposed to just clicking on the title.
     };
     var events = [
-        {'Date': new Date(2018, 8, 13), 'Title': 'Doctor appointment at 3:25pm.'}
     ];
     
     var calendar = document.getElementById('caleandar');
     caleandar(calendar, events, settings);
+
+    // $('.cld-day').addClass('ui-selectable');
+    $('.cld-day').on("vmouseover", function(){
+        $(this).addClass('ui-selected');
+    });
+
 }
