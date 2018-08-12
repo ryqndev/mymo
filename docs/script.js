@@ -21,5 +21,8 @@ function load(){
     $('.cld-day').on("vmouseover", function(){
         $(this).addClass('ui-selected');
     });
+    // $('.cld-day').mouseenter(function(){
+    //     $(this).addClass('ui-selected');
+    // });
 
 }
