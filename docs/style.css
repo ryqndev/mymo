@@ -1,8 +1,17 @@
 body{
     margin: 0;
 }
+.all-day{
+    background-color: #7942e7;
+    color: white;
+}
+.partial-day{
+    background-color: #9d78e8;
+    color: black;
+}
 #caleandar{
 }
+
 .ui-selected{
     background-color: green;
 }

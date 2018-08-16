@@ -1,4 +1,5 @@
 
+
 function load(){
     var settings = {
         Color: '#114433',                //(string - color) font color of whole calendar.
@@ -17,18 +18,84 @@ function load(){
     var calendar = document.getElementById('caleandar');
     caleandar(calendar, events, settings);
 
-    // $('.cld-day').addClass('ui-selectable');
-    $('.cld-day').on("vmouseover", function(){
-        // console.log("|");
-        $(this).addClass('ui-selected');
-    });
-    // $('.cld-day').mouseenter(function(){
-    //     $(this).addClass('ui-selected');
-    // });
+    $(".cld-day").bind("taphold", tapholdHandler );
+    $(".cld-day").bind("tap", tapHandler );
 
-    // $('cld-days').bind("tap", tapHandler );
- 
-    // function tapHandler( event ){
-    //   $( event.target ).addClass( "tap" );
-    // }
+    // define(function (require) {
+    //     var axios = require('axios');
+    //     // apiCall();
+    // });
+    apiCall();
+
 }
+function tapholdHandler(event){
+    $( event.target ).toggleClass("partial-day");
+    console.log(event.target.textContent==="9");
+}
+function tapHandler(event){
+    $( event.target ).toggleClass("all-day");
+    console.log(event.target.textContent==="9");
+}
+// function getEventInfo(){
+
+// }
+function apiCall(){
+    axios.get('https://api.github.com/users/Ryabn/repos')
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+    .then(function () {
+    });
+}
+/**
+ * Schema
+ * 
+ * {
+ *  "some generated key" : {
+ *      "eventName" : "event name",
+ *      "startDate" : "mm/dd/yyyy",
+ *      "endDate" : "mm/dd/yyyy",
+ *      "eventCreated" : 123456,     //time in milliseconds
+ *      "eventExpired" : 123456,       //time in milliseconds
+ *  },
+ *  "some other key" : {
+ *      "eventName" : "event name",
+ *      "startDate" : "mm/dd/yyyy",
+ *      "endDate" : "mm/dd/yyyy",
+ *      "eventCreated" : 123456,     //time in milliseconds
+ *      "eventExpired" : 123456,       //time in milliseconds
+ *  }
+ * }
+ * 
+ * 
+ ** *****************
+ *  data storage
+ * 
+ * "some generated key" : {
+ *      "eventName" : "event name",
+ *      "startDate" : "mm/dd/yyyy",
+ *      "endDate" : "mm/dd/yyyy",
+ *      "startTime" : "hr:min",    //military time
+ *      "endTime" : "hr:min",
+ *      "eventCreated" : 123456,     //time in milliseconds
+ *      "eventExpired" : 123456,       //time in milliseconds
+ *      "attendees" : [
+ *          {
+ *              "name" : "nombre",
+ *              "timeblock" : "123456-123457:1/123459-123460:3" //timeblock will be times that cannot be made. (:number) represents priority 
+ *          },
+ *          {
+ *              "name" : "nombre",
+ *              "timeblock" : "123456-123457/123459-123460"
+ *          },
+ *          {
+ *              "name" : "nombre",
+ *              "timeblock" : "123456-123457/123459-123460"
+ *          }
+ *      ]
+ *  }
+ * 
+ */

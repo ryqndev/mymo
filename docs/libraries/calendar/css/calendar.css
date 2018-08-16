@@ -2,6 +2,12 @@
   --main-calendar-width: 90vw;
   --box-height: 2vh;
 }
+/* .cld-day:hover{
+  background-color: blue;
+} */
+.hover-effect{
+  background-color: green;
+}
 .cld-main{
   width: var(--main-calendar-width);
   margin: 0 auto;
