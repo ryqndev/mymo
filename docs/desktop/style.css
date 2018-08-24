@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    background: linear-gradient(30deg, #852ca5, #321c6d);
+    height: 100vh;
+}
+.side-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 25vw;
+    background-color: orange;
+}
+.calendar-holder{
+
+}
+.all-day{
+    background-color: #7942e7;
+    color: white;
+}
+.partial-day{
+    background-color: #9d78e8;
+    color: black;
+}
+#caleandar{
+    position:fixed;
+    top: 0;
+    left: 30vw;
+    width: 70vw;
+    height: 100vh;
+}
+
+.ui-selected{
+    background-color: white;
+}
+.ui-selecting{
+    background-color: white;
+}
