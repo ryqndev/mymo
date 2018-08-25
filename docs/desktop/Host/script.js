@@ -1,5 +1,5 @@
-const ID_SIZE = 6;      //length of generated room code
-const LINK_URL = 'https://httprelay.io/link/' + generateRoomID();
+const ID_SIZE = 8;                                                  //length of generated room code
+const LINK_URL = 'https://httprelay.io/link/' + generateRoomID();   //generated url
 
 function generateRoomID(){
     let roomID = "";
@@ -12,17 +12,31 @@ function generateRoomID(){
 
 function load(){
     console.log(LINK_URL);
+    const message = "Hello World";
+    sendSchedule(LINK_URL, message);
+    apiCall(LINK_URL, message);
 }
 
 
-function apiCall(){
-    axios.get('https://api.github.com/users/Ryabn/repos')
+function apiCall(link, message){
+    axios.get(link)
     .then(function (response) {
         console.log(response);
     })
     .catch(function (error) {
         console.log(error);
     })
-    .then(function () {
+    .then(function(){
+
+    });
+}
+
+function sendSchedule(link, message){
+    axios.post(link, message)  
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
     });
 }
