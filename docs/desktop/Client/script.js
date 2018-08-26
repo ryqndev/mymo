@@ -1,7 +1,12 @@
 
 function load(){
-    
+    parseRoom();
 }
+function parseRoom() {
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('r'));
+}
+
 
 
 function apiCall(){

@@ -23,7 +23,6 @@ const  qrCodeBaseUrl
     + '&bgcolor='   + QR_BGCOLOR
     + '&data=';
 
- 
 function generateRoomID(){
     let roomID = "";
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -32,20 +31,14 @@ function generateRoomID(){
     }
     return roomID;
 }
-
 function load(){
     console.log(LINK_URL);
-    createCalendar();
-    // sendSchedule(LINK_URL, message);
-    // sendSchedule(LINK_URL, "new message");
-    // apiCall(LINK_URL);
-    // generateQRCode();
+    // createCalendar();
+    createConnection();
 }
-
 function generateQRCode(){
     document.getElementById('qr').src = qrCodeBaseUrl + ROOM_ID;
 }
-
 function getRequest(link, asyncFunc){
     axios.get(link)
     .then(function (response) {
@@ -58,7 +51,6 @@ function getRequest(link, asyncFunc){
     .then(function(){
     });
 }
-
 function sendSchedule(link, message){
     axios.post(link, message)  
     .then(function (response) {
