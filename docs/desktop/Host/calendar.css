@@ -22,11 +22,11 @@
     margin: 1.8vh calc(5.5vw - 2.5vh) 1.8vh calc(5.5vw - 2.5vh);
     color: white;
 }
-.calendar__day:hover{
+/* .calendar__day:hover{
     border-radius: 50%;
     background-color: white;
     color: black;
-}
+} */
 .calendar__day--clear{
     clear: both;
 }
