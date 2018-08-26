@@ -1,0 +1,24 @@
+#calendar{
+    position:fixed;
+    top: 0;
+    left: 23vw;
+    width: 77vw;
+    height: 100vh;
+}
+#dates--interactive{
+    margin-top: 60vh;
+    height: 40vh;
+    width: 100%;
+}
+.calendar__day{
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    height: calc( 100% / 5 );
+    width: calc( 100% / 7 );
+    color: white;
+    /* border: 1px solid black; */
+}
+.calendar__day--clear{
+    clear: both;
+}

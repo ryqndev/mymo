@@ -7,12 +7,16 @@
         </title>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="../calendar.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="calendar.css"/>
     </head>
     <body onload="load();">
         <div class="side-bar" onclick="makeCall();"></div>
-        <div id="caleandar">
-            <img id="qr"/>
+        <div id="calendar">
+            <!-- <img id="qr"/> -->
+            <div id="dates--interactive"></div>
         </div>
     </body>
 </html>

@@ -35,10 +35,11 @@ function generateRoomID(){
 
 function load(){
     console.log(LINK_URL);
+    createCalendar();
     // sendSchedule(LINK_URL, message);
     // sendSchedule(LINK_URL, "new message");
     // apiCall(LINK_URL);
-    generateQRCode();
+    // generateQRCode();
 }
 
 function generateQRCode(){
