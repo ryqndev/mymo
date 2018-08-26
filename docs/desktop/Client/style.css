@@ -10,7 +10,7 @@ body{
     height: 100vh;
     width: 23vw;
     background: linear-gradient(#FFD600, #FF9A23);
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 .calendar-holder{
 

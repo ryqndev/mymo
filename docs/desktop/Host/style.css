@@ -15,6 +15,10 @@ body{
 .calendar-holder{
 
 }
+#qr{
+    height: 300px;
+    width: 300px;    
+}
 .all-day{
     background-color: #7942e7;
     color: white;
