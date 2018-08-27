@@ -6,7 +6,8 @@ const httpRelayBaseUrl = 'https://httprelay.io/mcast/';
 // const LINK_URL = httpRelayBaseUrl + ROOM_ID;
 
 const ROOM_ID = '1t78pQ0KDxGeuI1OKHbR';
-const LINK_URL = 'https://httprelay.io/mcast/1t78pQ0KDxGeuI1OKHbR';
+// const LINK_URL = 'https://httprelay.io/mcast/1t78pQ0KDxGeuI1OKHbR';
+const LINK_URL = 'https://httprelay.io/link/1t78pQ0KDxGeuI1OKHbR';
 
 const QR_COLOR = '506070';
 const QR_BGCOLOR = 'D8FBD8';
@@ -39,11 +40,10 @@ function load(){
 function generateQRCode(){
     document.getElementById('qr').src = qrCodeBaseUrl + ROOM_ID;
 }
-function getRequest(link, asyncFunc){
+function getRequest(link){
     axios.get(link)
     .then(function (response) {
         console.log(response);
-        // asyncFunc(response);
     })
     .catch(function (error) {
         console.log(error);
@@ -51,7 +51,7 @@ function getRequest(link, asyncFunc){
     .then(function(){
     });
 }
-function sendSchedule(link, message){
+function sendLocalConnectionOffer(link, message){
     axios.post(link, message)  
     .then(function (response) {
         console.log(response);

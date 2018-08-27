@@ -22,11 +22,14 @@ function createConnection() {
     sendChannel = localConnection.createDataChannel('sendDataChannel');
     console.log('Created send data channel');
 
-    localConnection.onicecandidate = e => {
-        onIceCandidate(localConnection, e);
-    };
-    sendChannel.onopen = onSendChannelStateChange;
-    sendChannel.onclose = onSendChannelStateChange;
+    // localConnection.onicecandidate = e => {
+    //     onIceCandidate(localConnection, e);
+    // };
+    // sendChannel.onopen = onSendChannelStateChange;
+    // sendChannel.onclose = onSendChannelStateChange;
+
+
+//
 
     localConnection.createOffer().then(
         createLocalDescriptionOfLocalConnection,
@@ -59,6 +62,7 @@ function closeDataChannels() {
 function createLocalDescriptionOfLocalConnection(desc) {
     localConnection.setLocalDescription(desc);
     console.log(`Offer from localConnection\n${desc.sdp}`);
+    sendLocalConnectionOffer(LINK_URL, JSON.stringify(desc));
     //send local description to remote connection
     //should trigger Client's setRemoteDescriptionOfRemoteConnection function
 }

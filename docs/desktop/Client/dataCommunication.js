@@ -7,10 +7,12 @@ function createConnection(){
     window.remoteConnection = remoteConnection = new RTCPeerConnection(servers);
     console.log('Created remote peer connection object remoteConnection');
 
-    remoteConnection.onicecandidate = e => {
-        onIceCandidate(remoteConnection, e);
-    };
-    remoteConnection.ondatachannel = receiveChannelCallback;
+    // remoteConnection.onicecandidate = e => {
+    //     onIceCandidate(remoteConnection, e);
+    // };
+    // remoteConnection.ondatachannel = receiveChannelCallback;
+
+    getRequest(LINK_URL);
 
 }
 function closeDataChannels(){
@@ -32,6 +34,17 @@ function setRemoteDescriptionOfRemoteConnection(desc){
 function createRemoteConnectionLocalDescription(desc) {
     remoteConnection.setLocalDescription(desc);
     console.log(`Answer from remoteConnection\n${desc.sdp}`);
+    sendLocalConnectionOffer(LINK_URL, JSON.stringify(desc));
     //send desc info
     //should trigger Host's setRemoteDescriptionOfLocalConnection function
+}
+
+function onIceCandidate(pc, event) {
+    getOtherPc(pc)
+        .addIceCandidate(event.candidate)
+        .then(
+            () => onAddIceCandidateSuccess(pc),
+            err => onAddIceCandidateError(pc, err)
+        );
+    console.log(`${getName(pc)} ICE candidate: ${event.candidate ? event.candidate.candidate : '(null)'}`);
 }

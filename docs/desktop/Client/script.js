@@ -1,6 +1,9 @@
+const LINK_URL = 'https://httprelay.io/link/1t78pQ0KDxGeuI1OKHbR';
+
 
 function load(){
-    parseRoom();
+    // parseRoom();
+    createConnection();
 }
 function parseRoom() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -9,14 +12,25 @@ function parseRoom() {
 
 
 
-function apiCall(){
-    axios.get('https://api.github.com/users/Ryabn/repos')
+function getRequest(link){
+    axios.get(link)
+    .then(function (response) {
+        console.log(response.data);
+        setRemoteDescriptionOfRemoteConnection(JSON.parse(response.data));
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+    .then(function(){
+    });
+}
+
+function sendLocalConnectionOffer(link, message){
+    axios.post(link, message)  
     .then(function (response) {
         console.log(response);
     })
     .catch(function (error) {
         console.log(error);
-    })
-    .then(function () {
     });
 }
