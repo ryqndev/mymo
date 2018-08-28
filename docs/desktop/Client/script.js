@@ -10,8 +10,6 @@ function parseRoom() {
     console.log(urlParams.get('r'));
 }
 
-
-
 function getRequest(link){
     axios.get(link)
     .then(function (response) {
