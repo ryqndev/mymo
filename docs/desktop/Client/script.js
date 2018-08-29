@@ -1,4 +1,5 @@
-const LINK_URL = 'https://httprelay.io/link/1t78pQ0KDxGeuI1OKHbR';
+const LINK_URL_1 = 'https://httprelay.io/link/1t78pQ0KDx';
+const LINK_URL_2 = 'https://httprelay.io/link/GeuI1OKHbR';
 
 
 function load(){
@@ -14,7 +15,7 @@ function getRequest(link){
     axios.get(link)
     .then(function (response) {
         console.log(response.data);
-        setRemoteDescriptionOfRemoteConnection(JSON.parse(response.data));
+        setRemoteDescriptionOfRemoteConnection(response.data);
     })
     .catch(function (error) {
         console.log(error);

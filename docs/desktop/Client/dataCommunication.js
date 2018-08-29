@@ -1,5 +1,7 @@
 let remoteConnection;
 let receiveChannel;
+let localConnection;
+let sendChannel;
 
 function createConnection(){
     const servers = null;
@@ -12,7 +14,7 @@ function createConnection(){
     // };
     // remoteConnection.ondatachannel = receiveChannelCallback;
 
-    getRequest(LINK_URL);
+    getRequest(LINK_URL_1);
 
 }
 function closeDataChannels(){
@@ -30,11 +32,13 @@ function setRemoteDescriptionOfRemoteConnection(desc){
       onCreateSessionDescriptionError
     );
 }
-
+function onCreateSessionDescriptionError(error) {
+    console.log(`Failed to create session description: ${error.toString()}`);
+}
 function createRemoteConnectionLocalDescription(desc) {
     remoteConnection.setLocalDescription(desc);
     console.log(`Answer from remoteConnection\n${desc.sdp}`);
-    sendLocalConnectionOffer(LINK_URL, JSON.stringify(desc));
+    sendLocalConnectionOffer(LINK_URL_2, JSON.stringify(desc));
     //send desc info
     //should trigger Host's setRemoteDescriptionOfLocalConnection function
 }

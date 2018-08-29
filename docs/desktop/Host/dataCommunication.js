@@ -1,5 +1,7 @@
 let localConnection;
 let sendChannel;
+let remoteConnection;
+let receiveChannel;
 // const dataChannelSend = document.querySelector('textarea#dataChannelSend');
 // const dataChannelReceive = document.querySelector('textarea#dataChannelReceive');
 // const startButton = document.querySelector('button#startButton');
@@ -60,14 +62,13 @@ function closeDataChannels() {
 function createLocalDescriptionOfLocalConnection(desc) {
     localConnection.setLocalDescription(desc);
     console.log(`Offer from localConnection\n${desc.sdp}`);
-    sendLocalConnectionOffer(LINK_URL, JSON.stringify(desc));
+    sendLocalConnectionOffer(LINK_URL_1, JSON.stringify(desc));
     //send local description to remote connection
     //should trigger Client's setRemoteDescriptionOfRemoteConnection function
 }
 
 function setRemoteDescriptionOfLocalConnection(desc){
     localConnection.setRemoteDescription(desc);
-
 }
 
 function getOtherPc(pc) {
@@ -79,7 +80,7 @@ function getName(pc) {
 }
 function onCreateSessionDescriptionError(error) {
     console.log(`Failed to create session description: ${error.toString()}`);
-  }
+}
 
 function onIceCandidate(pc, event) {
     getOtherPc(pc)
