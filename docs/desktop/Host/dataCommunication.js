@@ -27,9 +27,7 @@ function createConnection() {
     // };
     // sendChannel.onopen = onSendChannelStateChange;
     // sendChannel.onclose = onSendChannelStateChange;
-
-
-//
+    // 
 
     localConnection.createOffer().then(
         createLocalDescriptionOfLocalConnection,
