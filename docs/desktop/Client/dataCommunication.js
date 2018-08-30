@@ -35,6 +35,7 @@ function setRemoteDescriptionOfRemoteConnection(desc){
 function onCreateSessionDescriptionError(error) {
     console.log(`Failed to create session description: ${error.toString()}`);
 }
+
 function createRemoteConnectionLocalDescription(desc) {
     remoteConnection.setLocalDescription(desc);
     console.log(`Answer from remoteConnection\n${desc.sdp}`);
