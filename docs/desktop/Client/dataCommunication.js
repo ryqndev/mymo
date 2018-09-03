@@ -20,7 +20,7 @@ function createConnection(){
         );
         console.log(`ICE candidate: ${e.candidate ? e.candidate.candidate : '(null)'}`);
     };
-    // remoteConnection.ondatachannel = receiveChannelCallback;
+    remoteConnection.ondatachannel = receiveChannelCallback;
 
     getRequest(LINK_URL_1);
 
