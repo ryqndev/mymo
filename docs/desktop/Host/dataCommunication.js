@@ -19,14 +19,21 @@ function createConnection() {
     // dataChannelSend.placeholder = '';
     const servers = null;
     window.localConnection = localConnection = new RTCPeerConnection(servers);
+    window.remoteConnection = remoteConnection = new RTCPeerConnection(servers);
     console.log('Created local peer connection object localConnection');
 
     sendChannel = localConnection.createDataChannel('sendDataChannel');
     console.log('Created send data channel');
 
-    // localConnection.onicecandidate = e => {
-    //     onIceCandidate(localConnection, e);
-    // };
+    localConnection.onicecandidate = e => {
+        // onIceCandidate(localConnection, e);
+        console.log(e);
+        remoteConnection.addIceCandidate(e.candidate).then(
+            () => onAddIceCandidateSuccess(localConnection),
+            err => onAddIceCandidateError(localConnection, err)
+        );
+        console.log(`ICE candidate: ${e.candidate ? e.candidate.candidate : '(null)'}`);
+    };
     // sendChannel.onopen = onSendChannelStateChange;
     // sendChannel.onclose = onSendChannelStateChange;
     // 
@@ -61,6 +68,7 @@ function closeDataChannels() {
 }
 function createLocalDescriptionOfLocalConnection(desc) {
     localConnection.setLocalDescription(desc);
+    remoteConnection.setRemoteDescription(desc);
     console.log(`Offer from localConnection\n${desc.sdp}`);
     sendLocalConnectionOffer(LINK_URL_1, JSON.stringify(desc));
     //send local description to remote connection
@@ -69,6 +77,7 @@ function createLocalDescriptionOfLocalConnection(desc) {
 
 function setRemoteDescriptionOfLocalConnection(desc){
     localConnection.setRemoteDescription(desc);
+    remoteConnection.setLocalDescription(desc);
 }
 
 function getOtherPc(pc) {

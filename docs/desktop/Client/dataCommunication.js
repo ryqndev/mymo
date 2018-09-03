@@ -1,17 +1,25 @@
 let remoteConnection;
-let receiveChannel;
 let localConnection;
+let receiveChannel;
+// let localConnection;
 let sendChannel;
 
 function createConnection(){
     const servers = null;
     
     window.remoteConnection = remoteConnection = new RTCPeerConnection(servers);
+    window.localConnection = localConnection = new RTCPeerConnection(servers);
     console.log('Created remote peer connection object remoteConnection');
 
-    // remoteConnection.onicecandidate = e => {
-    //     onIceCandidate(remoteConnection, e);
-    // };
+    remoteConnection.onicecandidate = e => {
+        // onIceCandidate(remoteConnection, e);
+        console.log(e);
+        localConnection.addIceCandidate(e.candidate).then(
+            () => onAddIceCandidateSuccess(remoteConnection),
+            err => onAddIceCandidateError(remoteConnection, err)
+        );
+        console.log(`ICE candidate: ${e.candidate ? e.candidate.candidate : '(null)'}`);
+    };
     // remoteConnection.ondatachannel = receiveChannelCallback;
 
     getRequest(LINK_URL_1);
@@ -27,6 +35,7 @@ function closeDataChannels(){
 
 function setRemoteDescriptionOfRemoteConnection(desc){
     remoteConnection.setRemoteDescription(desc);
+    localConnection.setLocalDescription(desc);
     remoteConnection.createAnswer().then(
       createRemoteConnectionLocalDescription,
       onCreateSessionDescriptionError
@@ -38,6 +47,7 @@ function onCreateSessionDescriptionError(error) {
 
 function createRemoteConnectionLocalDescription(desc) {
     remoteConnection.setLocalDescription(desc);
+    localConnection.setRemoteDescription(desc);
     console.log(`Answer from remoteConnection\n${desc.sdp}`);
     sendLocalConnectionOffer(LINK_URL_2, JSON.stringify(desc));
     //send desc info
