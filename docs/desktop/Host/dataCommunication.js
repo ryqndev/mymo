@@ -7,7 +7,30 @@ let receiveChannel;
 // const startButton = document.querySelector('button#startButton');
 // const sendButton = document.querySelector('button#sendButton');
 // const closeButton = document.querySelector('button#closeButton');
+const ICE_SERVERS =
+    [
+        {
+            "url": "stun:global.stun.twilio.com:3478?transport=udp"
+        },
+        {
+            "url": "turn:global.turn.twilio.com:3478?transport=udp",
+            "username": "485e4c01fd84c53753b0bf3136e72ec79f5c0e36d852b92698af1b0b29604539", 
+            "credential": "pxGFuEuxUP3NaAcY8ITafZt85z0xuQIG/x4tiejW9ck="
+        }, 
+        {
+            "url": "turn:global.turn.twilio.com:3478?transport=tcp", 
+            "username": "485e4c01fd84c53753b0bf3136e72ec79f5c0e36d852b92698af1b0b29604539", 
+            "credential": "pxGFuEuxUP3NaAcY8ITafZt85z0xuQIG/x4tiejW9ck="
+        }, 
+        {
+            "url": "turn:global.turn.twilio.com:443?transport=tcp", 
+            "username": "485e4c01fd84c53753b0bf3136e72ec79f5c0e36d852b92698af1b0b29604539", 
+            "credential": "pxGFuEuxUP3NaAcY8ITafZt85z0xuQIG/x4tiejW9ck="
+        }
+    ];
 
+myIceServers = ICE_SERVERS;
+let configuration = { iceServers: myIceServers };
 
 /**
  * 
@@ -17,9 +40,7 @@ let receiveChannel;
  */
 function createConnection() {
     // dataChannelSend.placeholder = '';
-    const servers = null;
-    window.localConnection = localConnection = new RTCPeerConnection(servers);
-    window.remoteConnection = remoteConnection = new RTCPeerConnection(servers);
+    window.localConnection = localConnection = new RTCPeerConnection(configuration);
     console.log('Created local peer connection object localConnection');
 
     sendChannel = localConnection.createDataChannel('sendDataChannel');
@@ -28,15 +49,14 @@ function createConnection() {
     localConnection.onicecandidate = e => {
         // onIceCandidate(localConnection, e);
         console.log(e);
-        remoteConnection.addIceCandidate(e.candidate).then(
+        localConnection.addIceCandidate(e.candidate).then(
             () => onAddIceCandidateSuccess(localConnection),
             err => onAddIceCandidateError(localConnection, err)
         );
         console.log(`ICE candidate: ${e.candidate ? e.candidate.candidate : '(null)'}`);
     };
-    // sendChannel.onopen = onSendChannelStateChange;
-    // sendChannel.onclose = onSendChannelStateChange;
-    // 
+    sendChannel.onopen = onSendChannelStateChange;
+    sendChannel.onclose = onSendChannelStateChange;
 
     localConnection.createOffer().then(
         createLocalDescriptionOfLocalConnection,
@@ -68,8 +88,6 @@ function closeDataChannels() {
 }
 function createLocalDescriptionOfLocalConnection(desc) {
     localConnection.setLocalDescription(desc);
-    remoteConnection.setRemoteDescription(desc);
-    console.log(`Offer from localConnection\n${desc.sdp}`);
     sendLocalConnectionOffer(LINK_URL_1, JSON.stringify(desc));
     //send local description to remote connection
     //should trigger Client's setRemoteDescriptionOfRemoteConnection function
@@ -77,7 +95,8 @@ function createLocalDescriptionOfLocalConnection(desc) {
 
 function setRemoteDescriptionOfLocalConnection(desc){
     localConnection.setRemoteDescription(desc);
-    remoteConnection.setLocalDescription(desc);
+    onSendChannelStateChange();
+    // createConnection();
 }
 
 function getOtherPc(pc) {
@@ -126,18 +145,15 @@ function onSendChannelStateChange() {
     const readyState = sendChannel.readyState;
     console.log('Send channel state is: ' + readyState);
     if (readyState === 'open') {
+        console.log('its open baby');
       // dataChannelSend.disabled = false;
       // dataChannelSend.focus();
       // sendButton.disabled = false;
       // closeButton.disabled = false;
     } else {
+        console.log('its closed mdudes');
       // dataChannelSend.disabled = true;
       // sendButton.disabled = true;
       // closeButton.disabled = true;
     }
-}
-
-function onReceiveChannelStateChange() {
-    const readyState = receiveChannel.readyState;
-    console.log(`Receive channel state is: ${readyState}`);
 }
