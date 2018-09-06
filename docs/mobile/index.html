@@ -12,7 +12,7 @@
         <script type="text/javascript" src="../assets/MDC/material-components-web.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body>
+    <body onload="load();">
         <video src="bg.mp4" autoplay muted loop></video>
         <div class="container">
             <div class="logo-holder">
@@ -21,10 +21,10 @@
             <div class="title">ScheduleMe</div>
 
             <div id="section--holder-selection" class="section--holder">
-                <button class="button--host mdc-button--outlined" onclick="link('host');">
+                <button class="button--host mdc-button--outlined" onclick="link(1);">
                     Join a Plan
                 </button>
-                <button class="button--client mdc-button--outlined" onclick="link('client');">
+                <button class="button--client mdc-button--outlined" onclick="link(2);">
                     Create a Plan
                 </button>
             </div>
