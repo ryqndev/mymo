@@ -5,21 +5,23 @@
         <title>
             ScheduleMe
         </title>
-        <script type="text/javascript" src="./libraries/calendar/js/caleandar.min.js"></script>
-        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
-        <!-- <script type="text/javascript" src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script> -->
-        <!-- <script type="text/javascript" src="./libraries/TouchPunch/jquery.ui.touch-punch.min.js"></script> -->
+        <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        
-        <link rel="stylesheet" href="libraries/jquery/jquerymobile.min.css" />
-        <script src="./libraries/jquery/jquery.min.js"></script>
-        <script src="./libraries/jquery/jquerymobile.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-        <link rel="stylesheet" href="./libraries/calendar/css/calendar.css"/>
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body onload="load();">
-        <div id="caleandar">
+        <video src="bg.mp4" autoplay muted loop></video>
+        <div class="container">
+            <div class="logo-holder">
+                <div class="logo"></div>
+            </div>
+            <div class="title">ScheduleMe</div>
+
+            <button onclick="isHost();">
+            </button>
+            <button onclick="isClient();">
+            </button>
         </div>
     </body>
 </html>
