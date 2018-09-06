@@ -1,3 +1,4 @@
 function isHost(){
-    windo
+    // windo
 }
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button--outlined'));
