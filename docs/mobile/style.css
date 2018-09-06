@@ -1,6 +1,7 @@
 body{
     margin: 0;
     overflow: hidden;
+    font-family: 'Questrial', sans-serif;
 }
 video{
     height: 100vh;
@@ -10,16 +11,9 @@ video{
     z-index: -1;
 }
 button{
-    position: fixed;
     height: 5vh;
-    width: 20vw;
-    left: 40vw;
-}
-.button-host{
-    top: 70vh;
-}
-.button-client{
-    top: 85vh;
+    width: 70vw;
+    left: 15vw;
 }
 .container{
     height: 100vh;
@@ -44,11 +38,28 @@ button{
     background-color: rgba( 255, 255, 255, 0.4);
 }
 .title{
-    font-family: 'Questrial', sans-serif;
     position: fixed;
     top: 40vh;
     font-size: 40px;
     color: pink;
     width: 100vw;
     text-align: center;
+}
+.section--holder{
+    position: fixed;
+    height: 45vh;
+    width: 100vw;
+    top: 55vh;
+}
+.button--host{
+    top: 77vh;
+}
+.button--client{
+    top: 85vh;
+}
+#section--holder-host{
+    display: none;
+}
+#section--holder-client{
+    display: none;
 }
