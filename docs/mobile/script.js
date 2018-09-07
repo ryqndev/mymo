@@ -1,7 +1,6 @@
-function load(){
-    mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button--outlined'));
-}
+
 function link(type){
+    console.log('br');
     let shsD =  document.getElementById('section--holder-selection').style.display;
     let shhD =  document.getElementById('section--holder-host').style.display;
     let shcD =  document.getElementById('section--holder-client').style.display;
@@ -25,9 +24,5 @@ function link(type){
     }
 }
 
-// const divs = document.getElementsByTagName("div");
-// for(var i = 0; i < divs.length; i++){
-//    //do something to each div like
-//    divs[i].innerHTML = "something new...";
-// }
+
 // const textField = new MDCTextField(document.querySelector('.mdc-text-field'));

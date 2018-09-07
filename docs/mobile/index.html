@@ -7,12 +7,11 @@
         </title>
         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
         <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../assets/MDC/material-components-web.min.css">
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script type="text/javascript" src="../assets/MDC/material-components-web.min.js"></script>
+        <script type="text/javascript" src="../assets/ripple.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body onload="load();">
+    <body>
         <video src="bg.mp4" autoplay muted loop></video>
         <div class="container">
             <div class="logo-holder">
@@ -21,10 +20,10 @@
             <div class="title">ScheduleMe</div>
 
             <div id="section--holder-selection" class="section--holder">
-                <button class="button--host mdc-button--outlined" onclick="link(1);">
+                <button class="button--host rippleJS" onclick="link(1);">
                     Join a Plan
                 </button>
-                <button class="button--client mdc-button--outlined" onclick="link(2);">
+                <button class="button--client rippleJS" onclick="link(2);">
                     Create a Plan
                 </button>
             </div>

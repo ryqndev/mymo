@@ -11,8 +11,8 @@ video{
     z-index: -1;
 }
 button{
-    position: fixed;
-    height: 5vh;
+    position: fixed !important; 
+    height: 5vh !important;
     width: 60vw;
     left: 20vw;
     font-size: 2.5vh;
