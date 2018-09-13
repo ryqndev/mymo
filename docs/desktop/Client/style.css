@@ -23,13 +23,7 @@ body{
     background-color: #9d78e8;
     color: black;
 }
-#caleandar{
-    position:fixed;
-    top: 0;
-    left: 23vw;
-    width: 77vw;
-    height: 100vh;
-}
+
 
 .ui-selected{
     background-color: white;

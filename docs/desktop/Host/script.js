@@ -36,7 +36,7 @@ function generateRoomID(){
 }
 function load(){
     console.log(LINK_URL_1);
-    // createCalendar();
+    createCalendar();
     createConnection();
     getRequest(LINK_URL_2);
 }

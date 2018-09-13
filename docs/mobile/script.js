@@ -1,26 +1,30 @@
 
 function link(type){
-    console.log('br');
-    let shsD =  document.getElementById('section--holder-selection').style.display;
-    let shhD =  document.getElementById('section--holder-host').style.display;
-    let shcD =  document.getElementById('section--holder-client').style.display;
+    let shsD =  document.getElementById('section--holder-selection');
+    let shhD =  document.getElementById('section--holder-host');
+    let shcD =  document.getElementById('section--holder-client');
     if(type === 0){
-        shsD = 'visible';
-        shhD = 'none';
-        shcD = 'none';
+        shsD.style.display = 'block';
+        shhD.style.display = 'none';
+        shcD.style.display = 'none';
+        
     }else if(type === 1){
-        shsD = 'none';
-        shhD = 'visible';
-        shcD = 'none';
+        shsD.style.display = 'none';
+        shhD.style.display = 'block';
+        shcD.style.display = 'none';
+
     }else if(type === 2){
-        shsD = 'none';
-        shhD = 'none';
-        shcD = 'visible';
+        shsD.style.display = 'none';
+        shhD.style.display = 'none';
+        shcD.style.display = 'block';
     }else if(type === 3){
-        window.location.href = './Host/index.html';
+        let roomURL = document.getElementById('text--client').value;
+        //check if url is legit
+        // if(roomURL.substr(0, 10) === "https://")
+        window.location.href = roomURL;
     }
     else if(type === 4){
-        window.location.href = './Client/index.html';
+        window.location.href = './Host/index.html';
     }
 }
 

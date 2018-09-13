@@ -5,7 +5,7 @@ const dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
 function createCalendar(){
 
-    for(let j = -1; j < 5; j++){
+    for(let j = -1; j < 6; j++){
         for(let i = 0; i < 7; i++){
             if(j < 0){
                 let day = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
@@ -24,7 +24,7 @@ function createCalendar(){
 }
 
 function createMonth(month, year){
-    let tempDay = new Date(Date.UTC(year, month, 1)).getDay();
+    let tempDay = new Date(Date.UTC(year, month, 2)).getDay();
 
     for(let i = 1; i <= daysPerMonth[month]; i++){
         document.getElementById( 'day' + tempDay ).textContent = i;

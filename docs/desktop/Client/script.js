@@ -5,6 +5,7 @@ const LINK_URL_2 = 'https://httprelay.io/link/GeuI1OKHbR';
 function load(){
     // parseRoom();
     createConnection();
+    createCalendar();
 }
 function parseRoom() {
     var urlParams = new URLSearchParams(window.location.search);
