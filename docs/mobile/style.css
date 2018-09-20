@@ -34,8 +34,8 @@ button{
     background-image: url('../assets/logo-no-border.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
+    height: 20vh;
+    width: 10vh;
 }
 .logo-holder{
     position: fixed;

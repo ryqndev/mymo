@@ -7,18 +7,23 @@
         </title>
         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
         <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css"/>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-        <script type="text/javascript" src="../assets/ripple.min.js"></script>
+
+        <!-- MaterializeCSS -->
+        <!-- <link rel="stylesheet" type="text/css" href="../assets/materialize/materialize.min.css"> -->
+        <script type="text/javascript" src="../assets/materialize/materialize.min.js"></script>
+
+        <!-- Personal scripts/stylehseets -->
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body>
-        <video src="bg.mp4" autoplay muted loop></video>
-        <div class="container">
-            <div class="logo-holder">
-                <div class="logo"></div>
+    <body onload="load()">
+        <video src="../assets/bg.mp4" autoplay muted loop></video>
+        <div class="container .no-autoinit">
+            <div class="logo-holder .no-autoinit">
+                <div class="logo .no-autoinit"></div>
             </div>
-            <div class="title">ScheduleMe</div>
+            <div class="title .no-autoinit">ScheduleMe</div>
 
             <div id="section--holder-selection" class="section--holder">
                 <button class="button--host" onclick="link(1);">

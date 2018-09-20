@@ -1,3 +1,6 @@
+function load(){
+    // M.AutoInit();
+}
 
 function link(type){
     let shsD =  document.getElementById('section--holder-selection');
