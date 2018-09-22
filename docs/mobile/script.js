@@ -1,3 +1,5 @@
+const JOIN_CODE = 20;
+
 function load(){
     // M.AutoInit();
 }
@@ -23,8 +25,11 @@ function link(type){
     }else if(type === 3){
         let roomURL = document.getElementById('text--client').value;
         //check if url is legit
-        // if(roomURL.substr(0, 10) === "https://")
-        window.location.href = roomURL;
+        let urlLen = roomURL.length;
+        let roomCode = roomURL.substr(urlLen - JOIN_CODE, JOIN_CODE);
+        let curURL = window.location.href;
+        window.location.href = './Client/index.html?id=' + roomCode;
+        // window.location.href = roomURL;
     }
     else if(type === 4){
         window.location.href = './Host/index.html';
