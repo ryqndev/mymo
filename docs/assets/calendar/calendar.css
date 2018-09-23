@@ -1,0 +1,18 @@
+#dates--interactive{
+    height: 100%;
+    width: 100%;
+}
+.calendar__day{
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    height: calc( 100% / 7 - 3.6vh);
+    width: calc( ( 100% / 7 ) - 2 * ( 5.6vw - 2.5vh ));
+    padding-top: calc( 2.5vh - 10px );
+    padding-bottom: calc( 2.5vh - 10px );
+    margin: 1.8vh calc(5.5vw - 2.5vh) 1.8vh calc(5.5vw - 2.5vh);
+    color: white;
+}
+.calendar__day--clear{
+    clear: both;
+}

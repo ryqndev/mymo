@@ -7,35 +7,18 @@
         </title>
         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
         <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css"/>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-        <script type="text/javascript" src="../assets/ripple.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="../../assets/calendar/calendar.css">
+        <script type="text/javascript" src="../../assets/calendar/calendar.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body>
-        <video src="../../assets/bg.mp4" autoplay muted loop></video>
+    <body onload="load()">
         <div class="container">
-            <div class="logo-holder">
-                <div class="logo"></div>
-            </div>
-            <div class="title">ScheduleMe</div>
-
-            <div id="section--holder-selection" class="section--holder">
-                <button class="button--host" onclick="link(1);">
-                    JOIN PLAN
-                </button>
-                <button class="button--client" onclick="link(4);">
-                    CREATE PLAN
-                </button>
-            </div>
-            <div id="section--holder-host" class="section--holder">
-                <input id="text--client" placeholder="PASTE LINK">
-                <button class="button--client" onclick="link(3);">
-                    JOIN
-                </button>
-            </div>
-            <div id="section--holder-client" class="section--holder">
-
+            <div id="calendar">
+                <div id="dates--interactive"></div>
             </div>
         </div>
     </body>

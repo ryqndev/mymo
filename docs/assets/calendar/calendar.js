@@ -1,6 +1,8 @@
 const date = new Date();
 const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 const dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 // const 
 
 function createCalendar(){
@@ -10,7 +12,7 @@ function createCalendar(){
             if(j < 0){
                 let day = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
                 day.className = 'calendar__day';
-                day.textContent = dayNames[i];
+                day.textContent = dayNamesCompact[i];
             }else{
                 let day = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
                 day.id = 'day' + (j*7 + i);

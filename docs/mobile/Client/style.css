@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Questrial', sans-serif;
+    background-color: black;
+    font-size: 16px;
+}
+#calendar{
+    position: fixed;
+    top: 10vh;
+    left: 5vw;
+    width: 90vw;
+    height: 50vh;
+}
+/* .calendar__day:hover{
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+} */
