@@ -1,11 +1,20 @@
+
 body{
     margin: 0;
     overflow: hidden;
     font-family: 'Questrial', sans-serif;
-    /* background-color: black; */
     background: linear-gradient(30deg, #f96d57, #F9577E);
     height: 100vh;
     font-size: 16px;
+}
+#selection--times{
+    position: fixed;
+    top: 57vh;
+    left: 0;
+    height: 43vh;
+    width: 100vw;
+    background-color: #6B4DC3;
+    border-radius: 15px 15px 0 0;
 }
 #calendar{
     position: fixed;

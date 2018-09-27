@@ -7,7 +7,7 @@
     text-align: center;
     box-sizing: border-box;
     height: calc( 100% / 7 - 2.5vh);
-    width: calc( ( 100% / 7 ) - 3vvw);
+    width: calc( ( 100% / 7 ) - 3vw);
     padding-top: calc( 2.7vh - 10px );
     padding-bottom: calc( 2.7vh - 10px );
     margin: 1vh 1.5vw 1vh 1.5vw;
