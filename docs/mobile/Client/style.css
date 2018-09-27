@@ -2,7 +2,9 @@ body{
     margin: 0;
     overflow: hidden;
     font-family: 'Questrial', sans-serif;
-    background-color: black;
+    /* background-color: black; */
+    background: linear-gradient(30deg, #f96d57, #F9577E);
+    height: 100vh;
     font-size: 16px;
 }
 #calendar{
@@ -12,8 +14,8 @@ body{
     width: 90vw;
     height: 50vh;
 }
-/* .calendar__day:hover{
+.calendar__day:hover{
     border-radius: 50%;
-    background-color: white;
+    background-color: #cef957;
     color: black;
-} */
+}
