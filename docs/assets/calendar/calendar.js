@@ -4,9 +4,17 @@ const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'S
 const dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 // const 
+let lastSelected;
 
 function createCalendar(){
-
+    document.getElementById().addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        console.log(e);
+        if(e.target !== lastSelected){
+            // console.log(e);
+            lastSelected = e.target;
+        }
+    }, false);
     for(let j = -1; j < 6; j++){
         for(let i = 0; i < 7; i++){
             if(j < 0){
