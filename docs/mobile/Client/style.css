@@ -24,6 +24,6 @@ body{
 }
 .calendar__day:hover{
     border-radius: 50%;
-    background-color: #cef957;
-    color: black;
+    /* background-color: #cef957; */
+    /* color: black; */
 }
