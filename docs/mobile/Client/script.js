@@ -2,8 +2,13 @@ const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
 let lastSelected;
 
 function load(){
+    parseRoom();
     createCalendar();
-    testBounding();
+    select();
+}
+function parseRoom() {
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('id'));
 }
 function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
@@ -21,7 +26,6 @@ function toggleDate(id, singleClick){
         }
     }
 }
-
 function testBounding(){
     document.getElementById('dates--interactive').addEventListener('touchmove', function(e) {  
         e.preventDefault();

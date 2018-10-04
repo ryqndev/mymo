@@ -9,7 +9,7 @@ function load(){
 }
 function parseRoom() {
     var urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams.get('r'));
+    console.log(urlParams.get('id'));
 }
 
 function getRequest(link){
