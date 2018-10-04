@@ -1,15 +1,35 @@
 #dates--interactive{
+    user-select: none;
     height: 100%;
     width: 100%;
+}
+#calendar-title{
+    position: fixed;
+    top: 2vh;
+    height: 8vh;
+    width: 100vw;
+    font-size: 6vh;
+    color: white;
+    text-align: center;
+}
+.day-passed{
+    color: #565656 !important;
+}
+.day-name{
+    color: #DDEEFF !important;
+}
+.day-today{
+    border-radius: 50%;
+    color: black !important;
+    background-color: #99d7ff;
 }
 .calendar__day{
     float: left;
     text-align: center;
     box-sizing: border-box;
-    height: calc( 100% / 7 - 2.5vh);
+    height: calc( 100% / 7 - 2vh);
     width: calc( ( 100% / 7 ) - 3vw);
-    padding-top: calc( 2.7vh - 10px );
-    padding-bottom: calc( 2.7vh - 10px );
+    padding-top: calc( 2.3vh - 10px );
     margin: 1vh 1.5vw 1vh 1.5vw;
     color: white;
 }

@@ -8,9 +8,9 @@ body{
 }
 #selection--times{
     position: fixed;
-    top: 57vh;
+    top: 55vh;
     left: 0;
-    height: 43vh;
+    height: 45vh;
     width: 100vw;
     background-color: #6B4DC3;
     border-radius: 15px 15px 0 0;
@@ -20,7 +20,12 @@ body{
     top: 10vh;
     left: 5vw;
     width: 90vw;
-    height: 50vh;
+    height: 45vh;
+}
+.day-selected{
+    border-radius: 50%;
+    color: black;
+    background-color: #99ff9f;
 }
 .calendar__day:hover{
     border-radius: 50%;

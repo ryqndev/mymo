@@ -5,14 +5,21 @@ function load(){
     createCalendar();
     testBounding();
 }
-function toggleDate(id){
+function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
-    if(curHover.style.color == 'black'){
-        curHover.style.color = 'white';
-    }else{
-        curHover.style.color = 'black';
+    if(!curHover.classList.contains('day-passed') && !curHover.classList.contains('day-today') && (singleClick || id !== lastSelected )){
+        if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
+            curHover.classList.add('day-selected');
+        }else{
+            curHover.classList.remove('day-selected');
+        }
+        
+        if(singleClick){
+            lastSelected = null;
+        }else{
+            lastSelected = id;
+        }
     }
-    lastSelected = id;
 }
 
 function testBounding(){
@@ -25,7 +32,7 @@ function testBounding(){
                 for(let el of e['yPos']){
                     if(cliY >= el['y1'] && cliY <= el['y2']){
                         if(el['name'] !== lastSelected){
-                            toggleDate(el['name']);
+                            toggleDate(el['name'], false);
                         }
                     }
                 }
@@ -56,7 +63,6 @@ function testBounding(){
             }
         };
     }
-    console.log(DAY_POS);
 }
 
 /**
