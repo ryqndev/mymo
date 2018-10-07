@@ -7,18 +7,35 @@
         </title>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-        <script type="text/javascript" src="../calendar.js"></script>
+        <!-- <script type="text/javascript" src="../calendar.js"></script> -->
         <script type="text/javascript" src="dataCommunication.js"></script>
         <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
-        <link rel="stylesheet" href="style.css"/>
+
+        <link rel="stylesheet" type="text/css" href="../../assets/materialize/materialize.min.css">
+        <script src="../../assets/materialize/materialize.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="../../assets/datepicker/datepicker.min.css">
+        <script src="../../assets/datepicker/datepicker.min.js"></script>
+              
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" href="calendar.css"/>
     </head>
-    <body onload="load();">
-        <div class="side-bar" onclick="makeCall();"></div>
-        <div id="calendar">
-            <!-- <img id="qr"/> -->
-            <div id="dates--interactive"></div>
+    <body onload="load(); M.AutoInit();">
+        <div class="input-field">
+            <input data-toggle="datepicker" type="text" id="start-date" class="validate active">
+            <label for="start-date">Start Date</label>
         </div>
+        <div class="input-field">
+            <input data-toggle="datepicker" type="text" id="end-date" class="validate active">
+            <label for="end-date">End Date</label>
+        </div>
+        <div class="btn" onclick="submit();">
+        <!-- <div class="side-bar" onclick="makeCall();"></div>
+        <div id="calendar">
+            <div id="dates--interactive"></div>
+        </div> -->
     </body>
 </html>

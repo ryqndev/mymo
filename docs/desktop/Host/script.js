@@ -35,13 +35,23 @@ function generateRoomID(){
     return roomID;
 }
 function load(){
-    console.log(LINK_URL_1);
-    createCalendar();
-    createConnection();
-    getRequest(LINK_URL_2);
+    // console.log(LINK_URL_1);
+    // createCalendar();
+    // createConnection();
+    // getRequest(LINK_URL_2);
+    M.AutoInit();
+    $('[data-toggle="datepicker"]').datepicker();
+    document.getElementById('start-date').addEventListener("input", function(e){
+        M.AutoInit();
+    });
 }
 function generateQRCode(){
     document.getElementById('qr').src = qrCodeBaseUrl + ROOM_ID;
+}
+function submit(){
+    let selectedDate = document.getElementById('start-date').value;
+    console.log(selectedDate);
+    
 }
 
 function getRequest(link){

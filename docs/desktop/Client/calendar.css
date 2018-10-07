@@ -10,11 +10,6 @@
     height: 54vh;
     width: 100%;
 }
-/* .calendar__day:hover{
-    border-radius: 50%;
-    background-color: white;
-    color: black;
-} */
 .calendar__day--clear{
     clear: both;
 }
