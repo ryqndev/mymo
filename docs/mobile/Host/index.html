@@ -5,6 +5,7 @@
         <title>
             ScheduleMe
         </title>
+        <link rel="shortcut icon" type="image/svg" href="../../assets/icons/logo.svg"/>
         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
         <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -28,7 +29,10 @@
                 </button>
             </div>
             <div id="section--holder-host" class="section--holder">
-                <input id="text--client" placeholder="PASTE LINK">
+                <div class="input-field">
+                    <input id="text--client" type="text">
+                    <label for="text--client">Plan Link</label>
+                </div>
                 <button class="button--client" onclick="link(3);">
                     JOIN
                 </button>
