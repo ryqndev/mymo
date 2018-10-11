@@ -1,34 +1,29 @@
 body{
     margin: 0;
-    /* background: linear-gradient(30deg, #741EFF, #F9577E); */
+    overflow: hidden;
+    font-family: 'Questrial', sans-serif;
+    background: linear-gradient(30deg, #f96d57, #F9577E);
     height: 100vh;
-    font-family: 'Comfortaa', cursive;
+    font-size: 16px;
 }
-.side-bar{
-    position: fixed;
+#selection--times{
     top: 0;
     left: 0;
     height: 100vh;
-    width: 23vw;
-    background: linear-gradient(#FFD600, #FF9A23);
-    border-right: 1px solid black;
+    width: 30vw;
+    /* background: linear-gradient(#FFD600, #FF9A23); */
+    background-color: #6B4DC3;
+    /* border-radius: 15px 15px 0 0; */
 }
-#qr{
-    height: 300px;
-    width: 300px;    
+#calendar{
+    position: fixed;
+    top: 10vh;
+    left: 30vw;
+    width: 70vw;
+    height: 45vh;
 }
-.all-day{
-    background-color: #7942e7;
-    color: white;
-}
-.partial-day{
-    background-color: #9d78e8;
+.day-selected{
+    border-radius: 50%;
     color: black;
-}
-
-.ui-selected{
-    background-color: white;
-}
-.ui-selecting{
-    background-color: white;
+    background-color: #99ff9f;
 }

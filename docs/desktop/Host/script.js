@@ -39,11 +39,8 @@ function load(){
     // createCalendar();
     // createConnection();
     // getRequest(LINK_URL_2);
-    M.AutoInit();
-    $('[data-toggle="datepicker"]').datepicker();
-    document.getElementById('start-date').addEventListener("input", function(e){
-        M.AutoInit();
-    });
+    createCalendar();
+    select();
 }
 function generateQRCode(){
     document.getElementById('qr').src = qrCodeBaseUrl + ROOM_ID;

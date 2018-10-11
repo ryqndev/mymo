@@ -8,12 +8,9 @@ body{
     top: 0;
     left: 0;
     height: 100vh;
-    width: 23vw;
+    width: 30vw;
     background: linear-gradient(#FFD600, #FF9A23);
     /* border-right: 1px solid black; */
-}
-.calendar-holder{
-
 }
 .all-day{
     background-color: #7942e7;
@@ -22,12 +19,4 @@ body{
 .partial-day{
     background-color: #9d78e8;
     color: black;
-}
-
-
-.ui-selected{
-    background-color: white;
-}
-.ui-selecting{
-    background-color: white;
 }

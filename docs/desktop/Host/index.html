@@ -8,7 +8,10 @@
         <link rel="shortcut icon" type="image/svg" href="../../assets/icons/logo.svg"/>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
-        <!-- <script type="text/javascript" src="../calendar.js"></script> -->
+
+        <script type="text/javascript" src="../../assets/calendar/calendar.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../assets/calendar/calendar.css">
+
         <script type="text/javascript" src="dataCommunication.js"></script>
         <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
@@ -22,21 +25,16 @@
         <script src="../../assets/datepicker/datepicker.min.js"></script>
               
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link rel="stylesheet" href="calendar.css"/>
+        <!-- <link rel="stylesheet" href="calendar.css"/> -->
     </head>
-    <body onload="load(); M.AutoInit();">
-        <div class="input-field">
-            <input data-toggle="datepicker" type="text" id="start-date" class="validate active">
-            <label for="start-date">Start Date</label>
+    <body onload="load();">
+        <div id="selection--times">
         </div>
-        <div class="input-field">
-            <input data-toggle="datepicker" type="text" id="end-date" class="validate active">
-            <label for="end-date">End Date</label>
+        <div class="valign-wrapper">
+            <div id="calendar-title"></div>
         </div>
-        <div class="btn" onclick="submit();">
-        <!-- <div class="side-bar" onclick="makeCall();"></div>
         <div id="calendar">
             <div id="dates--interactive"></div>
-        </div> -->
+        </div>
     </body>
 </html>

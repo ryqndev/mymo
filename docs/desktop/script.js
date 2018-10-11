@@ -1,7 +1,9 @@
 const JOIN_CODE = 20;
 
 function load(){
-    // M.AutoInit();
+    $('[data-toggle="datepicker"]').datepicker();
+    $('#start-date').datepicker('setStartDate', new Date());
+    $('#end-date').datepicker('setStartDate', new Date());
 }
 
 function link(type){
@@ -32,6 +34,23 @@ function link(type){
         // window.location.href = roomURL;
     }
     else if(type === 4){
-        window.location.href = './Host/index.html';
+        let startDate =$('#start-date').val();
+        let endDate = $('#end-date').val();
+        console.log(startDate, endDate);
+        window.location.href = `./Host/index.html?sd=${startDate}&ed=${endDate}`;
     }
+}
+
+function checkEndDate(){
+    M.updateTextFields();
+    let startDate = $('#start-date').datepicker('getDate');
+    let endDate = $('#end-date').datepicker('getDate');
+    console.log(startDate, endDate);
+    if(startDate > endDate){
+        $('#end-date').addClass('invalid');  
+    }else{
+        $('#end-date').removeClass('invalid');  
+        $('#end-date').addClass('valid');  
+    }
+
 }
