@@ -1,44 +1,32 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="author" content="Ryan Yang">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
             ScheduleMe
         </title>
         <link rel="shortcut icon" type="image/svg" href="../../assets/icons/logo.svg"/>
-        <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+        <link href="https://fonts.googleapis.com/css?family=Questrial|Roboto" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="../../assets/calendar/calendar.css">
+        <script type="text/javascript" src="../../assets/calendar/calendar.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body>
-        <video src="../../assets/bg.mp4" autoplay muted loop></video>
-        <div class="container">
-            <div class="logo-holder">
-                <div class="logo"></div>
-            </div>
-            <div class="title">ScheduleMe</div>
+    <body onload="load();">
+        <div class="valign-wrapper">
+            <div id="calendar-title"></div>
+        </div>
+        <div id="calendar">
+            <div id="dates--interactive"></div>
+        </div>
+        <div id="selection--times">
 
-            <div id="section--holder-selection" class="section--holder">
-                <button class="button--host" onclick="link(1);">
-                    JOIN PLAN
-                </button>
-                <button class="button--client" onclick="link(4);">
-                    CREATE PLAN
-                </button>
-            </div>
-            <div id="section--holder-host" class="section--holder">
-                <div class="input-field">
-                    <input id="text--client" type="text">
-                    <label for="text--client">Plan Link</label>
-                </div>
-                <button class="button--client" onclick="link(3);">
-                    JOIN
-                </button>
-            </div>
-            <div id="section--holder-client" class="section--holder">
-
-            </div>
         </div>
     </body>
 </html>

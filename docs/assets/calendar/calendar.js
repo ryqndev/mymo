@@ -58,6 +58,26 @@ function toggleDate(id, singleClick){
         }
     }
 }
+function selectDesktop(){
+    document.getElementById('dates--interactive').addEventListener('mousemove', function(e) {  
+        e.preventDefault();
+        console.log(e);
+        let cliY = Math.round(e.target[0].clientY);
+        let cliX = Math.round(e.target[0].clientX);
+        console.log(cliX, cliY);
+        for(let e of DAY_POS){
+            if(cliX >= e['x1'] && cliX <= e['x2']){
+                for(let el of e['yPos']){
+                    if(cliY >= el['y1'] && cliY <= el['y2']){
+                        if(el['name'] !== lastSelected){
+                            toggleDate(el['name'], false);
+                        }
+                    }
+                }
+            }
+        }
+    }, false);
+}
 function select(){
     document.getElementById('dates--interactive').addEventListener('touchmove', function(e) {  
         e.preventDefault();
@@ -75,24 +95,6 @@ function select(){
                 }
             }
         }
-    }, false);
-    document.getElementById('dates--interactive').addEventListener('mousemove', function(e) {  
-        e.preventDefault();
-        console.log(e);
-        // let cliY = Math.round(e.target[0].clientY);
-        // let cliX = Math.round(e.target[0].clientX);
-        // console.log(cliX, cliY);
-        // for(let e of DAY_POS){
-        //     if(cliX >= e['x1'] && cliX <= e['x2']){
-        //         for(let el of e['yPos']){
-        //             if(cliY >= el['y1'] && cliY <= el['y2']){
-        //                 if(el['name'] !== lastSelected){
-        //                     toggleDate(el['name'], false);
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
     }, false);
     for(let i = 0; i < 42; i++){
         let divBox = document.getElementById('day' + i).getBoundingClientRect();

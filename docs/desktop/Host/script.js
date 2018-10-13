@@ -40,7 +40,7 @@ function load(){
     // createConnection();
     // getRequest(LINK_URL_2);
     createCalendar();
-    select();
+    selectDesktop();
 }
 function generateQRCode(){
     document.getElementById('qr').src = qrCodeBaseUrl + ROOM_ID;
@@ -48,7 +48,6 @@ function generateQRCode(){
 function submit(){
     let selectedDate = document.getElementById('start-date').value;
     console.log(selectedDate);
-    
 }
 
 function getRequest(link){
