@@ -1,9 +1,3 @@
-const ID_SIZE = 20;
-const httpRelayBaseUrl = 'https://httprelay.io/mcast/';
-
-/** @todo: use these for production */
-// const ROOM_ID = generateRoomID();
-// const LINK_URL = httpRelayBaseUrl + ROOM_ID;
 
 const ROOM_ID = '1t78pQ0KDxGeuI1OKHbR';
 // const LINK_URL = 'https://httprelay.io/mcast/1t78pQ0KDxGeuI1OKHbR';
@@ -26,14 +20,7 @@ const  qrCodeBaseUrl
     + '&bgcolor='   + QR_BGCOLOR
     + '&data=';
 
-function generateRoomID(){
-    let roomID = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (let i = 0; i < ID_SIZE; i++){
-        roomID += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return roomID;
-}
+
 function load(){
     // console.log(LINK_URL_1);
     // createCalendar();

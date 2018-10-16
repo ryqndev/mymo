@@ -31,7 +31,6 @@ function link(type){
         let roomCode = roomURL.substr(urlLen - JOIN_CODE, JOIN_CODE);
         let curURL = window.location.href;
         window.location.href = './Client/index.html?id=' + roomCode;
-        // window.location.href = roomURL;
     }
     else if(type === 4){
         let startDate =$('#start-date').val();
@@ -45,7 +44,6 @@ function checkEndDate(){
     M.updateTextFields();
     let startDate = $('#start-date').datepicker('getDate');
     let endDate = $('#end-date').datepicker('getDate');
-    console.log(startDate, endDate);
     if(startDate > endDate){
         $('#end-date').addClass('invalid');  
     }else{

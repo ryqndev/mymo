@@ -2,23 +2,35 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/svg" href="../../assets/icons/logo.svg"/>
+
         <title>
             ScheduleMe
         </title>
-        <link rel="shortcut icon" type="image/svg" href="../../assets/icons/logo.svg"/>
+
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
-        <script type="text/javascript" src="../calendar.js"></script>
-        <script type="text/javascript" src="dataCommunication.js"></script>
+
+        <script type="text/javascript" src="../../assets/calendar/calendar.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../assets/calendar/calendar.css">
+
+        <script type="text/javascript" src="../../assets/dataCommunication/client.js"></script>
         <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="../../assets/materialize/materialize.min.css">
+        <script src="../../assets/materialize/materialize.min.js"></script>
+        
         <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
+
+        <script type="text/javascript" src="script.js"></script>
         <link rel="stylesheet" href="style.css"/>
-        <link rel="stylesheet" href="calendar.css"/>
     </head>
     <body onload="load();">
-        <div class="side-bar" onclick="makeCall();"></div>
+        <div id="selection--times">
+        </div>
+        <div class="valign-wrapper">
+            <div id="calendar-title"></div>
+        </div>
         <div id="calendar">
-            <!-- <img id="qr"/> -->
             <div id="dates--interactive"></div>
         </div>
     </body>
