@@ -1,3 +1,6 @@
+/**
+ * @author Ryan Yang
+ */
 const date = new Date();
 const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -6,7 +9,6 @@ const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 let daysAhead;
 const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
 let lastSelected;
-// const 
 
 function createCalendar(){
     document.getElementById('calendar-title').textContent = monthNames[date.getMonth()];

@@ -1,11 +1,7 @@
-//      file:///Users/ryanyang/Desktop/Workspace/ScheduleMe/docs/assets/testComm/host.html?sd=10/24/2018&ed=10/30/2018
-
-let startD, 
-    endD,
-    startT,
-    endT,
-    numD,
-    numT;
+/**
+ * @author Ryan Yang
+ * test link: file:///Users/ryanyang/Desktop/Workspace/ScheduleMe/docs/assets/testComm/host.html?sd=10/24/2018&ed=10/30/2018
+ */
 
 let metaData;
 /** @todo: use these for production DO NOT FORGET TO SEPARATE PARAMS */
@@ -14,34 +10,21 @@ let MCAST_ID = 'GeuI1OKHbR'
 // let ROOM_ID = generateRoomID(ID_SIZE);
 // let MCAST_ID = generateRoomID(ID_SIZE);
 
-// let ROOM_URL = httpRelayLink + ROOM_ID;
 // let MCAST_URL = httpRelayMCast + MCAST_ID;
 
 let users = [];
-let data = {
-    'total': 1,
-    'plan': []
-};
-
 
 function load(){ 
     parseURL();
     setupPlan();
 }
 function setupPlan(){
-    startT = 36; //# of 15 minutes since 12 am
+    startT = 36; //# of 15 minute segments since 12 am
     endT = 88;
-
-
+    //get info
     numD = Math.floor((new Date(endD) - new Date(startD))/86400000);
     numT = endT - startT;
-    for(let i = 0; i < numD; i++){
-        data['plan'].push(new Array);
-        for(let j = 0; j < numT; j++){
-            data['plan'][i].push(0);
-        }
-    }
-    // console.log(data['plan']);
+    populatePlan();
     createRoom();
 }
 function createRoom(){
@@ -64,8 +47,12 @@ function openConnection(){
         'mcast': MCAST_ID,
         'data': metaData
     };
-    postReq(ROOM_URL, JSON.stringify(data), joined); 
-    display(users);
+    postReq(ROOM_URL, JSON.stringify(data), joined);
+}
+function closeConnection(){
+    const ROOM_URL = httpRelayLink + users[users.length - 1];
+    getReq(ROOM_URL, nothing);
+    users.pop();
 }
 function joined(){
     let lastJoined = users[users.length - 1];
@@ -73,29 +60,23 @@ function joined(){
     openConnection();
 }
 function getClientSchedule(data){
-    //should start calculations
-    display(data);
-    calculateNewData(data['plan']);
+    addPlan(data);
 }
 function updateMCAST(MCASTData){
-    postReq();
+    users.forEach((e) => {
+        postReq(httpRelayLink + e, MCAST_ID, getVote);
+    });
+}
+function getVote(vote){
 
 }
-/** 
- * @todo set for client
- * @param newPlan - 2d array of 0's and 1's 
- * 
- * */
-function calculateNewData(newPlan){
-    for(let i = 0; i < data['plan'].length; i++){
-        for(let j = 0; j < data['plan'][i].length; j++){
-            data['plan'][i][j] += newPlan[i][j];
-        }
-    }
+function nothing(){
+    return 0;
 }
 
 
-function parseURL() {
+
+function parseURL(){
     let urlParams = new URLSearchParams(window.location.search);
     startD = urlParams.get('sd');
     endD = urlParams.get('ed');

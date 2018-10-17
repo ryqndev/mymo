@@ -1,3 +1,6 @@
+/**
+ * @author Ryan Yang
+ */
 function redirect(){
     var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     if(width <= 700){

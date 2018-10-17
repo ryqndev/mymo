@@ -1,3 +1,6 @@
+/**
+ * @author Ryan Yang
+ */
 const JOIN_CODE = 20;
 
 function load(){
