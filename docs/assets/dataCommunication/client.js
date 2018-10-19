@@ -13,11 +13,11 @@ let ROOM_CONNECTION_CODE;
 
 function load(){
     parseURL();
-    if(hasData()){
+    if ( hasData() ) {
         let d = "";
-        connected(d);
-    }else{
-        connectWithHost();
+        connected( d );
+    } else {
+        // connectWithHost();
     }
 }
 /**
@@ -48,20 +48,21 @@ function connectWithHost(){
  * @description - Upon successful connection with host, defines all local variables with plan meta data
  * @param {} d - meta data for local variables @see createRoom() in host.js file
  */
-function connected(d){
-    HOST_ID = d['code'];
-    MCAST_ID = d['mcast'];
-    startD = d['data']['startDate'];
-    endD = d['data']['endDate'];
-    startT = d['data']['startTime'];
-    endT = d['data']['endTime'];
-    numD = d['data']['numDate'];
-    numT = d['data']['numTime'];
+function connected( d ) {
+    HOST_ID = d[ 'code' ];
+    MCAST_ID = d[ 'mcast' ];
+    startD = d[ 'data' ][ 'startDate' ];
+    endD = d[ 'data' ][ 'endDate' ];
+    startT = d[ 'data' ][ 'startTime' ];
+    endT = d[ 'data' ][ 'endTime' ];
+    numD = d[ 'data' ][ 'numDate' ];
+    numT = d[ 'data' ][ 'numTime' ];
     populatePlan();
 }
-function sendDataToHost(data){
+
+function sendDataToHost( data ) {
     const HOST_URL = httpRelayLink + HOST_ID;
-    postReq(HOST_ID, data, waitForOthers);
+    postReq( HOST_ID, data, waitForOthers );
 }
 function waitForOthers(){
     const HOST_URL = httpRelayLink + HOST_ID;

@@ -20,11 +20,11 @@ function display(data){
     console.log(data);
     document.getElementById('output').innerHTML = `${JSON.stringify(data)}`;
 }
-function populatePlan(){
-    for(let i = 0; i < numD; i++){
-        data['plan'].push(new Array);
-        for(let j = 0; j < numT; j++){
-            data['plan'][i].push(0);
+function populatePlan() {
+    for ( let i = 0; i < numD; i++ ) {
+        data[ 'plan' ].push( new Array );
+        for ( let j = 0; j < numT; j++ ) {
+            data[ 'plan' ][ i ].push( 0 );
         }
     }
 }
@@ -33,28 +33,29 @@ function populatePlan(){
  * @param newPlan - 2d array of 0's and 1's 
  * 
  */
-function addPlan(newPlan){
-    for(let i = 0; i < data['plan'].length; i++){
-        for(let j = 0; j < data['plan'][i].length; j++){
-            data['plan'][i][j] += newPlan[i][j];
+function addPlan( newPlan ) {
+    for ( let i = 0; i < data[ 'plan' ].length; i++ ) {
+        for ( let j = 0; j < data[ 'plan' ][ i ].length; j++ ) {
+            data[ 'plan' ][ i ][ j ] += newPlan[ i ][ j ];
         }
     }
 }
-function postReq(link, message, callback){
-    axios.post(link, message)  
-    .then(function (response) {
-        callback(response);
-    })
-    .catch(function (error) {
-        display(error);
-    });
+function postReq( link, message, callback ) {
+    axios.post( link, message )
+        .then( function ( response ) {
+            callback( response );
+        } )
+        .catch( function ( error ) {
+            display( error );
+        } );
 }
-function getReq(link, callback){
-    axios.get(link)
-    .then(function (response) {
-        callback(response.data);
-    })
-    .catch(function (error) {
-        display(error);
-    })
+
+function getReq( link, callback ) {
+    axios.get( link )
+        .then( function ( response ) {
+            callback( response.data );
+        } )
+        .catch( function ( error ) {
+            display( error );
+        } )
 }

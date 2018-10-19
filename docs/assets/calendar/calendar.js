@@ -61,6 +61,9 @@ function toggleDate(id, singleClick){
     }
 }
 function selectDesktop(){
+    console.log(
+        "sdf"
+    );
     document.getElementById('dates--interactive').addEventListener('mousemove', function(e) {  
         e.preventDefault();
         console.log(e);
@@ -122,4 +125,7 @@ function select(){
             }
         };
     }
+}
+function tallyTimes(){
+    //create obj with div reference and an array for days
 }
