@@ -1,0 +1,108 @@
+body{
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Questrial', sans-serif;
+}
+button{    
+    background-color: black !important;
+    width: 100%;
+    font-weight: 500;
+}
+.bgcolor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient( farthest-side at 10% 90%, #fffa00 -10%, #00ffe5 130% );
+    animation: A-bgcolor 5s infinite alternate-reverse;
+    z-index: -1;
+}
+.bgcolor-2{
+    background: radial-gradient( farthest-side at 100% 20%, #5900a3 -100%, #0082d3 150% );
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -2;
+}
+@keyframes A-bgcolor{
+    from{
+        opacity: 0.2;
+    }
+    to{
+        opacity: 0.7;
+    }
+}
+#root{
+    position: fixed;
+    top: 9vh;
+    left: calc( 50vw - 200px );
+    height: 80vh;
+    width: 400px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    mix-blend-mode: screen;
+
+}
+.logo{
+    background-image: url('../assets/icons/logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20vh;
+    width: 20vh;
+    margin: 8vh auto 5vh auto;
+}
+.title{
+    height: 5vh;
+    width: 100%;
+    font-size: 4vh;
+    text-align: center;
+    font-family: 'Lato';
+}
+.input-field{
+    color: black !important;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    width: 100%;
+    margin: 5% 0 15% 0;
+}
+
+.section--holder{
+    height: 42vh;
+    padding: 15%;
+}
+.button__top{
+    margin: 5% 0 15% 0;
+}
+.back{
+    width: 100%;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 8%;
+}
+#section--holder-host{
+    display: none;
+}
+#section--holder-client{
+    display: none;
+}
+@media screen and (max-width: 600px){
+    #root{
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+    }
+    .logo{
+        height: 25vh;
+        width: 25vh;
+        margin: 10vh auto 5vh auto;
+    }
+    .section--holder{
+        height: 55vh;
+        padding: 15%;
+    }
+}
