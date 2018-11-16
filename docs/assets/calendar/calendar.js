@@ -37,7 +37,7 @@ function createMonth(month, year){
     for(let i = 1; i <= daysPerMonth[month]; i++){
         document.getElementById( 'day' + tempDay ).textContent = i;
         if(i < today){
-            document.getElementById( 'day' + tempDay ).classList.add('day-passed');
+            document.getElementById( 'day' + tempDay ).classList.add('day-disabled');
         }else if(i == today){
             document.getElementById( 'day' + tempDay ).classList.add('day-today');
         }
@@ -46,7 +46,7 @@ function createMonth(month, year){
 }
 function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
-    if(!curHover.classList.contains('day-passed') && !curHover.classList.contains('day-today') && (singleClick || id !== lastSelected )){
+    if(!curHover.classList.contains('day-disabled') && !curHover.classList.contains('day-today') && (singleClick || id !== lastSelected )){
         if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
             curHover.classList.add('day-selected');
         }else{
@@ -61,9 +61,6 @@ function toggleDate(id, singleClick){
     }
 }
 function selectDesktop(){
-    console.log(
-        "sdf"
-    );
     document.getElementById('dates--interactive').addEventListener('mousemove', function(e) {  
         e.preventDefault();
         console.log(e);

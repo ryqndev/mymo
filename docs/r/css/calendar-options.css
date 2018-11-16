@@ -1,0 +1,17 @@
+#calendar-title{
+    text-align: center;
+    height: 5%;
+    margin-top: 5%;
+    font-size: 24px;
+    color: black;
+}
+#calendar{
+    height: 70%;
+    width: 90%;
+    margin: auto;
+}
+.day-selected{
+    /* border-radius: 50%; */
+    color: black;
+    background-color: #99ff9f;
+}

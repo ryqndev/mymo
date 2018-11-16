@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta author="Ryan Yang">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            Plan My Social
+        </title>
+        <link rel="shortcut icon" type="image/svg" href="../assets/icons/logo.svg"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- MaterializeCSS -->
+        <link rel="stylesheet" type="text/css" href="../assets/materialize/materialize.min.css">
+        <script type="text/javascript" src="../assets/materialize/materialize.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="../assets/calendar/calendar.css"/>
+        <script type="text/javascript" src="../assets/calendar/calendar.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="../assets/datepicker/datepicker.min.css">
+        <script src="../assets/datepicker/datepicker.min.js"></script>
+
+        <!-- Personal scripts/stylehseets -->
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/calendar-options.css"/>
+        <script type="text/javascript" src="./js/script.js"></script>
+    </head>
+    <body onload="load();">
+        <div class="bg layer-1"></div>
+        <div class="bg layer-2"></div>
+        <div id="root">
+            <div id="planner--date" class="card">
+                <div id="calendar-title"></div>
+                <div id="calendar">
+                    <div id="dates--interactive"></div>
+                </div>
+                <div id="selection--times">
+        
+                </div>
+            </div>
+            <div id="planner--time" class="card">
+                
+            </div>
+        </div>
+    </body>
+</html>

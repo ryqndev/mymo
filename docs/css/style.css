@@ -8,23 +8,23 @@ button{
     width: 100%;
     font-weight: 500;
 }
-.bgcolor{
+.input-field > label{
+    color: black;
+}
+.bg{
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
+}
+.layer-1{
     background: radial-gradient( farthest-side at 10% 90%, #fffa00 -10%, #00ffe5 130% );
     animation: A-bgcolor 5s infinite alternate-reverse;
     z-index: -1;
 }
-.bgcolor-2{
+.layer-2{
     background: radial-gradient( farthest-side at 100% 20%, #5900a3 -100%, #0082d3 150% );
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
     z-index: -2;
 }
 @keyframes A-bgcolor{
@@ -37,22 +37,21 @@ button{
 }
 #root{
     position: fixed;
-    top: 9vh;
-    left: calc( 50vw - 200px );
-    height: 80vh;
-    width: 400px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.8);
     mix-blend-mode: screen;
-
 }
 .logo{
     background-image: url('../assets/icons/logo.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 20vh;
-    width: 20vh;
-    margin: 8vh auto 5vh auto;
+    height: 25vh;
+    width: 25vh;
+    margin: 10vh auto 5vh auto;
 }
 .title{
     height: 5vh;
@@ -62,15 +61,14 @@ button{
     font-family: 'Lato';
 }
 .input-field{
-    color: black !important;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: white;
     border-radius: 2px;
     width: 100%;
     margin: 5% 0 15% 0;
 }
 
 .section--holder{
-    height: 42vh;
+    height: 55vh;
     padding: 15%;
 }
 .button__top{
@@ -88,21 +86,19 @@ button{
 #section--holder-client{
     display: none;
 }
-@media screen and (max-width: 600px){
+@media screen and (min-width: 600px){
     #root{
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        margin: 0;
+        top: 9vh;
+        left: calc( 50vw - 200px );
+        height: 80vh;
+        width: 400px;
     }
     .logo{
-        height: 25vh;
-        width: 25vh;
-        margin: 10vh auto 5vh auto;
+        height: 20vh;
+        width: 20vh;
+        margin: 8vh auto 5vh auto;
     }
     .section--holder{
-        height: 55vh;
-        padding: 15%;
+        height: 42vh;
     }
 }

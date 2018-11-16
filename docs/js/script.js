@@ -17,12 +17,10 @@ function link(type){
         shsD.style.display = 'block';
         shhD.style.display = 'none';
         shcD.style.display = 'none';
-        
     }else if(type === 1){
         shsD.style.display = 'none';
         shhD.style.display = 'block';
         shcD.style.display = 'none';
-
     }else if(type === 2){
         shsD.style.display = 'none';
         shhD.style.display = 'none';
@@ -33,14 +31,13 @@ function link(type){
         let urlLen = roomURL.length;
         let roomCode = roomURL.substr(urlLen - JOIN_CODE, JOIN_CODE);
         let curURL = window.location.href;
-        window.location.href = './Client/index.html?id=' + roomCode;
+        window.location.href = './r/?id=' + roomCode;
         // window.location.href = roomURL;
     }
     else if(type === 4){
         let startDate =$('#start-date').val();
         let endDate = $('#end-date').val();
-        console.log(startDate, endDate);
-        window.location.href = `./Host/index.html?sd=${startDate}&ed=${endDate}`;
+        window.location.href = `./r/?sd=${startDate}&ed=${endDate}`;
     }
 }
 
