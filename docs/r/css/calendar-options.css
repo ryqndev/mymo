@@ -1,3 +1,9 @@
+:root{
+    --calendar-width: calc( 399px * 0.9);
+    --calendar-height: 70vh;
+    --calendar-day-height: calc( var(--calendar-height) / 7 );
+    --calendar-day-width: calc( var(--calendar-width) / 7 );
+}
 #calendar-title{
     text-align: center;
     height: 5%;
@@ -6,12 +12,12 @@
     color: black;
 }
 #calendar{
-    height: 70%;
-    width: 90%;
+    height: var(--calendar-height);
+    width: var(--calendar-width);
     margin: auto;
 }
 .day-selected{
-    /* border-radius: 50%; */
-    color: black;
-    background-color: #99ff9f;
+    border-radius: 50%;
+    color: white;
+    background-color: #59bf5f;
 }
