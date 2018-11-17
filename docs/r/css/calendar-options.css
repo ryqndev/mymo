@@ -21,3 +21,8 @@
     color: white;
     background-color: #59bf5f;
 }
+.day-disabled{
+    /* border-radius: 50%; */
+    color: grey;
+    /* background-color: #aa0000; */
+}

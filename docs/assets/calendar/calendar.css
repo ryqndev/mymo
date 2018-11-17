@@ -7,7 +7,6 @@
     text-align: center;
 }
 .day-disabled{
-    color: #565656 !important;
     font-weight: 300 !important;
 }
 .day-name{
@@ -15,7 +14,8 @@
 }
 .day-today{
     border-radius: 50%;
-    color: black !important;
+    color: white !important;
+    background-color: #0000ff;
 }
 .day-wrap{
     float: left;
