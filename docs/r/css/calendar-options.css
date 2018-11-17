@@ -17,7 +17,7 @@
     margin: auto;
 }
 .day-selected{
-    border-radius: 50%;
+    /* border-radius: 50%; */
     color: white;
     background-color: #59bf5f;
 }
