@@ -17,12 +17,11 @@
     margin: auto;
 }
 .day-selected{
-    /* border-radius: 50%; */
+    border-radius: 50%;
     color: white;
-    background-color: #59bf5f;
+    background-color: #76ed98;
 }
 .day-disabled{
-    /* border-radius: 50%; */
+    pointer-events: none;
     color: grey;
-    /* background-color: #aa0000; */
 }

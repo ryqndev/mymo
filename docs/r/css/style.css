@@ -9,7 +9,7 @@ body{
     display: grid;
     grid-template-columns: 100vw;
     grid-template-rows: 100vh;
-    mix-blend-mode: screen;
+    /* mix-blend-mode: screen; */
 }
 #planner--date{
     height: 100%;
@@ -58,7 +58,6 @@ body{
         top: 9vh;
         left: calc( 50vw - 200px );
         height: 80vh;
-        width: 400px;
         grid-template-columns: 400px;
         grid-template-rows: 80vh;
     }
