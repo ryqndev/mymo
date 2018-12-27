@@ -4,9 +4,14 @@
 const JOIN_CODE = 20;
 
 function load(){
-    $('[data-toggle="datepicker"]').datepicker();
-    $('#start-date').datepicker('setStartDate', new Date());
-    $('#end-date').datepicker('setStartDate', new Date());
+    let options = {
+        'onClose': checkEndDate,
+        'minDate': new Date(),
+        'format': 'mm/dd/yyyy',
+        'container': document.body
+    }
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
 }
 
 function link(type){
@@ -35,22 +40,26 @@ function link(type){
         // window.location.href = roomURL;
     }
     else if(type === 4){
-        let startDate =$('#start-date').val();
-        let endDate = $('#end-date').val();
-        window.location.href = `./r/?sd=${startDate}&ed=${endDate}`;
+        if(document.getElementById('end-date').classList.contains('valid')){
+            let startDate = document.getElementById('start-date').value;
+            let endDate =  document.getElementById('end-date').value;
+            window.location.href = `./r/?sd=${startDate}&ed=${endDate}`;
+        }else{
+            document.getElementById('end-date').classList.add('shake');
+
+            setTimeout(function(){document.getElementById('end-date').classList.remove('shake')}, 1000);
+        }
+        
     }
 }
 
 function checkEndDate(){
-    M.updateTextFields();
-    let startDate = $('#start-date').datepicker('getDate');
-    let endDate = $('#end-date').datepicker('getDate');
-    console.log(startDate, endDate);
-    if(startDate > endDate){
-        $('#end-date').addClass('invalid');  
+    let startDate = document.getElementById('start-date').value;
+    let endDate = document.getElementById('end-date').value;
+    if((startDate != "" ) && (endDate != "") && (new Date(startDate) <= new Date(endDate))){
+        document.getElementById('end-date').className = 'datepicker active valid';  
     }else{
-        $('#end-date').removeClass('invalid');  
-        $('#end-date').addClass('valid');  
+        document.getElementById('end-date').className = 'datepicker active invalid';  
     }
 
 }

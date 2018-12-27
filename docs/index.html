@@ -11,9 +11,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./assets/materialize/materialize.min.css">
         <script type="text/javascript" src="./assets/materialize/materialize.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="./assets/datepicker/datepicker.min.css">
-        <script src="./assets/datepicker/datepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style.css"/>
         <script type="text/javascript" src="./js/script.js"></script>
     </head>
@@ -22,12 +19,12 @@
         <div class="bg layer-2"></div>
         <div id="root" class="card">
             <div class="logo"></div>
-            <div class="title">Plan My Social</div>
+            <div class="title deep-purple-text">Plan My Social</div>
             <div id="section--holder-selection" class="section--holder">
-                <button class="button__top btn-large waves-effect waves-teal" onclick="link(1);">
+                <button class="button__top btn-large white deep-purple-text waves-effect waves-blue" onclick="link(1);">
                     JOIN PLAN
                 </button>
-                <button class="btn-large waves-effect waves-teal" onclick="link(2);">
+                <button class="btn-large white deep-purple-text waves-effect waves-blue" onclick="link(2);">
                     CREATE PLAN
                 </button>
             </div>
@@ -36,7 +33,7 @@
                     <input id="text--client" type="text">
                     <label for="text--client">Plan Link</label>
                 </div>
-                <button class="btn-large waves-effect waves-teal" onclick="link(3);">
+                <button class="btn-large waves-effect lwhite deep-purple-text waves-blue" onclick="link(3);">
                     JOIN
                 </button>
                 <div class="back">
@@ -47,11 +44,11 @@
             </div>
             <div id="section--holder-client" class="section--holder center">
                 <div class="input-field">
-                    <input data-toggle="datepicker" type="text" id="start-date" class="active" oninput="checkEndDate();">
+                    <input type="text" id="start-date" class="datepicker valid active">
                     <label for="start-date">Start Date</label>
                 </div>
                 <div class="input-field" >
-                    <input data-toggle="datepicker" type="text" id="end-date" class="active" oninput="checkEndDate();">
+                    <input type="text" id="end-date" class="datepicker invalid active">
                     <label for="end-date">End Date</label>
                     <span class="helper-text" data-error="End date must be after start" data-success="Can create plan"></span>
                 </div>

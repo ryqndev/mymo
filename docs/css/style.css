@@ -4,9 +4,11 @@ body{
     font-family: 'Questrial', sans-serif;
 }
 button{    
-    background-color: black !important;
     width: 100%;
     font-weight: 500;
+}
+.waves-effect.waves-blue .waves-ripple {
+    background-color: #B2E3FF;
 }
 .input-field > label{
     color: black;
@@ -25,8 +27,32 @@ button{
 }
 .layer-2{
     background: radial-gradient( farthest-side at 100% 20%, #5900a3 -100%, #0082d3 150% );
+ 
     z-index: -2;
 }
+.shake{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
 @keyframes A-bgcolor{
     from{
         opacity: 0.2;
@@ -34,6 +60,10 @@ button{
     to{
         opacity: 0.7;
     }
+}
+.select-dropdown{
+    position: relative;
+    width: 100px;
 }
 #root{
     position: fixed; 
@@ -43,7 +73,7 @@ button{
     width: 100vw;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.8);
-    mix-blend-mode: screen;
+    mix-blend-mode: normal;
 }
 .logo{
     background-image: url('../assets/icons/logo.svg');
@@ -52,6 +82,8 @@ button{
     height: 25vh;
     width: 25vh;
     margin: 10vh auto 5vh auto;
+    mix-blend-mode: normal !important; 
+
 }
 .title{
     height: 5vh;
@@ -59,6 +91,8 @@ button{
     font-size: 4vh;
     text-align: center;
     font-family: 'Lato';
+    mix-blend-mode: normal;
+
 }
 .input-field{
     background-color: white;

@@ -28,6 +28,7 @@ function createCalendar(){
         clear.className = 'calendar__day--clear';
     }
     createMonth(date.getMonth(), date.getFullYear());
+    setupDragFunction();
 }
 
 function createMonth(month, year){
@@ -55,15 +56,15 @@ function toggleDate(id, singleClick){
         lastSelected = singleClick?null:id;
     }
 }
-function selectDesktop(){
+function setupDragFunction(){
+    //desktop
     document.getElementById('dates--interactive').addEventListener('mouseover', function(e) {  
         e.preventDefault();
         if(e.buttons === 1 && e.target.id.substr(0, 3) === 'day'){
             toggleDate(e.target.id, false);
         }
     }, false);
-}
-function select(){
+    //mobile
     document.getElementById('dates--interactive').addEventListener('touchmove', function(e) {  
         e.preventDefault();
         let cliY = e.targetTouches[0].clientY >> 0;

@@ -1,4 +1,3 @@
 function load(){
     createCalendar();
-    select();
 }
