@@ -1,4 +1,4 @@
 function load(){
     createCalendar();
-    selectDesktop();
+    select();
 }

@@ -52,18 +52,9 @@ function toggleDate(id, singleClick){
         }else{
             curHover.classList.remove('day-selected');
         }
-        
-        if(singleClick){
-            lastSelected = null;
-        }else{
-            lastSelected = id;
-        }
+        lastSelected = singleClick?null:id;
     }
 }
-/**
- * @todo: change the select methods into options for the calendar class
- * 
- */
 function selectDesktop(){
     document.getElementById('dates--interactive').addEventListener('mouseover', function(e) {  
         e.preventDefault();
@@ -75,20 +66,19 @@ function selectDesktop(){
 function select(){
     document.getElementById('dates--interactive').addEventListener('touchmove', function(e) {  
         e.preventDefault();
-        let cliY = Math.round(e.targetTouches[0].clientY);
-        let cliX = Math.round(e.targetTouches[0].clientX);
-        console.log(cliX, cliY);
-        for(let e of DAY_POS){
-            if(cliX >= e['x1'] && cliX <= e['x2']){
-                for(let el of e['yPos']){
-                    if(cliY >= el['y1'] && cliY <= el['y2']){
-                        if(el['name'] !== lastSelected){
-                            toggleDate(el['name'], false);
+        let cliY = e.targetTouches[0].clientY >> 0;
+            let cliX = e.targetTouches[0].clientX >> 0;
+            for(let e of DAY_POS){
+                if(cliX >= e['x1'] && cliX <= e['x2']){
+                    for(let el of e['yPos']){
+                        if(cliY >= el['y1'] && cliY <= el['y2']){
+                            if(el['name'] !== lastSelected){
+                                toggleDate(el['name'], false);
+                            }
                         }
                     }
                 }
             }
-        }
     }, false);
     for(let i = 0; i < 42; i++){
         let divBox = document.getElementById('day' + i).getBoundingClientRect();
