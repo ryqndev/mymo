@@ -1,6 +1,6 @@
 :root{
     --calendar-width: calc( 399px * 0.9);
-    --calendar-height: 70vh;
+    --calendar-height: 60vh;
     --calendar-day-height: calc( var(--calendar-height) / 7 );
     --calendar-day-width: calc( var(--calendar-width) / 7 );
 }
