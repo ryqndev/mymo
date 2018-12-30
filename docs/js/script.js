@@ -2,6 +2,12 @@
  * @author Ryan Yang
  */
 const JOIN_CODE = 20;
+let hostPlanSettings = {
+    'startDate' : '',
+    'endDate' : '',
+    'startTime' : '',
+    'endTime' : ''
+}
 
 function load(){
     setupDatepickers();
@@ -73,6 +79,7 @@ function link(type){
             if(document.getElementById('end-date').classList.contains('valid')){
                 let startDate = document.getElementById('start-date').value;
                 let endDate =  document.getElementById('end-date').value;
+
                 // let url = `https://planmy.social/r/?sd=${startDate}&ed=${endDate}`;
                 shhD.classList.remove('fade-in');
                 shhD.classList.add('fade-out');
@@ -88,6 +95,7 @@ function link(type){
             }
             break;
         case 5:
+            //create room
             break;
     }
 }
@@ -119,7 +127,5 @@ function checkEndTime(){
 function timeToMinutes(time){
     let minutes = time.substr(3, 2);
     let hours = parseInt(time.substr( 0, 2 ))%12 + parseInt( time.charAt(6) == 'A' ? 0 : 12 );
-    console.log(hours, minutes);
-
     return parseInt(minutes) + (60*hours);
 }
