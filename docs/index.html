@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/materialize/materialize.min.css">
         <script type="text/javascript" src="./assets/materialize/materialize.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/animations.css"/>
         <script type="text/javascript" src="./js/script.js"></script>
     </head>
     <body onload="load();">
@@ -28,7 +29,7 @@
                     CREATE PLAN
                 </button>
             </div>
-            <div id="section--holder-host" class="section--holder">
+            <div id="section--holder-client" class="section--holder">
                 <div class="input-field">
                     <input id="text--client" type="text">
                     <label for="text--client">Plan Link</label>
@@ -42,7 +43,7 @@
                     </div>  
                 </div>
             </div>
-            <div id="section--holder-client" class="section--holder center">
+            <div id="section--holder-host" class="section--holder center">
                 <div class="input-field">
                     <input type="text" id="start-date" class="datepicker valid active">
                     <label for="start-date">Start Date</label>
@@ -50,9 +51,8 @@
                 <div class="input-field" >
                     <input type="text" id="end-date" class="datepicker invalid active">
                     <label for="end-date">End Date</label>
-                    <span class="helper-text" data-error="End date must be after start" data-success="Can create plan"></span>
+                    <span class="helper-text" data-error="End date must be on or after start" data-success="Can create plan"></span>
                 </div>
-                <!-- <div class="btn" onclick="link(4);">Start</div> -->
                 <div class="back">
                     <div class="btn-floating btn-small waves-effect waves-light grey" onclick="link(0);"> 
                         <i class="material-icons">arrow_back</i>
@@ -60,6 +60,25 @@
                     <div class="btn-floating btn-small waves-effect waves-light green" onclick="link(4);"> 
                             <i class="material-icons">arrow_forward</i>
                         </div>  
+                </div>
+            </div>
+            <div id="section--holder-host2" class="section--holder center">
+                <div class="input-field">
+                    <input type="text" id="start-time" class="timepicker valid active">
+                    <label for="start-time">Between the hours of</label>
+                </div>
+                <div class="input-field" >
+                    <input type="text" id="end-time" class="timepicker invalid active">
+                    <label for="end-time">and</label>
+                    <span class="helper-text" data-error="End time must be on or after start" data-success="Can create plan"></span>
+                </div>
+                <div class="back">
+                    <div class="btn-floating btn-small waves-effect waves-light grey" onclick="link(2);"> 
+                        <i class="material-icons">arrow_back</i>
+                    </div>  
+                    <div class="btn-floating btn-small waves-effect waves-light green" onclick="link(5);"> 
+                            <i class="material-icons">arrow_forward</i>
+                    </div>  
                 </div>
             </div>
         </div>
