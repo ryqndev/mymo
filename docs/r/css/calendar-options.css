@@ -1,13 +1,11 @@
 :root{
-    --calendar-width: calc( 380px * 0.9);
-    --calendar-height: 60vh;
-    --calendar-day-height: calc( var(--calendar-height) / 7 );
-    --calendar-day-width: calc( var(--calendar-width) / 7 );
+    --calendar-width: 300px;
+    --calendar-height: 70vh;
 }
 #calendar-title{
-    text-align: center;
-    height: 5%;
-    margin-top: 5%;
+    height: 4vh;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
     font-size: 24px;
     color: black;
 }
@@ -17,11 +15,27 @@
     margin: auto;
 }
 .day-selected{
-    border-radius: 50%;
+    box-shadow: 0px 1px 5px #333333;
     color: white;
     background-color: #76ed98;
 }
 .day-disabled{
     pointer-events: none;
     color: grey;
+}
+@media screen and (min-width: 380px){
+    :root{
+        --calendar-width: 350px;
+    }
+}
+@media screen and (min-width: 500px){
+    :root{
+        --calendar-width: 440px;
+    }
+}
+@media screen and (min-width: 600px){
+    :root{
+        --calendar-width: 350px;
+        --calendar-height: 55vh;
+    }
 }

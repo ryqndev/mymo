@@ -6,10 +6,23 @@ body{
 #root{
     position: fixed;
     margin: 0;
+    height: 100vh;
     display: grid;
     grid-template-columns: 100vw;
     grid-template-rows: 100vh;
-    /* mix-blend-mode: screen; */
+}
+.material-icons{
+    color: white;
+    font-size: 25px;
+}
+.arrow{
+    position: absolute;
+}
+.arrow.left{
+    left: 50px;
+}
+.arrow.right{
+    right: 50px;
 }
 #planner--date{
     height: 100%;
@@ -32,6 +45,9 @@ body{
 .layer-2{
     background: radial-gradient( farthest-side at 100% 20%, #5900a3 -100%, #0082d3 150% );
     z-index: -2;
+}
+.info-box{
+    height: 20vh;
 }
 .card{
     margin: 0;
@@ -59,7 +75,7 @@ body{
         left: calc( 50vw - 200px );
         height: 80vh;
         grid-template-columns: 400px;
-        grid-template-rows: 80vh;
+        grid-template-rows: 1fr;
     }
 }
 @media screen and (min-width: 1000px){

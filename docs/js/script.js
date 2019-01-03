@@ -21,14 +21,14 @@ function setupDatepickers(){
         'container': document.body
     }
     let elems = document.querySelectorAll('.datepicker');
-    let instances = M.Datepicker.init(elems, options);
+    M.Datepicker.init(elems, options);
 }
 function setupTimepickers(){
     let options = {
         'onCloseEnd': checkEndTime
     }
     let elems = document.querySelectorAll('.timepicker');
-    let instances = M.Timepicker.init(elems, options);
+    M.Timepicker.init(elems, options);
 }
 function link(type){
     let shsD =  document.getElementById('section--holder-selection');
@@ -79,8 +79,8 @@ function link(type){
             if(document.getElementById('end-date').classList.contains('valid')){
                 let startDate = document.getElementById('start-date').value;
                 let endDate =  document.getElementById('end-date').value;
-
-                // let url = `https://planmy.social/r/?sd=${startDate}&ed=${endDate}`;
+                hostPlanSettings['startDate'] = startDate;
+                hostPlanSettings['endDate'] = endDate;
                 shhD.classList.remove('fade-in');
                 shhD.classList.add('fade-out');
                 setTimeout(function(){
@@ -95,7 +95,17 @@ function link(type){
             }
             break;
         case 5:
-            //create room
+            if(document.getElementById('end-time').classList.contains('valid')){
+                let startTime = document.getElementById('start-time').value;
+                let endTime =  document.getElementById('end-time').value;
+
+                hostPlanSettings['startTime'] = timeToMinutes(startTime);
+                hostPlanSettings['endTime'] = timeToMinutes(endTime);
+                window.location.href = `./r/?sd=${hostPlanSettings['startDate']}&ed=${hostPlanSettings['endDate']}&st=${hostPlanSettings['startTime']}&et=${hostPlanSettings['endTime']}`;
+            }else{
+                document.getElementById('end-time').classList.add('shake');
+                setTimeout(function(){document.getElementById('end-date').classList.remove('shake')}, 1000);
+            }
             break;
     }
 }
@@ -110,7 +120,6 @@ function checkEndDate(){
 }
 
 function checkEndTime(){
-    //11:00 PM
     let startTime = document.getElementById('start-time').value;
     let endTime = document.getElementById('end-time').value;
     let startMinutes = timeToMinutes(startTime);
