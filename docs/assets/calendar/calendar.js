@@ -29,10 +29,10 @@ function createCalendar(){
         let clear = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
         clear.className = 'calendar__day--clear';
     }
-    createMonth(date.getMonth(), date.getFullYear(), sd, ed);
+    createMonth(sd.getMonth(), sd.getFullYear());
     setupDragFunction();
 }
-function createMonth(month, year, lowerLimit, upperLimit){
+function createMonth(month, year){
     document.getElementById('dates--interactive').childNodes.forEach(e=>{
         if(e.classList.contains('calendar__day') && !e.classList.contains('day-name')){
             e.textContent = "" ;
@@ -43,46 +43,33 @@ function createMonth(month, year, lowerLimit, upperLimit){
     <i class="material-icons arrow right btn-floating waves-effect waves-light blue lighten-4" onclick="nextMonth();">keyboard_arrow_right</i>` ;
     currentMonth = month;
     currentYear = year;
-    let tempDay = new Date(Date.UTC(year, month, 2)).getDay();
+    let tempDay = new Date(year, month, 2).getDay();
     daysAhead = tempDay;
 
-    let llMonth = lowerLimit.getMonth();
-    let ulMonth = upperLimit.getMonth();
-    let llMonth = lowerLimit.getMonth();
-    let llMonth = lowerLimit.getMonth();
     for(let i = 1; i <= daysPerMonth[month]; i++){
-        // let toGenerate = new Date(Date.UTC(year, month, i));
+        let toGenerate = new Date(year, month, i);
         document.getElementById( 'day' + tempDay ).textContent =  i;
-        if(toGenerate.toDateString() == date.toDateString()){
+        if( toGenerate.getDate() == date.getDate() && 
+            toGenerate.getMonth() == date.getMonth() && 
+            toGenerate.getFullYear() == date.getFullYear()
+            ){
             document.getElementById( 'day' + tempDay ).classList.add('day-today');
         }
-        if(toGenerate > upperLimit || toGenerate < lowerLimit){
-            // console.log(toGenerate > upperLimit, toGenerate, upperLimit);
+        if(toGenerate.getTime() > ed.getTime() || toGenerate.getTime() < sd.getTime()){
             document.getElementById( 'day' + tempDay ).classList.add('day-disabled');
         }
-        if(toGenerate.getFullYear()){
-
-        }
-        if( i == 3){
-            console.log(toGenerate);
-            console.log(toGenerate.toDateString())//, date.toDateString(), toGenerate.toDateString() == date.toDateString());
-            console.log(toGenerate.getFullYear(), lowerLimit.getFullYear(), toGenerate.getFullYear() <= lowerLimit.getFullYear());
-            console.log(toGenerate.getFullYear(), upperLimit.getFullYear(), toGenerate.getFullYear() <= upperLimit.getFullYear());
-            console.log(toGenerate.getMonth(), lowerLimit.getMonth(), toGenerate.getMonth() <= lowerLimit.getMonth());
-            console.log(toGenerate.getMonth(), upperLimit.getMonth(), toGenerate.getMonth() <= upperLimit.getMonth());
-            console.log(toGenerate.getDate(), lowerLimit.getDate(), toGenerate.getDate() <= lowerLimit.getDate());
-            console.log(toGenerate.getDate(), upperLimit.getDate(), toGenerate.getDate() <= upperLimit.getDate());
-            
-        
+        if(i == 3){
+            console.log(toGenerate, date);
+            console.log(toGenerate.getDate(), date.getDate());
         }
         tempDay++;
     }
 }
 function nextMonth(){
-    (currentMonth + 1 == 12) ? createMonth( 0 , currentYear + 1, sd, ed ) : createMonth( currentMonth + 1 , currentYear, sd, ed );
+    (currentMonth + 1 == 12) ? createMonth( 0 , currentYear + 1 ) : createMonth( currentMonth + 1 , currentYear );
 }
 function prevMonth(){
-    (currentMonth - 1 == -1) ? createMonth( 11 , currentYear - 1, sd, ed ) : createMonth( currentMonth - 1 , currentYear, sd, ed );
+    (currentMonth - 1 == -1) ? createMonth( 11 , currentYear - 1 ) : createMonth( currentMonth - 1 , currentYear );
 }
 function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
