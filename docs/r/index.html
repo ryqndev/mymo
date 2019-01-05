@@ -38,7 +38,20 @@
                 <div class="info-box">
                     <div id="info-box--selection"></div>
                     <div class="info-button valign-wrapper">
-                        <i class="material-icons btn-floating grey white-text waves-effect waves-light" id="info" style="font-size: 40px;" onmousedown="info(true);" onmouseup="info(false);">help</i>
+                        <i class="material-icons btn-floating grey white-text waves-effect waves-light tooltipped" data-position="top" data-tooltip="
+                        <div class='legend-title'>Calendar Color Code</div>
+                        <div class='legend'>
+                            <div class='color-example selected-color'></div>
+                            <div class='legend-text valign-wrapper'>: Current editing selection</div>
+                            <div class='color-example full-color'></div>
+                            <div class='legend-text valign-wrapper'>: Available all day</div>
+                            <div class='color-example partial-color'></div>
+                            <div class='legend-text valign-wrapper'>: Available partial day</div>
+                            <div class='color-example today-color'></div>
+                            <div class='legend-text valign-wrapper'>: Today's date</div>
+                        </div>
+                        " id="info" style="font-size: 40px;" onmousedown="info(true);" onmouseup="info(false);">help</i>
+                        <div id="plan-timeline"></div>
                     </div>
                     <div class="done-button valign-wrapper">
                         <i class="material-icons btn-floating waves-effect waves-light light-green accent-4 tooltipped" data-position="left" data-tooltip="Finish Selection" onclick="select()">done</i>
