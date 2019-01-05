@@ -33,14 +33,13 @@ function createCalendar(){
     setupDragFunction();
 }
 function createMonth(month, year){
-    document.getElementById('dates--interactive').childNodes.forEach(e=>{
+    document.getElementById('dates--interactive').childNodes.forEach(e => {
         if(e.classList.contains('calendar__day') && !e.classList.contains('day-name')){
             e.textContent = "" ;
             e.classList = 'calendar__day';
         }
     });
-    document.getElementById('calendar-title').innerHTML = `<i class="material-icons arrow left btn-floating waves-effect waves-light blue lighten-4" onclick="prevMonth();">keyboard_arrow_left</i>${monthNamesLong[month]}
-    <i class="material-icons arrow right btn-floating waves-effect waves-light blue lighten-4" onclick="nextMonth();">keyboard_arrow_right</i>` ;
+document.getElementById('calendar-title').innerHTML = `<i class="material-icons arrow left btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="prevMonth();">keyboard_arrow_left</i>${monthNamesLong[month]}, <span>${year}</span><i class="material-icons arrow right btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="nextMonth();">keyboard_arrow_right</i>` ;
     currentMonth = month;
     currentYear = year;
     let tempDay = new Date(year, month, 2).getDay();
@@ -58,10 +57,6 @@ function createMonth(month, year){
         if(toGenerate.getTime() > ed.getTime() || toGenerate.getTime() < sd.getTime()){
             document.getElementById( 'day' + tempDay ).classList.add('day-disabled');
         }
-        if(i == 3){
-            console.log(toGenerate, date);
-            console.log(toGenerate.getDate(), date.getDate());
-        }
         tempDay++;
     }
 }
@@ -71,13 +66,36 @@ function nextMonth(){
 function prevMonth(){
     (currentMonth - 1 == -1) ? createMonth( 11 , currentYear - 1 ) : createMonth( currentMonth - 1 , currentYear );
 }
+function addedSelection(id){
+    if(isDay(id)){
+        id.classList.remove('day-left', 'day-right');
+        let leftRemove  = !isDay(id.previousSibling) || !id.previousSibling.classList.contains('day-selected'),
+            rightRemove = !isDay(id.nextSibling) || !id.nextSibling.classList.contains('day-selected');
+        if(leftRemove){
+            id.classList.add('day-left');
+        }
+        if(rightRemove){
+            id.classList.add('day-right');
+        } 
+    }
+}
+function adjustAround(id){
+    addedSelection(id.nextSibling);
+    addedSelection(id.previousSibling);
+}
+function isDay(id){
+    return !id.classList.contains('calendar__day--clear');
+}
 function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
     if(!curHover.classList.contains('day-disabled') && (singleClick || id !== lastSelected )){
         if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
             curHover.classList.add('day-selected');
+            addedSelection(curHover);
+            adjustAround(curHover);
         }else{
             curHover.classList.remove('day-selected');
+            adjustAround(curHover);
         }
         lastSelected = singleClick?null:id;
     }
