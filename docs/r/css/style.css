@@ -47,7 +47,7 @@ body{
     z-index: -2;
 }
 .info-box{
-    height: 26vh;
+    height: 29vh;
     width: 100%;
     box-sizing: border-box;
     padding-top: 10px;
@@ -82,7 +82,7 @@ body{
     width: 100%;
     padding: 25px;
     mix-blend-mode: screen;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 .back{
     width: 100%;
@@ -105,6 +105,9 @@ body{
         height: 80vh;
         grid-template-columns: 400px;
         grid-template-rows: 80vh;
+    }
+    .card{
+        background-color: rgba(255, 255, 255, 0.8);
     }
     .info-box{
         height: 20vh;

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -9,13 +10,10 @@
         <link rel="shortcut icon" type="image/svg" href="../assets/icons/logo.svg"/>
         <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
         <link rel="stylesheet" type="text/css" href="../assets/materialize/materialize.min.css">
         <script type="text/javascript" src="../assets/materialize/materialize.min.js"></script>
-
         <link rel="stylesheet" type="text/css" href="../assets/calendar/calendar.css"/>
         <script type="text/javascript" src="../assets/calendar/calendar.js"></script>
-
         <link rel="stylesheet" type="text/css" href="./css/style.css"/>
         <link rel="stylesheet" type="text/css" href="./css/calendar-options.css"/>
         <script type="text/javascript" src="./js/script.js"></script>
@@ -25,29 +23,35 @@
         <div class="bg layer-2"></div>
         <div id="root">
             <div id="planner--date" class="card">
-                <div id="calendar-title">
-                        
+                <div id="calendar-title" class="tooltipped" data-position="bottom" data-tooltip="Previous Month | Month, Year | Next Month">
+                    <i class="material-icons arrow left btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="prevMonth();">
+                        keyboard_arrow_left
+                    </i>
+                    <div class="btn blue lighten-5 black-text btn-raised" id="calendar-title--text"></div>
+                    <i class="material-icons arrow right btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="nextMonth();">
+                        keyboard_arrow_right
+                    </i>
                 </div>
                 <div id="calendar">
                     <div id="dates--interactive"></div>
                 </div>
                 <div class="info-box">
-                    <div id="info-box--selection">
-
+                    <div id="info-box--selection"></div>
+                    <div class="info-button valign-wrapper">
+                        <i class="material-icons btn-floating grey white-text waves-effect waves-light" id="info" style="font-size: 40px;" onmousedown="info(true);" onmouseup="info(false);">help</i>
                     </div>
                     <div class="done-button valign-wrapper">
-                        <i class="material-icons btn-floating waves-effect waves-light light-green accent-4 " onclick="select()">done</i>
+                        <i class="material-icons btn-floating waves-effect waves-light light-green accent-4 tooltipped" data-position="left" data-tooltip="Finish Selection" onclick="select()">done</i>
                     </div>
                     <div class="edit-button valign-wrapper">
-                        <i class="material-icons btn-floating waves-effect waves-light orange lighten-1 " onclick="edit()">edit</i>
+                        <i class="material-icons btn-floating waves-effect waves-light orange lighten-1 tooltipped" data-position="left" data-tooltip="Edit Selection" onclick="edit()">edit</i>
                     </div>
                     <div class="forward-button valign-wrapper">
-                        <i class="material-icons btn-floating waves-effect waves-light blue darken-1" onclick="finish()">forward</i>
+                        <i class="material-icons btn-floating waves-effect waves-light blue darken-1 tooltipped" data-position="left" data-tooltip="Submit Plan" onclick="finish()">forward</i>
                     </div>
                 </div>
             </div>
             <div id="planner--time" class="card">
-                
             </div>
         </div>
     </body>

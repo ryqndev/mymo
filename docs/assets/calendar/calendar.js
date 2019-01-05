@@ -39,7 +39,7 @@ function createMonth(month, year){
             e.classList = 'calendar__day';
         }
     });
-document.getElementById('calendar-title').innerHTML = `<i class="material-icons arrow left btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="prevMonth();">keyboard_arrow_left</i>${monthNamesLong[month]}, <span>${year}</span><i class="material-icons arrow right btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="nextMonth();">keyboard_arrow_right</i>` ;
+document.getElementById('calendar-title--text').innerHTML = `${monthNamesLong[month]}, <span>${year}</span>` ;
     currentMonth = month;
     currentYear = year;
     let tempDay = new Date(year, month, 2).getDay();
