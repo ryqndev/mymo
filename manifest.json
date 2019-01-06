@@ -5,7 +5,7 @@
     "theme_color": "#B2E3FF",
     "icons": [
       {
-        "src": "./assets/icons/logo.svg",
+        "src": "./docs/assets/icons/logo.svg",
         "sizes": "192x192",
         "type": "image/svg"
       }
@@ -14,4 +14,3 @@
     "display": "fullscreen",
     "orientation": "portrait"
 }
-  
