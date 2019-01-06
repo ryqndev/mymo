@@ -1,7 +1,7 @@
 function fullscreen(){
     let goFS = document.getElementById("goFS");
     goFS.addEventListener("click", function() {
-        alert('sdf');
+        // alert('sdf');
         document.body.requestFullscreen();
     }, false);
 }
