@@ -48,15 +48,19 @@ function postReq( link, message, callback ) {
     //     .catch( function ( error ) {
     //         display( error );
     //     } );
-
-        fetch(link, {
-            method: 'POST',
-            body: JSON.stringify(message)
-        }).then(resp => {
-            callback(resp.json())
-        });
+    console.log(link, message);
+    fetch(link, {
+        method: 'POST',
+        body: JSON.stringify(message)
+    }).then(resp => {
+        callback(resp.json())
+    }).catch(resp =>{
+        console.log(resp);
+    });
 }
 function getReq( link, callback ) {
+    console.log(link);
+
     // axios.get( link )
     //     .then( function ( response ) {
     //         callback( response.data );

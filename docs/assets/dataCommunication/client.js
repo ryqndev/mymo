@@ -17,7 +17,7 @@ function load(){
         let d = "";
         connected( d );
     } else {
-        // connectWithHost();
+        connectWithHost();
     }
 }
 /**
@@ -31,7 +31,7 @@ function hasData(){
  * @description - Parses url and returns room id for clients
  */
 function parseURL() {
-    ROOM_ID = (new URLSearchParams(window.location.search)).get('id');
+    ROOM_ID = (new URLSearchParams(window.location.search)).get('id').substr(0, ID_SIZE);
     display(`The current http relay code is: ${ROOM_ID}`);
 }
 

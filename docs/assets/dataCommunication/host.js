@@ -61,6 +61,7 @@ function closeConnection() {
 
 function joined() {
     let lastJoined = users[ users.length - 1 ];
+    console.log("someone joined!!");
     getReq( httpRelayLink + lastJoined, getClientSchedule );
     openConnection();
 }
