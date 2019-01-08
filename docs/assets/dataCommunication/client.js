@@ -1,7 +1,7 @@
 
 /**
  * @author Ryan Yang
- * testlink: file:///Users/ryanyang/Desktop/Workspace/ScheduleMe/docs/assets/testComm/client.html?id=1t78pQ0KDxGeuI1OKHbR
+ * testlink: file:///Users/ryanyang/Desktop/Workspace/planmysocial/docs/assets/testComm/client.html?id=1t78pQ0KDxGeuI1OKHbR
  * 
  * @todo implement previous submission
  */

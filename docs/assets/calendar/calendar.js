@@ -1,4 +1,7 @@
 /**
+ * 
+ * @params sd, ed 
+ * sd and ed variables will be defined differently between host and clients
  * @author Ryan Yang
  */
 const date = new Date();
@@ -30,6 +33,7 @@ function createCalendar(){
         clear.className = 'calendar__day--clear';
     }
     createMonth(sd.getMonth(), sd.getFullYear());
+    document.getElementById('plan-timeline').innerHTML = sd.toDateString().substring(3) + " - " + ed.toDateString().substring(3);
     setupDragFunction();
 }
 function createMonth(month, year){
@@ -39,7 +43,7 @@ function createMonth(month, year){
             e.classList = 'calendar__day';
         }
     });
-document.getElementById('calendar-title--text').innerHTML = `${monthNamesLong[month]}, <span>${year}</span>` ;
+    document.getElementById('calendar-title--text').innerHTML = `${monthNamesLong[month]}, <span>${year}</span>` ;
     currentMonth = month;
     currentYear = year;
     let tempDay = new Date(year, month, 2).getDay();

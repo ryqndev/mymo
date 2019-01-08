@@ -41,21 +41,30 @@ function addPlan( newPlan ) {
     }
 }
 function postReq( link, message, callback ) {
-    axios.post( link, message )
-        .then( function ( response ) {
-            callback( response );
-        } )
-        .catch( function ( error ) {
-            display( error );
-        } );
-}
+    // axios.post( link, message )
+    //     .then( function ( response ) {
+    //         callback( response );
+    //     } )
+    //     .catch( function ( error ) {
+    //         display( error );
+    //     } );
 
+        fetch(link, {
+            method: 'POST',
+            body: JSON.stringify(message)
+        }).then(resp => {
+            callback(resp.json())
+        });
+}
 function getReq( link, callback ) {
-    axios.get( link )
-        .then( function ( response ) {
-            callback( response.data );
-        } )
-        .catch( function ( error ) {
-            display( error );
-        } )
+    // axios.get( link )
+    //     .then( function ( response ) {
+    //         callback( response.data );
+    //     } )
+    //     .catch( function ( error ) {
+    //         display( error );
+    //     } )
+    fetch(link).then(resp => {
+        callback(resp.json());
+    })
 }

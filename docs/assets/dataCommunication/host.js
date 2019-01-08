@@ -1,6 +1,6 @@
 /**
  * @author Ryan Yang
- * test link: file:///Users/ryanyang/Desktop/Workspace/ScheduleMe/docs/assets/testComm/host.html?sd=10/24/2018&ed=10/30/2018
+ * test link: file:///Users/ryanyang/Desktop/Workspace/planmysocial/docs/assets/testComm/host.html?sd=10/24/2018&ed=10/30/2018
  */
 
 let metaData;
@@ -16,7 +16,7 @@ let users = [];
 
 function load() {
     parseURL();
-    // setupPlan();
+    setupPlan();
 }
 
 function setupPlan() {
