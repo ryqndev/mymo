@@ -20,23 +20,21 @@ function load() {
 }
 
 function setupPlan() {
-    startT = 36; //# of 15 minute segments since 12 am
-    endT = 88;
+    sd = new Date(params.get("sd").substr(6,4), params.get("sd").substr(0,2) - 1, params.get("sd").substr(3,2));
+    ed = new Date(params.get("ed").substr(6,4), params.get("ed").substr(0,2) - 1, params.get("ed").substr(3,2));
+    et = params.get("et");
     //get info
-    numD = Math.floor( ( new Date( endD ) - new Date( startD ) ) / 86400000 );
-    numT = endT - startT;
-    populatePlan();
+    // populatePlan();
     createRoom();
 }
 
 function createRoom() {
     metaData = {
-        'startDate': startD,
-        'endDate': endD,
-        'startTime': startT,
-        'endTime': endT,
-        'numDate': numD,
-        'numTime': numT
+        'sd': sd,
+        'ed': ed,
+        'st': st,
+        'et': et,
+        'ai': null
     };
     openConnection();
 }
@@ -50,6 +48,7 @@ function openConnection() {
         'mcast': MCAST_ID,
         'data': metaData
     };
+    display(users);
     postReq( ROOM_URL, JSON.stringify( data ), joined );
 }
 
@@ -61,7 +60,6 @@ function closeConnection() {
 
 function joined() {
     let lastJoined = users[ users.length - 1 ];
-    console.log("someone joined!!");
     getReq( httpRelayLink + lastJoined, getClientSchedule );
     openConnection();
 }
@@ -88,13 +86,4 @@ function parseURL() {
     let urlParams = new URLSearchParams( window.location.search );
     startD = urlParams.get( 'sd' );
     endD = urlParams.get( 'ed' );
-}
-
-function generateRoomID( SIZE ) {
-    let id = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for ( let i = 0; i < SIZE; i++ ) {
-        id += possible.charAt( Math.floor( Math.random() * possible.length ) );
-    }
-    return id;
 }

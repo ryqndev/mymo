@@ -1,12 +1,11 @@
 let infoToggle = true;
-let sd, ed, st, et;
-function init(data){
-    console.log(data);
-    sd = new Date(data.sd);
-    ed = new Date(data.ed);
-    st = data.st;
-    et = data.et;
-    createCalendar();
+function load(){
+    let params = (new URL(document.location)).searchParams;
+    if(params.get("sd") == null){
+        client();
+    }else{
+        host();
+    }
     let options = {};
     let elems = document.querySelectorAll('.tooltipped');
     let instances = M.Tooltip.init(elems, options);
@@ -15,11 +14,18 @@ function init(data){
         info();
     });
 }
-function storage(){}
-function select(){}
-function edit(){}
-function finish(){}
+function storage(){
 
+}
+function select(){
+
+}
+function edit(){
+
+}
+function finish(){
+
+}
 /**
  * @todo: need to fix this line of code. tooltips not showing up properly. If I can't find a fix, will use external tooltip library
  */

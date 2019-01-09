@@ -14,7 +14,6 @@ let daysAhead;
 const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
 let lastSelected;
 let currentMonth, currentYear;
-let sd, ed;
 
 function createCalendar(){
     for(let j = -1; j < 6; j++){
@@ -151,7 +150,4 @@ function setupDragFunction(){
             }
         };
     }
-}
-function tallyTimes(){
-    //create obj with div reference and an array for days
 }

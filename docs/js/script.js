@@ -42,7 +42,7 @@ function link(type){
             setTimeout(function(){
                 shhD.style.display = 'none';
                 shcD.style.display = 'none';
-                shsD.style.display = 'block'
+                shsD.style.display = 'block';
                 shcD.classList.remove('fade-out');
                 shhD.classList.remove('fade-out');
                 shsD.classList.add('fade-in');
@@ -98,10 +98,12 @@ function link(type){
             if(document.getElementById('end-time').classList.contains('valid')){
                 let startTime = document.getElementById('start-time').value;
                 let endTime =  document.getElementById('end-time').value;
-
+                
                 hostPlanSettings['startTime'] = timeToMinutes(startTime);
                 hostPlanSettings['endTime'] = timeToMinutes(endTime);
-                window.location.href = `./r/?sd=${hostPlanSettings['startDate']}&ed=${hostPlanSettings['endDate']}&st=${hostPlanSettings['startTime']}&et=${hostPlanSettings['endTime']}`;
+
+
+                generateRoom();
             }else{
                 document.getElementById('end-time').classList.add('shake');
                 setTimeout(function(){document.getElementById('end-date').classList.remove('shake')}, 1000);
@@ -137,4 +139,30 @@ function timeToMinutes(time){
     let minutes = time.substr(3, 2);
     let hours = parseInt(time.substr( 0, 2 ))%12 + parseInt( time.charAt(6) == 'A' ? 0 : 12 );
     return parseInt(minutes) + (60*hours);
+}
+function generateRoom(){
+    let metaData = {
+        'sd': hostPlanSettings['startDate'],
+        'ed': hostPlanSettings['endDate'],
+        'st': hostPlanSettings['startTime'],
+        'et': hostPlanSettings['endTime'],
+        'plan': null
+    }
+    let roomCode =  generateRoomID(5);
+    fetch('https://httprelay.io/mcast/' + roomCode, {
+        method: 'POST',
+        body: JSON.stringify(metaData)
+    }).then(resp => {
+        window.location.href = `./r/?id=${roomCode}`;
+    }).catch(resp =>{
+        alert("Oops! Something went wrong\n" + resp);
+    });
+}
+function generateRoomID( SIZE ) {
+    let id = "";
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for ( let i = 0; i < SIZE; i++ ) {
+        id += possible.charAt( Math.floor( Math.random() * possible.length ) );
+    }
+    return id;
 }
