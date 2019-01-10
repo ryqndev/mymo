@@ -4,6 +4,7 @@
 
 const httpRelayLink  = 'https://httprelay.io/link/';
 const httpRelayMCast = 'https://httprelay.io/mcast/';
+let room;
 
 function postReq( link, message, callback ) {
     console.log(link, message);
@@ -33,4 +34,7 @@ function load(){
     let params = (new URL(document.location)).searchParams;
     room = params.get("id");
     getReq( httpRelayMCast + room , init);
+}
+function aggregateSchedule(){
+    getReq()
 }
