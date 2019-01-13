@@ -23,13 +23,12 @@ function getReq( link, callback ) {
     .then(resp => {
         return resp.json();
     }).then(resp => {
-        init(resp);
+        callback(resp);
     })
     .catch(err => {
         alert("An error occured: " + err);
     })
 }
-
 function load(){
     let params = (new URL(document.location)).searchParams;
     room = params.get("id");

@@ -153,18 +153,11 @@ function generateRoom(){
         method: 'POST',
         body: JSON.stringify(metaData)
     }).then(resp => {
-        fetch('https://httprelay.io/link/' + roomCode, {
-            method: 'POST',
-            body: ''
-        }).then(resp => {
-            window.location.href = `./r/?id=${roomCode}`;
-        }).catch(resp =>{
-            alert("Oops! Something went wrong\n" + resp);
-        });
+        //one fix is to make a POST request but making sure the request is sent without a response is going to take a bit of investigation into the
+        window.location.href = `./r/?id=${roomCode}`;
     }).catch(resp =>{
         alert("Oops! Something went wrong\n" + resp);
     });
-    
 }
 function generateRoomID( SIZE ) {
     let id = "";
