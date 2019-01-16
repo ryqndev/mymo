@@ -15,6 +15,10 @@ function init(data){
         el.preventDefault();
         info();
     });
+    elems = document.querySelectorAll('.modal');
+    instances = M.Modal.init(elems);
+    elems = document.querySelectorAll('.timepicker');
+    instances = M.Timepicker.init(elems, {'container': "document.body"});
 
 }
 function storage(){

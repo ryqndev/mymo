@@ -86,8 +86,27 @@
                     </div>
                 </div>
                 <div class="forward-button valign-wrapper">
-                    <i class="material-icons add-time-block btn-floating waves-effect waves-light purple accent-4 tooltipped" data-position="left" data-tooltip="Add Time" onclick="addTimeBlock()">add</i>
+                    <i class="material-icons add-time-block modal-trigger btn-floating waves-effect waves-light purple accent-4 tooltipped" data-position="left" data-tooltip="Add Time" data-target="add-time-options">add</i>
                 </div>
+            </div>
+        </div>
+        <div id="add-time-options" class="modal valign-wrapper">
+            <div class="add-time--header">
+                <span>
+                    Create Time Block
+                </span>
+                <br>
+                Select the time block in which you are free to
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="start-time" class="timepicker valid active">
+                <label for="start-time">Between the hours of</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="end-time" class="timepicker invalid active">
+                <label for="end-time">and</label>
+                <span class="helper-text" data-error="End time must be on or after start" data-success="Can create plan"></span>
             </div>
         </div>
     </body>
