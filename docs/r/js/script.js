@@ -1,11 +1,12 @@
 let infoToggle = true;
-let sd, ed, st, et;
+let sd, ed, st, et, plan;
 function init(data){
     console.log(data);
     sd = new Date(data.sd);
     ed = new Date(data.ed);
     st = data.st;
     et = data.et;
+    plan = []
     createCalendar();
     let options = {};
     let elems = document.querySelectorAll('.tooltipped');
@@ -14,8 +15,11 @@ function init(data){
         el.preventDefault();
         info();
     });
+
 }
-function storage(){}
+function storage(){
+    
+}
 function select(){}
 function edit(){}
 function finish(){}

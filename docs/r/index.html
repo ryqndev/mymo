@@ -18,6 +18,8 @@
         <link rel="stylesheet" type="text/css" href="./calendar/calendar.css"/>
         <script type="text/javascript" src="./calendar/calendar.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/time-selector.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/date-selector.css"/>
         <link rel="stylesheet" type="text/css" href="./css/calendar-options.css"/>
         <script type="text/javascript" src="./js/script.js"></script>
         <script type="text/javascript" src="./js/communication.js"></script>
@@ -26,7 +28,7 @@
         <div class="bg layer-1"></div>
         <div class="bg layer-2"></div>
         <div id="root">
-            <div id="planner--date" class="card">
+            <div id="planner--date" class="card planner-card">
                 <div id="calendar-title" class="tooltipped" data-position="bottom" data-tooltip="Previous Month | Month, Year | Next Month">
                     <i class="material-icons arrow left btn-floating waves-effect waves-light blue lighten-5 grey-text" onclick="prevMonth();">
                         keyboard_arrow_left
@@ -68,7 +70,24 @@
                     </div>
                 </div>
             </div>
-            <div id="planner--time" class="card">
+            <div id="planner--time" class="card planner-card">
+                <h2 class="planner--time-header">
+                    Day Time Blocks
+                </h3>
+                <div id="info-box--selection"></div>
+                <div class="time-block--holder">
+                    <div class="card disabled-card valign-wrapper">
+                        Add a time block to specify a time during the selected days when you are free.
+                    </div>
+                    <div class="time-block--card card valign-wrapper">
+                        <p>7:50 AM - 12:00 PM</p>
+                        <i class="material-icons btn-floating waves-effect waves-light orange lighten-1 tooltipped" data-position="left" data-tooltip="Edit Time Block" onclick="editTimeBlock()">edit</i>
+                        <i class="material-icons btn-floating waves-effect waves-light red tooltipped" data-position="left" data-tooltip="Delete Time Block" onclick="deleteTimeBlock()">delete</i>
+                    </div>
+                </div>
+                <div class="forward-button valign-wrapper">
+                    <i class="material-icons add-time-block btn-floating waves-effect waves-light purple accent-4 tooltipped" data-position="left" data-tooltip="Add Time" onclick="addTimeBlock()">add</i>
+                </div>
             </div>
         </div>
     </body>
