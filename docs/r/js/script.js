@@ -10,16 +10,16 @@ function init(data){
     createCalendar();
     let options = {};
     let elems = document.querySelectorAll('.tooltipped');
-    let instances = M.Tooltip.init(elems, options);
+    M.Tooltip.init(elems, options);
+    elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems, options);
+    elems = document.querySelectorAll('.timepicker');
+    options = {'container': 'body'}
+    M.Timepicker.init(elems, options);
     document.getElementById('info').addEventListener('onclick', function(el) {
         el.preventDefault();
         info();
     });
-    elems = document.querySelectorAll('.modal');
-    instances = M.Modal.init(elems);
-    elems = document.querySelectorAll('.timepicker');
-    instances = M.Timepicker.init(elems, {'container': "document.body"});
-
 }
 function storage(){
     
