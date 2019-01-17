@@ -11,7 +11,7 @@
         </title>
         <link rel="manifest" href="../manifest.json">
         <link rel="shortcut icon" type="image/svg" href="../assets/icons/logo.svg"/>
-        <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Archivo+Black" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div id="add-time-options" class="modal valign-wrapper">
+        <div id="add-time-options" class="modal bottom-sheet valign-wrapper">
             <div class="add-time--header">
                 <span>
                     Create Time Block
@@ -109,6 +109,24 @@
                 <input type="text" id="end-time" class="timepicker invalid active">
                 <label for="end-time">and</label>
                 <span class="helper-text" data-error="End time must be on or after start" data-success="Can create plan"></span>
+            </div>
+            <div class="btn" onclick="addTimeBlock();">Add</div>
+        </div>
+        <div id="share-plan" class="modal">
+            <div class="share-plan--header valign-wrapper">
+                <span>
+                    INVITE YOUR FRIENDS
+                </span>
+            </div>
+            <div class="share--content">
+                Send this link to your friends
+                <br>
+                <div id="share-urls">
+                </div>
+                <div class="modal-footer">
+                    <!-- <div class="btn light-green accent-3">DONE</div> -->
+                    <div class="btn-flat gray-text">DONE</div>
+                </div>
             </div>
         </div>
     </body>

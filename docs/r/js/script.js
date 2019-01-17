@@ -12,6 +12,35 @@ function init(data){
         el.preventDefault();
         info();
     });
+    createShare(window.location.href);
+}
+function createShare(link){
+    let templ = `                
+    <div id="copy-url">
+        <i class="material-icons link-icon">link</i>
+        ${link}
+    </div>
+    Share your plan with your friends on social media
+    <div class="icons">
+        <a href="mailto:?Subject=Join My Plan&amp;Body=Join My Plan! ${link}" target="_blank">
+        <img src="../assets/icons/gmail.jpg" alt="Email" />
+        </a>
+        <a href="http://www.facebook.com/sharer.php?u=${link}" target="_blank">
+            <img src="../assets/icons/facebook.jpg" alt="Facebook" />
+        </a>
+        <a href="https://plus.google.com/share?url=${link}" target="_blank">
+            <img src="../assets/icons/google.plus.jpg" alt="Google" />
+        </a>
+        <a href="https://twitter.com/share?url=${link}&amp;text=Join My Plan&amp;hashtags=planmysocial" target="_blank">
+            <img src="../assets/icons/twitter.jpg" alt="Twitter" />
+        </a>
+    </div>
+    `
+    document.getElementById('share-urls').insertAdjacentHTML('beforeend', templ);
+    shareModal();
+}
+function shareModal(){
+    M.Modal.getInstance(document.getElementById('share-plan')).open();
 }
 function initComponents(){
     let options = {};
@@ -32,7 +61,7 @@ function finish(){}
 
 function timeToMinutes(time){
     let minutes = time.substr(3, 2);
-    let hours = parseInt(time.substr( 0, 2 ))%12 + parseInt( time.charAt(6) == 'A' ? 0 : 12 );
+    let hours = parseInt(time.substr( 0, 2 )) % 12 + parseInt( time.charAt(6) == 'A' ? 0 : 12 );
     return parseInt(minutes) + (60*hours);
 }
 function checkEndTime(){
