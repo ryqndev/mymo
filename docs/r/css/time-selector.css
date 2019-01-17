@@ -1,10 +1,12 @@
 #planner--time{
+    mix-blend-mode: screen !important;
     font-family: 'Lato';
     display: none;
 }
 .planner--time-header{
     margin: 0;
     font-size: 35px;
+    
 }
 .time-block--card{
     font-size: 18px;
