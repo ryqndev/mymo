@@ -14,9 +14,12 @@ body{
 #share-urls img {
     height: auto;
     width: 20%;
-    margin: 10px calc( 20%/8 - 2px ) 20px calc( 20%/8 - 2px );
+    margin: 10px calc( 20%/8 - 2px ) 40px calc( 20%/8 - 2px );
     border-radius: 4px;
     border: 2px solid grey;
+}
+#share-urls img:hover{
+    border-color: rgb(0, 177, 0);
 }
 .share--content{
     font-family: 'Montserrat';

@@ -17,8 +17,8 @@ function init(data){
 function createShare(link){
     let templ = `                
     <div id="copy-url">
-        <i class="material-icons link-icon">link</i>
-        ${link}
+        <i class="material-icons link-icon" onclick="navigator.clipboard.writeText('${link}');M.toast({html: 'Link copied to clipboard!'});">link</i>
+        <div>${link}</div>
     </div>
     Share your plan with your friends on social media
     <div class="icons">
