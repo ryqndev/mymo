@@ -4,8 +4,9 @@
     display: none;
 }
 .planner--time-header{
-    margin: 0;
-    font-size: 35px;
+    font-family: 'Lato', sans-serif;
+    margin: 10px 0 30px 0;
+    font-size: 25px;
 }
 .time-block--card{
     font-size: 18px;
