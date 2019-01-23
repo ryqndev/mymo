@@ -5,7 +5,7 @@ function init(data){
     ed = new Date(data.ed);
     st = data.st;
     et = data.et;
-    plan = []
+    plan = populatePlan(sd, ed, st, et);
     createCalendar();
     initComponents();
     document.getElementById('info').addEventListener('onclick', function(el) {
@@ -58,12 +58,6 @@ function storage(){
 function select(){}
 function edit(){}
 function finish(){}
-
-function timeToMinutes(time){
-    let minutes = time.substr(3, 2);
-    let hours = parseInt(time.substr( 0, 2 )) % 12 + parseInt( time.charAt(6) == 'A' ? 0 : 12 );
-    return parseInt(minutes) + (60*hours);
-}
 function checkEndTime(){
     let startTime = document.getElementById('start-time').value;
     let endTime = document.getElementById('end-time').value;

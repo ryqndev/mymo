@@ -17,6 +17,7 @@ function postReq( link, message, callback ) {
         alert("An error occured: " + err);
     });
 }
+
 function getReq( link, callback ) {
     console.log(link);
     fetch(link)
@@ -35,5 +36,17 @@ function load(){
     getReq( httpRelayMCast + room , init);
 }
 function aggregateSchedule(){
-    getReq()
+    /**
+     * 
+     * @todo: All users should make a second get request to the mcast asap
+     * 
+     * When schedule is done and ready to be aggregated to the main, update mcast to 
+     * let everyone know that someone is currently calculating change
+     * 
+     * After you're done, update mcast again
+     * 
+     * Add new key called 'inprogress'
+     * 
+     */
+    // postReq( httpRelayMCast + room, )
 }

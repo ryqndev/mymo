@@ -13,6 +13,7 @@ const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 let daysAhead;
 const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
 let lastSelected;
+let currentSelection = new Set([]);
 let currentMonth, currentYear;
 
 function createCalendar(){
@@ -93,13 +94,16 @@ function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
     if(!curHover.classList.contains('day-disabled') && (singleClick || id !== lastSelected )){
         if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
-            curHover.classList.add('day-selected');
+            curHover.classList.add('day-selected'); 
             addedSelection(curHover);
             adjustAround(curHover);
+            currentSelection.add(curHover);
         }else{
             curHover.classList.remove('day-selected');
             adjustAround(curHover);
+            currentSelection.delete(curHover);
         }
+        updateSelection();
         lastSelected = singleClick?null:id;
     }
 }

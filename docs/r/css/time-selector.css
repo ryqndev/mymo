@@ -16,6 +16,10 @@
     grid-template-columns: calc(100% - 110px) 40px 40px;
     column-gap: 10px;
 }
+#time-block--holder{
+    height: 60vh;
+    overflow-y: scroll;
+}
 #add-time-options{
     padding: 20px;
 }

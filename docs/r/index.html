@@ -30,6 +30,7 @@
         <link rel="stylesheet" type="text/css" href="./css/date-selector.css"/>
         <link rel="stylesheet" type="text/css" href="./css/calendar-options.css"/>
         <script type="text/javascript" src="./js/script.js"></script>
+        <script type="text/javascript" src="./js/time.js"></script>
         <script type="text/javascript" src="./js/communication.js"></script>
     </head>
     <body onload="load();"> 
@@ -83,14 +84,9 @@
                     SET DAY SCHEDULE
                 </h2>
                 <div id="info-box--selection"></div>
-                <div class="time-block--holder">
+                <div id="time-block--holder">
                     <div class="card disabled-card valign-wrapper">
                         Add a time block to specify a time during the selected days when you are free.
-                    </div>
-                    <div class="time-block--card card valign-wrapper">
-                        <p>7:50 AM - 12:00 PM</p>
-                        <i class="material-icons btn-floating waves-effect waves-light orange lighten-1 tooltipped" data-position="left" data-tooltip="Edit Time Block" onclick="editTimeBlock()">edit</i>
-                        <i class="material-icons btn-floating waves-effect waves-light red tooltipped" data-position="left" data-tooltip="Delete Time Block" onclick="deleteTimeBlock()">delete</i>
                     </div>
                 </div>
                 <div class="forward-button valign-wrapper">
@@ -112,7 +108,7 @@
                 <label for="start-time">Between the hours of</label>
             </div>
             <div class="input-field">
-                <input type="text" id="end-time" class="timepicker invalid active">
+                <input type="text" id="end-time" class="timepicker active">
                 <label for="end-time">and</label>
                 <span class="helper-text" data-error="End time must be on or after start" data-success="Can create plan"></span>
             </div>
