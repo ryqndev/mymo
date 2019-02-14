@@ -1,0 +1,31 @@
+h5{
+    color: #7050CC !important;
+    box-sizing: border-box;
+    padding-top: 30px;
+    text-align: center;
+}
+.create-holder{
+    display: grid;
+    grid-template-rows: 60px calc( 100vh - 140px );
+}
+.component-holder--screen{
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(auto, 1fr);
+    padding: 0 60px 0 60px;
+}
+@media screen and (min-width: 600px){
+    h5{
+        padding-top: 50px;
+    }
+    .create-holder{
+        display: grid;
+        grid-template-rows: 100px calc( 80vh - 180px );
+    }
+    .component-holder--screen{
+        height: 100%;
+        display: grid;
+        grid-template-rows: repeat(auto, 1fr);
+        padding: 0 80px 0 80px;
+    }
+}
