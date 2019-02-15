@@ -42,6 +42,7 @@ export class CreateScreen extends Component {
             'plan': null
         }
         let roomCode =  generateRoomID(JOIN_CODE);
+        console.log(metaData, roomCode);
         fetch('https://httprelay.io/mcast/' + roomCode, {
             method: 'POST',
             body: JSON.stringify(metaData)
@@ -52,6 +53,9 @@ export class CreateScreen extends Component {
         });
     }
 
+    handlePlanNameChange = (name) => {
+        this.setState({ name: name.target.value });
+    };
     handleStartDateChange = (date) => {
         this.setState({ startDate: date });
     };
@@ -74,7 +78,7 @@ export class CreateScreen extends Component {
                     <div className="component-holder--screen">
                         <FormControl>
                             <InputLabel>Plan Name</InputLabel>
-                            <Input id="room-number"/>
+                            <Input onChange={this.handlePlanNameChange} id="room-number"/>
                         </FormControl>
                         <DatePicker onChange={this.handleStartDateChange} 
                                     value={startDate}
@@ -96,9 +100,9 @@ export class CreateScreen extends Component {
                                     minDate={startTime}
                                     minDateMessage={"End time must be after start time"}
                                     label="and" />
-                        <Link to="/">
+                        <a> {/*eslint-disable-line*/}
                             <ButtonBase className="input" onClick={this.generateRoom}>CREATE</ButtonBase>
-                        </Link>
+                        </a>
                     </div>
                 </MuiPickersUtilsProvider>
                 <Link to='../'>

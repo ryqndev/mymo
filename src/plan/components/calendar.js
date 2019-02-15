@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import {addDays} from 'date-fns';
+// import {addDays} from 'date-fns';
 import {Link} from 'react-router-dom';
-import {IconButton, ButtonBase} from '@material-ui/core';
+import {IconButton} from '@material-ui/core';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import Forward from '@material-ui/icons/Forward';
 import Edit from '@material-ui/icons/Edit';
+import Done from '@material-ui/icons/Done';
 import CalendarContent from './calendar-content';
 import SelectionList from './selection-list';
 import './styles/calendar.css';
 import './styles/calendar-options.css';
 
-let sd = addDays(new Date(), 1);
-let ed = addDays(sd, 7);
 const monthNamesLong = [' January', ' February', ' March', ' April', ' May', ' June', ' July', ' August', ' September', ' October', ' November', ' December'];
 
 export class Calendar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            vMonth: 1,
-            vYear: 2019,
-            sDate: sd,
-            eDate: ed,
-            selected: []
+            name: props.name,
+            vMonth: props.sd.getMonth(),
+            vYear: props.sd.getFullYear()
         };
     }
     nextMonth = () => {
@@ -43,22 +41,36 @@ export class Calendar extends Component {
         return (
             <div>
                 <div className="calendar-title">
-                    <IconButton onClick={this.prevMonth}>
-                        <KeyboardArrowLeft />
-                    </IconButton>
+                    <div className="calendar-arrows">
+                        <IconButton onClick={this.prevMonth}>
+                            <KeyboardArrowLeft />
+                        </IconButton>
+                    </div>
                     <div id="calendar-title--text">
                         {monthNamesLong[this.state.vMonth]}, <span>{this.state.vYear}</span>
                     </div>
-                    <IconButton onClick={this.nextMonth}>
-                        <KeyboardArrowRight />
-                    </IconButton>
+                    <div className="calendar-arrows">
+                        <IconButton onClick={this.nextMonth}>
+                            <KeyboardArrowRight />
+                        </IconButton>
+                    </div>
                 </div>
-                <CalendarContent month={this.state.vMonth} year={this.state.vYear} start={this.state.sDate} end={this.state.eDate}/>
+                <CalendarContent month={this.state.vMonth} selection={this.props.selection} year={this.state.vYear} start={this.props.sd} end={this.props.ed}/>
                 <SelectionList selection={this.state.selected} />
-                <div className="buttons">
+                <div className="buttons-suite">
+                    <a> {/* eslint-disable-line */}
+                        <IconButton className="button-suite--button selected-color">
+                            <Done />
+                        </IconButton>
+                    </a>
                     <Link to='/edit'>
-                        <IconButton>
+                        <IconButton className="button-suite--button partial-color">
                             <Edit />
+                        </IconButton>
+                    </Link>
+                    <Link to='/view'>
+                        <IconButton className="button-suite--button full-color">
+                            <Forward />
                         </IconButton>
                     </Link>
                 </div>

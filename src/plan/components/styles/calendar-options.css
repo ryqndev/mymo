@@ -10,13 +10,17 @@
     grid-template-columns: 25% 50% 25%;
 }
 #calendar-title--text{
-    font-size: 1em;
+    font-size: 1.3em;
     box-sizing: border-box;
     padding-top: calc( 4vh - 0.6em);
 }
 .calendar-title span{
     color: #5900a3;
     font-size: 0.75em !important;
+}
+.calendar-arrows{
+    box-sizing: border-box;
+    padding-top: calc( 2.5vh - 0.6em);
 }
 #calendar{
     height: var(--calendar-height);
@@ -39,12 +43,55 @@
     pointer-events: none;
     color: grey;
 }
+.buttons-suite{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    height: calc( 92vh - (var(--calendar-height) + 125px));
+    width: var(--calendar-width);
+    border-radius: 2px;
+    background-color: grey;
+    mix-blend-mode: darken;
+    margin: 20px 25px 20px 25px;
+}
+a > .button-suite--button{
+    height: 100%;
+    width: 100%;
+    border: 0px solid rgba(0, 0, 0, 0.1);
+    transition: all 300ms;
+    border-radius: 0;
+}
+a > .button-suite--button:hover{
+    height: 100%;
+    width: 100%;
+    border: 7px solid rgba(0, 0, 0, 0.1);
+}
+a > .button-suite--button:active{
+    height: 100%;
+    width: 100%;
+    border: 7px solid rgba(0, 0, 0, 0.5);
+}
+.selected-color{
+    background-color: rgb(144, 224, 79) !important;
+}
+.today-color{
+    background-color: #4a148c !important;
+}
+.full-color{
+    background-color: #81afd8 !important;
+}
+.partial-color{
+    background-color: #f7b758 !important;
+}
 @media screen and (min-width: 350px){
     #calendar-title--text{
         font-size: 1.5em;
     }
 }
 @media screen and (min-width: 600px){
+    .buttons-suite{
+        height: calc( 82vh - (var(--calendar-height) + 125px));
+    }
     #calendar-title--text{
         font-size: 1.8em;
     }

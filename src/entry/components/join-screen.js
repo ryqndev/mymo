@@ -7,12 +7,19 @@ import './styles/start-screen.css';
 const JOIN_CODE = 5;
 
 export class JoinScreen extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            link: ''
+        }
+    }
+    handlePlanLinkChange = (link) => {
+        this.setState({ link: link.target.value });
+    };
     enterRoom = () => {
-        let roomURL = document.getElementById('room-number').value;
-        let urlLen = roomURL.length;
-        let roomCode = roomURL.substr(urlLen - JOIN_CODE, JOIN_CODE);
+        let urlLen = this.state.link.length;
+        let roomCode = this.state.link.substr(urlLen - JOIN_CODE, JOIN_CODE);
         window.location.href = './' + roomCode;
-        // this.props.history.push('/' + roomCode)
     };
 
     render() {
@@ -23,9 +30,9 @@ export class JoinScreen extends Component {
                 <div className="component-holder">
                     <FormControl>
                         <InputLabel>Plan Link</InputLabel>
-                        <Input id="room-number"/>
+                        <Input onChange={this.handlePlanLinkChange} id="room-number"/>
                     </FormControl>
-                    <a>
+                    <a> {/*eslint-disable-line*/}
                         <ButtonBase className="input" onClick={this.enterRoom}>JOIN</ButtonBase>
                     </a>
                 </div>

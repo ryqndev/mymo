@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
+import SelectionLogic from './selection-logic';
 
 const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
-let lastSelected;
 let currentSelection = new Set([]);
-let currentMonth, currentYear, daysAhead;
+let lastSelected;
 const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-let date = new Date();
 
-function createCalendar(){
-    for(let j = -1; j < 6; j++){
-        for(let i = 0; i < 7; i++){
-            let day = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
-            day.className = 'calendar__day';
-            if(j < 0){
-                day.textContent = dayNamesCompact[i];
-                day.classList.add('day-name');
-            }else{
-                day.id = 'day' + (j*7 + i);
-            }
-            day.onmousedown = function(){toggleDate('day' + (j*7 + i), true);};
+function toggleDate(id, singleClick){
+    let curHover = document.getElementById(id);
+    if(!curHover.classList.contains('day-disabled') && (singleClick || id !== lastSelected )){
+        if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
+            curHover.classList.add('day-selected'); 
+            addedSelection(curHover);
+            adjustAround(curHover);
+            currentSelection.add(curHover);
+            // currentSelection.push(curHover)
+        }else{
+            curHover.classList.remove('day-selected');
+            adjustAround(curHover);
+            currentSelection.delete(curHover);
+            // currentSelection.splice(currentSelection.indexOf(curHover), 1);
         }
-        let clear = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
-        clear.className = 'calendar__day--clear';
+        lastSelected = singleClick?null:id;
     }
-    // document.getElementById('plan-timeline').innerHTML = sd.toDateString().substring(3) + " - " + ed.toDateString().substring(3);
-    setupDragFunction();
 }
 function setupDragFunction(){
     document.getElementById('dates--interactive').addEventListener('mouseover', function(e) {  
@@ -71,23 +69,7 @@ function setupDragFunction(){
         };
     }
 }
-function toggleDate(id, singleClick){
-    let curHover = document.getElementById(id);
-    if(!curHover.classList.contains('day-disabled') && (singleClick || id !== lastSelected )){
-        if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
-            curHover.classList.add('day-selected'); 
-            addedSelection(curHover);
-            adjustAround(curHover);
-            currentSelection.add(curHover);
-        }else{
-            curHover.classList.remove('day-selected');
-            adjustAround(curHover);
-            currentSelection.delete(curHover);
-        }
-        // updateSelection();
-        lastSelected = singleClick?null:id;
-    }
-}
+
 function addedSelection(id){
     if(isDay(id)){
         id.classList.remove('day-left', 'day-right');
@@ -108,37 +90,51 @@ function adjustAround(id){
 function isDay(id){
     return !id.classList.contains('calendar__day--clear');
 }
-
 export class CalendarContent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            vMonth: this.props.month,
-            vYear: this.props.year,
-            sDate: this.props.start,
-            eDate: this.props.end
+            vMonth: props.month,
+            vYear: props.year,
+            sDate: props.start,
+            eDate: props.end,
+            selection: currentSelection
         }
     }
-
     componentDidMount(){
-        createCalendar();
+        for(let j = -1; j < 6; j++){
+            for(let i = 0; i < 7; i++){
+                let day = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
+                day.className = 'calendar__day';
+                if(j < 0){
+                    day.textContent = dayNamesCompact[i];
+                    day.classList.add('day-name');
+                }else{
+                    day.id = 'day' + (j*7 + i);
+                }
+                day.onmousedown = function(){toggleDate('day' + (j*7 + i), true);};
+            }
+            let clear = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
+            clear.className = 'calendar__day--clear';
+        }
+        setupDragFunction();
+        this.componentDidUpdate();
     };
     componentWillReceiveProps(props){
-        this.setState(state => ({
+        this.setState({
             vMonth: props.month,
             vYear: props.year
-        }));
+        });
     }
     componentDidUpdate(){
         document.getElementById('dates--interactive').childNodes.forEach(e => {
             if(e.classList.contains('calendar__day') && !e.classList.contains('day-name')){
-                e.textContent = "" ;
+                e.textContent = "";
                 e.classList = 'calendar__day';
             }
         });
-        let tempDay = new Date(this.state.vYear, this.state.vMonth, 1).getDay();
-        daysAhead = tempDay;
-    
+        let date = new Date();
+        let tempDay = new Date(this.state.vYear, this.state.vMonth, 1).getDay();    
         for(let i = 1; i <= daysPerMonth[this.state.vMonth]; i++){
             let toGenerate = new Date(this.state.vYear, this.state.vMonth, i);
             document.getElementById( 'day' + tempDay ).textContent =  i;
@@ -158,9 +154,10 @@ export class CalendarContent extends Component {
         return (
             <div id="calendar">
                 <div id="dates--interactive"></div>
+                <SelectionLogic selection={this.state.selection} cb={this.props.selection} />
             </div>
         );
     }
 }
 
-export default CalendarContent
+export default CalendarContent;

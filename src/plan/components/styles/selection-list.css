@@ -8,6 +8,7 @@
     padding: 15px;
     white-space: nowrap;
     overflow-x: scroll;
+    height: 65px;
 }
 .chip{
     margin: 2px;

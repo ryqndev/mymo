@@ -24,7 +24,8 @@ export class SelectionList extends Component {
                 <Paper className="selection-list">
                     {this.state.chips.map(data => {
                         return (
-                            <Chip
+                            <Chip 
+                                key={data}
                                 label={data}
                                 onDelete={this.handleDelete(data)}
                                 className="chip"
