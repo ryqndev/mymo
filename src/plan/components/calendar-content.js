@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import SelectionLogic from './selection-logic';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {updateSelection} from '../../components/actions/selection';
 
 const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
-let currentSelection = new Set([]);
+let currentSelection = [];
 let lastSelected;
 const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -14,13 +16,11 @@ function toggleDate(id, singleClick){
             curHover.classList.add('day-selected'); 
             addedSelection(curHover);
             adjustAround(curHover);
-            currentSelection.add(curHover);
-            // currentSelection.push(curHover)
+            currentSelection.push(curHover);
         }else{
             curHover.classList.remove('day-selected');
             adjustAround(curHover);
-            currentSelection.delete(curHover);
-            // currentSelection.splice(currentSelection.indexOf(curHover), 1);
+            currentSelection.splice(currentSelection.indexOf(curHover), 1);
         }
         lastSelected = singleClick?null:id;
     }
@@ -69,7 +69,6 @@ function setupDragFunction(){
         };
     }
 }
-
 function addedSelection(id){
     if(isDay(id)){
         id.classList.remove('day-left', 'day-right');
@@ -90,6 +89,7 @@ function adjustAround(id){
 function isDay(id){
     return !id.classList.contains('calendar__day--clear');
 }
+
 export class CalendarContent extends Component {
     constructor(props){
         super(props);
@@ -98,7 +98,7 @@ export class CalendarContent extends Component {
             vYear: props.year,
             sDate: props.start,
             eDate: props.end,
-            selection: currentSelection
+            selected: props.selection
         }
     }
     componentDidMount(){
@@ -111,8 +111,8 @@ export class CalendarContent extends Component {
                     day.classList.add('day-name');
                 }else{
                     day.id = 'day' + (j*7 + i);
+                    day.onmousedown = function(){toggleDate('day' + (j*7 + i), true);};
                 }
-                day.onmousedown = function(){toggleDate('day' + (j*7 + i), true);};
             }
             let clear = document.getElementById('dates--interactive').appendChild(document.createElement("div"));
             clear.className = 'calendar__day--clear';
@@ -120,13 +120,23 @@ export class CalendarContent extends Component {
         setupDragFunction();
         this.componentDidUpdate();
     };
-    componentWillReceiveProps(props){
-        this.setState({
-            vMonth: props.month,
-            vYear: props.year
-        });
+    updateHold = (event) => {
+        event.persist();
+        if(event.buttons === 1){
+            this.update();
+        }
     }
-    componentDidUpdate(){
+    update = () => {
+        this.props.updateSelection(currentSelection.map(e => {
+            let obj = {};
+            obj['key'] = `${ this.state.vMonth}${ e.innerText }${this.state.vYear}`;
+            obj['title'] = `${ this.state.vMonth + 1 }/${ e.innerText }/${ this.state.vYear%100}`;
+            obj['sortValue'] = (this.state.vMonth*32 + parseInt(e.innerText) + (this.state.vYear % 100) * 400);
+            obj['div'] = e.id;
+            return obj;
+        }).sort((a, b) => (a['sortValue'] - b['sortValue'])));
+    }
+    componentDidUpdate(props){
         document.getElementById('dates--interactive').childNodes.forEach(e => {
             if(e.classList.contains('calendar__day') && !e.classList.contains('day-name')){
                 e.textContent = "";
@@ -134,9 +144,9 @@ export class CalendarContent extends Component {
             }
         });
         let date = new Date();
-        let tempDay = new Date(this.state.vYear, this.state.vMonth, 1).getDay();    
-        for(let i = 1; i <= daysPerMonth[this.state.vMonth]; i++){
-            let toGenerate = new Date(this.state.vYear, this.state.vMonth, i);
+        let tempDay = new Date(this.props.year, this.props.month, 1).getDay();    
+        for(let i = 1; i <= daysPerMonth[this.props.month]; i++){
+            let toGenerate = new Date(this.props.year, this.props.month, i);
             document.getElementById( 'day' + tempDay ).textContent =  i;
             if( toGenerate.getDate() === date.getDate() && 
                 toGenerate.getMonth() === date.getMonth() && 
@@ -149,15 +159,34 @@ export class CalendarContent extends Component {
             }
             tempDay++;
         }
+        if(props){
+            this.updateSelection( props['selection'].map(e => e['div']) );
+        }
+    };
+    updateSelection = (divs) => {
+        currentSelection = [];
+        divs.forEach(e => {
+            toggleDate(e);
+        })
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.month !== this.props.month || nextProps.year !== this.props.year;
     }
     render() {
         return (
             <div id="calendar">
-                <div id="dates--interactive"></div>
-                <SelectionLogic selection={this.state.selection} cb={this.props.selection} />
+                <div id="dates--interactive" onMouseDown={this.update} onMouseMove={this.updateHold}></div>
             </div>
         );
     }
 }
+function mapStateToProps(state){
+    return {
+        selection: state.selection
+    }
+}
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({updateSelection: updateSelection}, dispatch);
+}
 
-export default CalendarContent;
+export default connect(mapStateToProps, matchDispatchToProps)(CalendarContent);

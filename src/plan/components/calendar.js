@@ -55,8 +55,8 @@ export class Calendar extends Component {
                         </IconButton>
                     </div>
                 </div>
-                <CalendarContent month={this.state.vMonth} selection={this.props.selection} year={this.state.vYear} start={this.props.sd} end={this.props.ed}/>
-                <SelectionList selection={this.state.selected} />
+                <CalendarContent month={this.state.vMonth} year={this.state.vYear} start={this.props.sd} end={this.props.ed}/>
+                <SelectionList />
                 <div className="buttons-suite">
                     <a> {/* eslint-disable-line */}
                         <IconButton className="button-suite--button selected-color">

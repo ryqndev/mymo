@@ -45,7 +45,7 @@
     width: 0;
     border-style: solid;
     border-width: 0 4px 0 0;
-    border-color: #71DD17;
+    border-color: rgb(142, 226, 73);
 }
 .day-selected:after{
     display: block;
@@ -57,7 +57,7 @@
     width: 0;
     border-style: solid;
     border-width: 0 4px 0 0;
-    border-color: transparent #71DD17;
+    border-color: transparent rgb(142, 226, 73);
 }
 .day-right{
     border-top-right-radius: 50%;

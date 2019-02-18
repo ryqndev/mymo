@@ -7,11 +7,8 @@ import TwtrIcon from '../../assets/icons/twitter.jpg';
 import './styles/share-modal.css';
 
 export class ShareModal extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            link: window.location.href
-        }
+    state = {
+        link: window.location.href
     }
     render() {
         return (
