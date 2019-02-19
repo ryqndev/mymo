@@ -19,17 +19,13 @@
     color: black !important;
 }
 .day-today{
-    border-radius: 50%;
-    color: white !important;
-    font-weight: bold !important;
-    background-color: #4a148c !important;
-    box-shadow: 0px 1px 1px #333333;
+    color: #81afd8 !important;
 }
 .day-today.day-selected{
-    box-shadow: 0px 1px 3px #333333;
+    color: white !important;
 }
 .day-left{
-    border-top-left-radius: 50% ;
+    border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
 }
 .day-left:before{
@@ -48,15 +44,7 @@
     border-color: rgb(142, 226, 73);
 }
 .day-selected:after{
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
     right: -4px;
-    height: var(--calendar-day-width);
-    width: 0;
-    border-style: solid;
-    border-width: 0 4px 0 0;
     border-color: transparent rgb(142, 226, 73);
 }
 .day-right{
@@ -82,16 +70,27 @@
     transition: box-shadow 0.5s, border-radius 0.5s, background-color 0.5s, color 0.5s;
 }
 .calendar__day:before:not(.day-selected){
+    left: 0px;
     border-color: transparent;
+}
+.calendar__day:not(.day-selected){
+    border-radius: 50% !important;
 }
 .calendar__day:before{
-    transition: border-color 0.5s;
-}
-.calendar__day:after:not(.day-selected){
-    border-color: transparent;
+    transition: all 0.5s;
 }
 .calendar__day:after{
-    transition: border-color 0.5s;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0px;
+    height: var(--calendar-day-width);
+    width: 0;
+    border-style: solid;
+    border-width: 0 4px 0 0;
+    border-color: transparent;
+    transition: all 0.5s;
 }
 .calendar__day--clear{
     clear: both;

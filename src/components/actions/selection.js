@@ -6,7 +6,7 @@ export const updateSelection = (selection) => {
 }
 export const getSelection = (selection) => {
     return {
-        type: 'UPDATE',
+        type: 'GET',
         payload: selection
     }
 }

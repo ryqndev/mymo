@@ -4,12 +4,7 @@ import {connect} from 'react-redux';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
 
-function mapStateToProps(state){
-    return {
-        selection: state.selection,
-        plan: state.plan
-    }
-}   
+
 export class Edit extends Component {
     render() {
         return (
@@ -24,8 +19,10 @@ export class Edit extends Component {
         )
     }
 }
-// function matchDispatchToProps(){
-
-// }
-
+function mapStateToProps(state){
+    return {
+        selection: state.selection,
+        plan: state.plan
+    }
+}   
 export default connect(mapStateToProps)(Edit);

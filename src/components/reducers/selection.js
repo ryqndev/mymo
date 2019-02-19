@@ -3,9 +3,10 @@ export default (state=[], action) => {
         case 'UPDATE':
             return action.payload;
         case 'DELETE':
-            let stateTemp = state;
-            stateTemp.splice(state.findIndex(e => { return e['key'] === action.payload }), 1);
+            let stateTemp = state.filter(e => e['key'] !== action.payload);
             return stateTemp;
+        case 'GET':
+            return state;
         default:
             return state;
     }

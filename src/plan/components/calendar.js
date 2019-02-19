@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import {addDays} from 'date-fns';
 import {Link} from 'react-router-dom';
 import {IconButton} from '@material-ui/core';
+import { connect } from 'react-redux';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Forward from '@material-ui/icons/Forward';
@@ -37,6 +38,9 @@ export class Calendar extends Component {
             vMonth : hasYearChanged ? 11: (state.vMonth - 1)
         }));
     }
+    sendPlan = () => {
+        console.log(this.props.selection);
+    }
     render() {
         return (
             <div>
@@ -59,7 +63,7 @@ export class Calendar extends Component {
                 <SelectionList />
                 <div className="buttons-suite">
                     <a> {/* eslint-disable-line */}
-                        <IconButton className="button-suite--button selected-color">
+                        <IconButton className="button-suite--button selected-color" onClick={this.sendPlan}>
                             <Done />
                         </IconButton>
                     </a>
@@ -79,4 +83,9 @@ export class Calendar extends Component {
     }
 }
 
-export default Calendar;
+function mapStateToProps(state){
+    return {
+        selection: state.selection
+    }
+}
+export default connect(mapStateToProps)(Calendar);

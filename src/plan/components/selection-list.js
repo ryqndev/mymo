@@ -5,14 +5,6 @@ import { deleteSelection } from '../../components/actions/selection';
 import {Chip, Paper} from '@material-ui/core';
 import './styles/selection-list.css';
 
-function mapStateToProps(state){
-    return {
-        selection: state.selection
-    }
-}
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({deleteSelection: deleteSelection}, dispatch);
-}
 
 export class SelectionList extends Component {
     handleDelete = (key) => {
@@ -30,7 +22,7 @@ export class SelectionList extends Component {
                             <Chip 
                                 key={data['key']}
                                 label={data['title']}
-                                onDelete={() => this.handleDelete(data['key'])}
+                                // onDelete={() => this.handleDelete(data['key'])}
                                 className="chip"
                             />
                         );
@@ -39,6 +31,15 @@ export class SelectionList extends Component {
             </div>
         );
     }
+}
+
+function mapStateToProps(state){
+    return {
+        selection: state.selection
+    }
+}
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({deleteSelection: deleteSelection}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectionList);

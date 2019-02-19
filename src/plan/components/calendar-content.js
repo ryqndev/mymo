@@ -72,10 +72,10 @@ function setupDragFunction(){
     }
 }
 function addedSelection(id){
-    if(isDay(id)){
+    if(!id.classList.contains('calendar__day--clear')){
         id.classList.remove('day-left', 'day-right');
-        let leftRemove  = !isDay(id.previousSibling) || !id.previousSibling.classList.contains('day-selected'),
-            rightRemove = !isDay(id.nextSibling) || !id.nextSibling.classList.contains('day-selected');
+        let leftRemove  = id.previousSibling.classList.contains('calendar__day--clear') || !id.previousSibling.classList.contains('day-selected'),
+            rightRemove = id.nextSibling.classList.contains('calendar__day--clear') || !id.nextSibling.classList.contains('day-selected');
         if(leftRemove){
             id.classList.add('day-left');
         }
@@ -88,20 +88,12 @@ function adjustAround(id){
     addedSelection(id.nextSibling);
     addedSelection(id.previousSibling);
 }
-function isDay(id){
-    return !id.classList.contains('calendar__day--clear');
-}
-
 export class CalendarContent extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            vMonth: props.month,
-            vYear: props.year,
-            sDate: props.start,
-            eDate: props.end,
-            selected: props.selection
-        }
+    state = {
+        vMonth: this.props.month,
+        vYear: this.props.year,
+        sDate: this.props.start,
+        eDate: this.props.end
     }
     componentDidMount(){
         for(let j = -1; j < 6; j++){
@@ -154,7 +146,7 @@ export class CalendarContent extends Component {
             if( toGenerate.getDate() === date.getDate() && 
                 toGenerate.getMonth() === date.getMonth() && 
                 toGenerate.getFullYear() === date.getFullYear()
-                ){
+              ){
                 document.getElementById( 'day' + tempDay ).classList.add('day-today');
             }
             if(toGenerate.getTime() > this.state.eDate.getTime() || toGenerate.getTime() < this.state.sDate.getTime()){
@@ -163,16 +155,19 @@ export class CalendarContent extends Component {
             tempDay++;
         }
         if(props){
-            this.updateSelection( props['selection'].map(e => e['div']) );
+            this.updateCurrentSelection( props['selection']);
         }
     };
-    updateSelection = (divs) => {
+    updateCurrentSelection = (divs) => {
         currentSelection = [];
-        divs.forEach(e => {
+        divs.map(e => e['div']).forEach(e => {
             toggleDate(e);
         })
     }
     shouldComponentUpdate(nextProps, nextState){
+        if(nextProps.selection && this.props.selection && (nextProps.selection.length !== currentSelection.length)){
+            this.updateCurrentSelection(nextProps['selection']);
+        }
         return nextProps.month !== this.props.month || nextProps.year !== this.props.year;
     }
     render() {

@@ -37,6 +37,7 @@ export class AppInterface extends Component {
             st: data.st,
             et: data.et,
         });
+        getReq( httpRelayMCast + this.state.room, this.s);
     }
     closeShare = () => {
         this.setState(state => ({
