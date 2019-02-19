@@ -11,18 +11,20 @@ const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
-    if(!curHover.classList.contains('day-disabled') && (singleClick || id !== lastSelected )){
-        if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
-            curHover.classList.add('day-selected'); 
-            addedSelection(curHover);
-            adjustAround(curHover);
-            currentSelection.push(curHover);
-        }else{
-            curHover.classList.remove('day-selected');
-            adjustAround(curHover);
-            currentSelection.splice(currentSelection.indexOf(curHover), 1);
+    if(curHover.textContent){
+        if(!curHover.classList.contains('day-disabled') && (singleClick || id !== lastSelected )){
+            if(!(curHover.classList.contains('day-selected') || curHover.textContent === "")){
+                curHover.classList.add('day-selected'); 
+                addedSelection(curHover);
+                adjustAround(curHover);
+                currentSelection.push(curHover);
+            }else{
+                curHover.classList.remove('day-selected');
+                adjustAround(curHover);
+                currentSelection.splice(currentSelection.indexOf(curHover), 1);
+            }
+            lastSelected = singleClick ? null : id;
         }
-        lastSelected = singleClick?null:id;
     }
 }
 function setupDragFunction(){
@@ -129,9 +131,10 @@ export class CalendarContent extends Component {
     update = () => {
         this.props.updateSelection(currentSelection.map(e => {
             let obj = {};
-            obj['key'] = `${ this.state.vMonth}${ e.innerText }${this.state.vYear}`;
-            obj['title'] = `${ this.state.vMonth + 1 }/${ e.innerText }/${ this.state.vYear%100}`;
-            obj['sortValue'] = (this.state.vMonth*32 + parseInt(e.innerText) + (this.state.vYear % 100) * 400);
+            obj['key'] = `${ this.props.month}${ e.innerText }${this.props.year}`;
+            obj['title'] = `${ this.props.month + 1 }/${ e.innerText }/${ this.props.year%100}`;
+            obj['sortValue'] = (this.props.month*32 + parseInt(e.innerText) + (this.props.year % 100) * 400);
+            obj['month'] = [this.props.month, this.props.year];
             obj['div'] = e.id;
             return obj;
         }).sort((a, b) => (a['sortValue'] - b['sortValue'])));

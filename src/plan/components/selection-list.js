@@ -18,7 +18,6 @@ export class SelectionList extends Component {
     handleDelete = (key) => {
         this.props.deleteSelection(key);
     }
-    
     render() {
         return (
             <div>
