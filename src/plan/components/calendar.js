@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import {addDays} from 'date-fns';
 import {Link} from 'react-router-dom';
 import {IconButton} from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -67,11 +66,13 @@ export class Calendar extends Component {
                             <Done />
                         </IconButton>
                     </a>
-                    <Link to='/edit'>
-                        <IconButton className="button-suite--button partial-color">
+                    {/* <Link to='/edit'> */}
+                    <a> {/* eslint-disable-line */}
+                        <IconButton  className="button-suite--button partial-color">
                             <Edit />
                         </IconButton>
-                    </Link>
+                    </a>
+                    {/* </Link> */}
                     <Link to='/view'>
                         <IconButton className="button-suite--button full-color">
                             <Forward />

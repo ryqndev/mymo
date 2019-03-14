@@ -155,7 +155,7 @@ export class CalendarContent extends Component {
             tempDay++;
         }
         if(props){
-            this.updateCurrentSelection( props['selection']);
+            this.updateCurrentSelection( props['selection'] );
         }
     };
     updateCurrentSelection = (divs) => {

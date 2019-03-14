@@ -19,6 +19,16 @@ function getReq( link, callback ) {
         alert("An error occured: " + err);
     })
 }
+function postReq( link, data, callback ) {
+    fetch(link, {
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(resp => {
+        console.log("For debugging purposes: ", data, " was sent!", resp);
+    }).catch(resp =>{
+        alert("Something went wrong. Try again!\n" + resp);
+    });
+}
 
 export class AppInterface extends Component {
     constructor(props){
@@ -37,18 +47,22 @@ export class AppInterface extends Component {
             st: data.st,
             et: data.et,
         });
-        getReq( httpRelayMCast + this.state.room, this.s);
+        this.parsePlan(data.plan);
+        // getReq( httpRelayMCast + this.state.room, this.setMetadata );
     }
     closeShare = () => {
         this.setState(state => ({
             share: !state.share,
         }));
     };
+    parsePlan = ( plan ) => {
+        console.log(plan);
+    }
     render() {
         return (
             <MemoryRouter>
-                <Card className="app-interface">
-                    <Modal open={this.state.share} onClick={this.closeShare}>
+                <Card className="app-interface" >
+                    <Modal open={this.state.share} onBackdropClick={this.closeShare} >
                         <div>
                             <ShareModal />
                         </div>
