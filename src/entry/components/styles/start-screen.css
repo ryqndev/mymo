@@ -5,9 +5,12 @@
     background-size: contain;
 }
 h4{
-    color: #7050CC !important;
+    color: #7050CC !important;g
     font-weight: bold;
     text-align: center;
+}
+a{
+    text-decoration: none !important;
 }
 a .input{
     height: 50px;
@@ -15,6 +18,8 @@ a .input{
     font-family: 'Lato';
     font-size: 1em;
     font-weight: 500;
+    /* text-decoration: none; */
+    
     color: #7050CC;
     background-color: white;
     border-radius: 2px;

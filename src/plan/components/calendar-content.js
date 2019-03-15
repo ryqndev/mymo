@@ -131,6 +131,18 @@ export class CalendarContent extends Component {
             return obj;
         }).sort((a, b) => (a['sortValue'] - b['sortValue'])));
     }
+    updateCurrentSelection = (divs) => {
+        currentSelection = [];
+        divs.map(e => e['div']).forEach(e => {
+            toggleDate(e);
+        })
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextProps.selection && this.props.selection && (nextProps.selection.length !== currentSelection.length)){
+            this.updateCurrentSelection(nextProps['selection']);
+        }
+        return nextProps.month !== this.props.month || nextProps.year !== this.props.year;
+    }
     componentDidUpdate(props){
         document.getElementById('dates--interactive').childNodes.forEach(e => {
             if(e.classList.contains('calendar__day') && !e.classList.contains('day-name')){
@@ -158,18 +170,6 @@ export class CalendarContent extends Component {
             this.updateCurrentSelection( props['selection'] );
         }
     };
-    updateCurrentSelection = (divs) => {
-        currentSelection = [];
-        divs.map(e => e['div']).forEach(e => {
-            toggleDate(e);
-        })
-    }
-    shouldComponentUpdate(nextProps, nextState){
-        if(nextProps.selection && this.props.selection && (nextProps.selection.length !== currentSelection.length)){
-            this.updateCurrentSelection(nextProps['selection']);
-        }
-        return nextProps.month !== this.props.month || nextProps.year !== this.props.year;
-    }
     render() {
         return (
             <div id="calendar">
@@ -177,6 +177,7 @@ export class CalendarContent extends Component {
             </div>
         );
     }
+
 }
 function mapStateToProps(state){
     return {

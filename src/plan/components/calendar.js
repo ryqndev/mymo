@@ -20,7 +20,7 @@ export class Calendar extends Component {
         this.state = {
             name: props.name,
             vMonth: props.sd.getMonth(),
-            vYear: props.sd.getFullYear()
+            vYear: props.sd.getFullYear(),
         };
     }
     nextMonth = () => {
@@ -38,7 +38,7 @@ export class Calendar extends Component {
         }));
     }
     sendPlan = () => {
-        console.log(this.props.selection);
+        this.props.sendPlan(this.props.selection);
     }
     render() {
         return (

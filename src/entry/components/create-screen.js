@@ -39,10 +39,9 @@ export class CreateScreen extends Component {
             'ed': this.state.endDate,
             'st': this.state.startTime,
             'et': this.state.endTime,
-            'plan': null
+            'plan': []
         }
         let roomCode =  generateRoomID(JOIN_CODE);
-        console.log(metaData, roomCode);
         fetch('https://httprelay.io/mcast/' + roomCode, {
             method: 'POST',
             body: JSON.stringify(metaData)
