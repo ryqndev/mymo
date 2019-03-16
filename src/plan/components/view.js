@@ -6,7 +6,6 @@ import { IconButton } from '@material-ui/core';
 
 function mapStateToProps(state){
     return {
-        selection: state.selection,
         socials: state.socials
     }
 }

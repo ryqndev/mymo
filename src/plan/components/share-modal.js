@@ -10,6 +10,11 @@ export class ShareModal extends Component {
     state = {
         link: window.location.href
     }
+    /**
+     * TODO - add a place to enter your name so when viewing different
+     * available schedules, you can check which people cannot join, rather
+     * than just showing thier UUID
+     */
     render() {
         return (
             <div className="share">

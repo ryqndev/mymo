@@ -2,6 +2,7 @@ import 'date-fns';
 import {addDays, startOfDay, endOfDay, subMinutes, roundToNearestMinutes} from 'date-fns';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import * as peerConnect from '../../components/peer-communication.js';
 import { Typography, ButtonBase, InputLabel, FormControl, Input, IconButton } from '@material-ui/core';
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import DateFnsUtils from '@date-io/date-fns';
@@ -9,15 +10,6 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 import './styles/create-screen.css';
 
 const JOIN_CODE = 5;
-
-function generateRoomID( SIZE ) {
-    let id = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for ( let i = 0; i < SIZE; i++ ) {
-        id += possible.charAt( Math.floor( Math.random() * possible.length ) );
-    }
-    return id;
-}
 
 export class CreateScreen extends Component {
     constructor(props){
@@ -31,7 +23,6 @@ export class CreateScreen extends Component {
             endTime: subMinutes(roundToNearestMinutes(endOfDay(today)), 5),
         };
     }
-
     generateRoom = () => {
         let metaData = {
             'name': this.state.name,
@@ -39,17 +30,14 @@ export class CreateScreen extends Component {
             'ed': this.state.endDate,
             'st': this.state.startTime,
             'et': this.state.endTime,
-            'plan': []
+            'plan': {}
         }
-        let roomCode =  generateRoomID(JOIN_CODE);
-        fetch('https://httprelay.io/mcast/' + roomCode, {
-            method: 'POST',
-            body: JSON.stringify(metaData)
-        }).then(resp => {
-            window.location.href = `./${roomCode}`;
-        }).catch(resp =>{
-            alert("Something went wrong. Try again!\n" + resp);
-        });
+        let roomCode = peerConnect.generateSize(JOIN_CODE);
+        peerConnect.send(
+            roomCode,
+            JSON.stringify(metaData),
+            () => {window.location.href = `./${roomCode}`;}
+        );
     }
 
     handlePlanNameChange = (name) => {
