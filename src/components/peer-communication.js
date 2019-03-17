@@ -17,7 +17,7 @@
  * since last channel access. 
  */
 const httpRelayMCast = 'https://httprelay.io/mcast/';
-const httpRelayLink = 'https://httprelay.io/link/';
+// const httpRelayLink = 'https://httprelay.io/link/';
 
 /**
  * @function generateRoomID
@@ -47,7 +47,7 @@ function GETRequest( link, callback=defaultCallback, fail=defaultFail) {
         credentials: 'include'
     }).then(resp => { return resp.json();
     }).then(resp => { callback(resp);
-    }).catch(err => {fail(err);})
+    }).catch(err => { fail(err);})
 }
 
 /**
@@ -63,7 +63,7 @@ function POSTRequest(link, body, callback=defaultCallback, fail=defaultFail){
     fetch(httpRelayMCast + link, {
         method: 'POST',
         body: body
-    }).then(resp => {callback(resp);
+    }).then(resp => { callback(resp);
     }).catch(err => { fail(err) });
 }
 

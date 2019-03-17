@@ -9,6 +9,14 @@ let currentSelection = [];
 let lastSelected;
 const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+/**
+ * @function toggleDate 
+ * @summary Gets called when a specific date gets selected.
+ * First checks if the selected date is a legal date and if so, adds
+ * the div to the current selection array and triggers animations
+ * @param {string} id 
+ * @param {bool} singleClick 
+ */
 function toggleDate(id, singleClick){
     let curHover = document.getElementById(id);
     if(curHover.textContent){
@@ -27,6 +35,15 @@ function toggleDate(id, singleClick){
         }
     }
 }
+
+/**
+ * @function setupDragFunction 
+ * @summary First half sets up the date selection
+ * function through user press, hold, and then drag on a traditional desktop
+ * using mousefunctions
+ * Second part sets up the same function on mobile with touch events
+ * @author Ryan Yang
+ */
 function setupDragFunction(){
     document.getElementById('dates--interactive').addEventListener('mouseover', function(e) {  
         e.preventDefault();
@@ -71,6 +88,12 @@ function setupDragFunction(){
         };
     }
 }
+/**
+ * @function addedSelection
+ * @summary triggers animations when a date gets selected/unselected
+ * @param {object} id - Document object
+ * @see (@function setupDragFunction)
+ */
 function addedSelection(id){
     if(!id.classList.contains('calendar__day--clear')){
         id.classList.remove('day-left', 'day-right');

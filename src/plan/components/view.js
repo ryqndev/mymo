@@ -4,12 +4,6 @@ import {connect} from 'react-redux';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
 
-function mapStateToProps(state){
-    return {
-        socials: state.socials
-    }
-}
-
 export class View extends Component {
     render() {
         return (
@@ -23,6 +17,12 @@ export class View extends Component {
                 </Link>
             </div>
         )
+    }
+}
+
+function mapStateToProps(state){
+    return {
+        socials: state.socials
     }
 }
 

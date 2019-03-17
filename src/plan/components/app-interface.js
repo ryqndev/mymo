@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateUser } from '../../components/actions/socials';
 import {MemoryRouter, Route} from 'react-router-dom';
 import { Card, Modal } from '@material-ui/core';
 import ShareModal from './share-modal';
 import Calendar from './calendar';
 import Edit from './edit';
 import View from './view';
-import { bindActionCreators } from 'redux';
-import {connect} from 'react-redux';
-import { updateUser } from '../../components/actions/socials';
 import * as peerConnect from '../../components/peer-communication.js';
 import './styles/app-interface.css';
 
@@ -48,23 +48,22 @@ export class AppInterface extends Component {
      * complete plan
      */
     parsePlan = ( plan ) => {
-        //gets called when theres a plan refresh from someone
-        //check which plan updated
+        let allUniqueUsers = Object.keys(plan);
+        let updateUser = allUniqueUsers[0];
 
-        //make call
-        let user_uuid = "123";
+        console.log("\nPlan is:", plan, "\nUser List: ", allUniqueUsers);
         peerConnect.receive(
-            user_uuid,
+            updateUser,
             (data) => {
-                //store data
+                data['user'] = updateUser;
+                this.props.updateUser(data);
             }
         );
-        console.log("\nplan is:", plan, "\n");
     }
     sendPlan = ( plan ) => {
         peerConnect.send(
             this.state.uuid,
-            JSON.stringify(this.props.selection),
+            JSON.stringify(plan),
             this.updatePlan
         );
     }
@@ -105,13 +104,8 @@ export class AppInterface extends Component {
         )
     }
 }
-function mapStateToProps(state){
-    return {
-        selection: state.selection
-    }
-}
+
 function mapDispatchToProps(dispatch){
     return bindActionCreators({updateUser: updateUser}, dispatch);
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppInterface);
+export default connect(null, mapDispatchToProps)(AppInterface);
