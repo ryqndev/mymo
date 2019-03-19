@@ -8,7 +8,7 @@ export class ViewExpansionPanel extends Component {
         <div>
             <ExpansionPanel>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    HALLO
+                    {/* {this.props.data[]} */}
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     GOOBYE

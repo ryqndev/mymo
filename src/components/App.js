@@ -17,7 +17,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Background />
-                <Router>
+                <Router basename={process.env.PUBLIC_URL}>
                     <div>
                         <Route exact strict path='/' component={EntryAppInterface}/>
                         <Route path='/:room' component={AppInterface} />
