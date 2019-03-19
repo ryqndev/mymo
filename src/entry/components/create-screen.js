@@ -30,7 +30,8 @@ export class CreateScreen extends Component {
             'ed': this.state.endDate,
             'st': this.state.startTime,
             'et': this.state.endTime,
-            'plan': {}
+            'plan': [],
+            'recent': null
         }
         let roomCode = peerConnect.generateSize(JOIN_CODE);
         peerConnect.send(

@@ -9,6 +9,7 @@ import Edit from '@material-ui/icons/Edit';
 import Done from '@material-ui/icons/Done';
 import CalendarContent from './calendar-content';
 import SelectionList from './selection-list';
+import {differenceInDays} from 'date-fns';
 import './styles/calendar.css';
 import './styles/calendar-options.css';
 
@@ -37,8 +38,18 @@ export class Calendar extends Component {
             vMonth : hasYearChanged ? 11: (state.vMonth - 1)
         }));
     }
+    /**
+     * @function sendPlan
+     * @summary Creates array of values for each day and initializes them to 0.
+     * Loops through selected days and changes values to 1 if day is selected and
+     * pushes the change to it's own httprelay
+     */
     sendPlan = () => {
-        this.props.sendPlan(this.props.selection);
+        let setPlan = new Array(differenceInDays(this.props.ed, this.props.sd) + 1).fill(0);
+        this.props.selection.forEach(day => {
+            setPlan[differenceInDays(new Date(day.title), this.props.sd)] = 1;
+        });
+        this.props.sendPlan(setPlan);
     }
     render() {
         return (

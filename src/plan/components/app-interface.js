@@ -15,6 +15,7 @@ import './styles/app-interface.css';
  * TODO  
  * add UUID to local storage in case of browser refresh
  * First check if a value is saved in local storage, otherwise generate key
+ * Also, save the plan state to localstorage if it's been accessed before
  */
 export class AppInterface extends Component {
     constructor(props){
@@ -35,7 +36,7 @@ export class AppInterface extends Component {
             st: data.st,
             et: data.et
         });
-        this.parsePlan(data.plan);
+        this.parsePlan(data['plan'], data['recent']);
         peerConnect.receive( peerConnect.mcast + this.state.room, this.setMetadata );
     }
     toggleShare = () => {
@@ -45,18 +46,22 @@ export class AppInterface extends Component {
     };
     /**
      * TODO  
-     * complete plan
+     * run a check if the redux store is empty - meaning
+     * that the user is accessing the plans for the first time
+     * so they need to go through every single one
      */
-    parsePlan = ( plan ) => {
-        let allUniqueUsers = Object.keys(plan);
-        let updateUser = allUniqueUsers[0];
-
-        console.log("\nPlan is:", plan, "\nUser List: ", allUniqueUsers);
-        peerConnect.receive(
-            updateUser,
+    parsePlan = ( plan, recent ) => {
+        // if(false){
+        //     plan.forEach(e => {
+        //         peerConnect.receive(e,
+        //             (data) => {this.props.updateUser({"user": e, "data": data});}
+        //         );
+        //     });
+        // }
+        peerConnect.receive( //get other user's schedule
+            recent,
             (data) => {
-                data['user'] = updateUser;
-                this.props.updateUser(data);
+                this.props.updateUser({"user": recent, "data": data});
             }
         );
     }
@@ -68,14 +73,12 @@ export class AppInterface extends Component {
         );
     }
     updatePlan = ( resp ) => {
-        let update_data = this.state.data;
-        let user_plans = Object.keys(update_data['plan']);
-        if(user_plans.indexOf(this.state.uuid) === -1){
-            update_data['plan'][this.state.uuid] = 0;
-        }else{
-            update_data['plan'][this.state.uuid] += 1;
+        let tempData = this.state.data;
+        if(tempData['plan'].indexOf(this.state.uuid) === -1){
+            tempData['plan'].push(this.state.uuid);
         }
-        peerConnect.send(this.state.room, JSON.stringify(update_data));
+        tempData['recent'] = this.state.uuid;
+        peerConnect.send(this.state.room, JSON.stringify(tempData));
     }
     render() {
         return (

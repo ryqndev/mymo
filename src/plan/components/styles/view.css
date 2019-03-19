@@ -1,0 +1,28 @@
+#view-socials{
+    position: fixed; 
+    box-sizing: border-box;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    height: calc( 100vh - 50px);
+    width: 100vw;
+    overflow-y: scroll;
+}
+.view-back{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100vw;
+}
+@media screen and (min-width: 600px){
+    #view-socials{
+        top: 5vh;
+        left: calc( 50vw - 200px );
+        height: calc( 90vh - 50px );
+        width: 400px;
+    }
+    .view-back{
+        bottom: calc( 5vh );
+        width: 400px;
+    }
+}

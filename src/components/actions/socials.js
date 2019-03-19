@@ -1,7 +1,12 @@
 export const updateUser = (selection) => {
-    console.log("gets here");
     return {
         type: 'ADD',
         payload: selection
+    }
+}
+export const setupPlan = (plan) => {
+    return {
+        type: 'ADD',
+        payload: plan
     }
 }

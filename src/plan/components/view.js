@@ -3,18 +3,25 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
+import ViewExpansionPanel from './view-expansion-panel';
+import './styles/view.css';
 
 export class View extends Component {
     render() {
         return (
             <div>
-                {this.props.selection}
-                {console.log(this.props.socials)}
-                <Link to='/'>
-                    <IconButton>
-                        <ArrowBack />
-                    </IconButton>
-                </Link>
+                <div id="view-socials">
+                    {this.props.socials['socials'].map((e, i) => {
+                        return (<ViewExpansionPanel key={i} data={e}/>);
+                    })}
+                </div>
+                <div className="view-back">
+                    <Link to='/'>
+                        <IconButton>
+                            <ArrowBack />
+                        </IconButton>
+                    </Link>
+                </div>
             </div>
         )
     }
