@@ -37,7 +37,7 @@ export class CreateScreen extends Component {
         peerConnect.send(
             roomCode,
             JSON.stringify(metaData),
-            () => {window.location.href = `./${roomCode}`;}
+            () => {window.location.href = `./#${roomCode}`;}
         );
     }
 

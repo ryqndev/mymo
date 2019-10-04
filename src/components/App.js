@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './reducers/index';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import Background from './background';
 import {AppInterface as EntryAppInterface} from '../entry/components/app-interface';
 import AppInterface from '../plan/components/app-interface';
@@ -14,10 +14,11 @@ const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && wi
 
 class App extends Component {
     render() {
+        console.log("This is the process.env", process.env.PUBLIC_URL);
         return (
             <Provider store={store}>
                 <Background />
-                <Router>
+                <Router basename={process.env.PUBLIC_URL}>
                     <div>
                         <Route exact strict path='/' component={EntryAppInterface}/>
                         <Route path='/:room' component={AppInterface} />
