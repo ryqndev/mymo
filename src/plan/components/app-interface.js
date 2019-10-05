@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { updateUser } from '../../components/actions/socials';
 import {MemoryRouter, Route} from 'react-router-dom';
 import { Card, Modal } from '@material-ui/core';
 import ShareModal from './share-modal';
@@ -108,7 +105,4 @@ export class AppInterface extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({updateUser: updateUser}, dispatch);
-}
-export default connect(null, mapDispatchToProps)(AppInterface);
+export default AppInterface;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
 import ViewExpansionPanel from './view-expansion-panel';
@@ -27,10 +26,4 @@ export class View extends Component {
     }
 }
 
-function mapStateToProps(state){
-    return {
-        socials: state.socials
-    }
-}
-
-export default connect(mapStateToProps)(View);
+export default View;

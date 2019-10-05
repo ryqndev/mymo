@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {updateSelection} from '../../components/actions/selection';
 
 const dayNamesCompact = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 const DAY_POS = [{}, {}, {}, {}, {}, {}, {}];
@@ -202,13 +199,4 @@ export class CalendarContent extends Component {
     }
 
 }
-function mapStateToProps(state){
-    return {
-        selection: state.selection
-    }
-}
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({updateSelection: updateSelection}, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(CalendarContent);
+export default CalendarContent;

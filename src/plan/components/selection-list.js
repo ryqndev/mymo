@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import {connect} from 'react-redux';
-import { deleteSelection } from '../../components/actions/selection';
 import {Chip, Paper} from '@material-ui/core';
 import './styles/selection-list.css';
 
@@ -33,13 +30,4 @@ export class SelectionList extends Component {
     }
 }
 
-function mapStateToProps(state){
-    return {
-        selection: state.selection
-    }
-}
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({deleteSelection: deleteSelection}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectionList);
+export default SelectionList;

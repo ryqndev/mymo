@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {IconButton} from '@material-ui/core';
-import { connect } from 'react-redux';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Forward from '@material-ui/icons/Forward';
@@ -95,9 +94,4 @@ export class Calendar extends Component {
     }
 }
 
-function mapStateToProps(state){
-    return {
-        selection: state.selection
-    }
-}
-export default connect(mapStateToProps)(Calendar);
+export default Calendar;
