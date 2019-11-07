@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MYMO",
+  "name": "Plan events with friends!",
   "icons": [
     {
       "src": "favicon.ico",
