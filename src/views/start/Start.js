@@ -1,6 +1,9 @@
 import React from 'react';
 import { MemoryRouter as Router, Route, Link} from 'react-router-dom';
 import TextInput from '../../components/TextInput';
+import IconButton from '../../components/IconButton';
+import FacebookIcon from '../../assets/social-icons/facebook.svg';
+import GmailIcon from '../../assets/social-icons/gmail.svg';
 import './styles/Start.css';
 
 const Start = () => {
@@ -12,7 +15,7 @@ const Start = () => {
                 </div>
             </div>
 
-                <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={1}>
+                <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={0}>
                     <Route exact stric path='/' component={Login} />
                     <Route path='/user' component={User} />
                     <Route path='/plan' component={Login} />
@@ -26,9 +29,7 @@ const User = () => {
         <div className="start-form--wrapper">
             <TextInput id="user-display" label="Display Name"/>
             <Link to='/'>
-                <div className="btn">
-                    BACK IT UP
-                </div>
+                <IconButton name="Back" icon={GmailIcon} />
             </Link>
         </div>
     );
@@ -38,19 +39,19 @@ const Login = () => {
         <div className="start-form--wrapper">
             <span>Login with:</span>
             <div className="start-button--wrapper">
-                <div className="btn">
-                    Facebook
-                </div>
-                <div className="btn">
-                    Gmail
-                </div>
+                <IconButton name="Facebook" icon={FacebookIcon} />
+                <IconButton name="Gmail" icon={GmailIcon} />
             </div>
             <span> - or -</span>
-            <Link to='/user'>
-                <div className="btn">
-                    Sign in as Guest
-                </div>
-            </Link>
+            <div className="start-anonymous--padding">
+                <Link to='/user'>
+                    <div className="button-long button--sacnite">
+                        <div className="button--text">
+                            Sign in as Guest
+                        </div>
+                    </div>
+                </Link>
+            </div>
         </div>
     );
 }

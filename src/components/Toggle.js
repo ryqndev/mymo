@@ -2,13 +2,17 @@ import React from 'react';
 import Toggle from 'react-toggle';
 import './styles/Toggle.css';
 
-const toggle = () => {
+const toggle = ({cur, set}) => {
+    let toggle = () => {
+        set(!cur);
+    }
     return (
         <label>
             <Toggle
-                defaultChecked={true}
+                checked={cur}
                 icons={false}
-                />
+                onChange={toggle}
+            />
         </label>
     );
 }
