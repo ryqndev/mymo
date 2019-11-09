@@ -40,10 +40,23 @@
 .start-form--wrapper{
     color: #200F3D;
     box-sizing: border-box;
-    padding-top: calc(15vh - 40px);
 }
 .start-form--wrapper span{
     font-size: 20px;
+}
+.start-form-user--navigation{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 1fr;
+}
+.start--user{
+    padding-top: calc(15vh - 40px);
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
 }
 @media (min-width: 700px){
     .start-wrapper{
@@ -61,8 +74,7 @@
         margin-left: 5px;
         font-size: 40px;
     }
-    .start-form--wrapper{
-        padding: 70px;
+    .start--user{
+        padding-top: 90px;
     }
-
 }

@@ -17,22 +17,25 @@ const Start = () => {
                 </div>
             </div>
             <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={1}>
-                <Route exact stric path='/' component={Login} />
-                <Route path='/user' component={User} />
-                <Route path='/plan' component={Login} />
+                <div className="start-form--wrapper">
+                    <Route exact stric path='/' component={Login} />
+                    <Route path='/user' component={User} />
+                    <Route path='/plan' component={Login} />
+                </div>
             </Router>
         </div>
     );
 }
+
 const Login = () => {
     return (
-        <div className="start-form--wrapper">
+        <div className="start--user">
             <span>Login with:</span>
             <div className="start-button--wrapper">
                 <IconButton name="Facebook" icon={FacebookIcon} />
                 <IconButton name="Gmail" icon={GmailIcon} />
             </div>
-            <span> - or -</span>
+            <span> - or - </span>
             <div className="start-anonymous--padding">
                 <Link to='/user'>
                     <div className="button-long button--sacnite">
@@ -46,11 +49,11 @@ const Login = () => {
     );
 }
 const User = () => {
-    const [displayName, setDisplayName] = useState("");
+    const [displayName, setDisplayName] = useState('');
     return (
-        <div className="start-form--wrapper">
+        <div className="start--user">
             <TextInput id="user-display" label="Display Name" cur={displayName} set={setDisplayName} />
-            <div>
+            <div className="start-form-user--navigation">
                 <div>
                     <Link to='/'>
                         <IconButton name="Back" icon={Back} />

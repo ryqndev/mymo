@@ -10,7 +10,7 @@ const Theme = ( dark ) => {
         root.setProperty('--darker-background-color', '#63539bcc');
         root.setProperty('--background-gradient', 'linear-gradient(230deg, #33685f, #413766)');
     }else{
-        root.setProperty('--text-color-1', '#151515');
+        root.setProperty('--text-color-1', '#FF7B7B');
         root.setProperty('--text-color-2', '#FFFFFF');
         root.setProperty('--logo', `url('/assets/calendar-light.svg')`);
         root.setProperty('--highlight', '#FF7B7B');
