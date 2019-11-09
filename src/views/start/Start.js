@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { MemoryRouter as Router, Route, Link} from 'react-router-dom';
 import TextInput from '../../components/TextInput';
 import IconButton from '../../components/IconButton';
 import FacebookIcon from '../../assets/social-icons/facebook.svg';
 import GmailIcon from '../../assets/social-icons/gmail.svg';
+import Back from '../../assets/back.svg';
+import Forward from '../../assets/forward.svg';
 import './styles/Start.css';
 
 const Start = () => {
@@ -14,23 +16,11 @@ const Start = () => {
                     M Y M O
                 </div>
             </div>
-
-                <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={0}>
-                    <Route exact stric path='/' component={Login} />
-                    <Route path='/user' component={User} />
-                    <Route path='/plan' component={Login} />
-                </Router>
-
-        </div>
-    );
-}
-const User = () => {
-    return (
-        <div className="start-form--wrapper">
-            <TextInput id="user-display" label="Display Name"/>
-            <Link to='/'>
-                <IconButton name="Back" icon={GmailIcon} />
-            </Link>
+            <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={1}>
+                <Route exact stric path='/' component={Login} />
+                <Route path='/user' component={User} />
+                <Route path='/plan' component={Login} />
+            </Router>
         </div>
     );
 }
@@ -55,5 +45,26 @@ const Login = () => {
         </div>
     );
 }
+const User = () => {
+    const [displayName, setDisplayName] = useState("");
+    return (
+        <div className="start-form--wrapper">
+            <TextInput id="user-display" label="Display Name" cur={displayName} set={setDisplayName} />
+            <div>
+                <div>
+                    <Link to='/'>
+                        <IconButton name="Back" icon={Back} />
+                    </Link>
+                </div>
+                <div className={displayName.length ? "show" : "hide"}>
+                    <Link to='/'>
+                        <IconButton name="Forward" icon={Forward} />
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 
 export default Start;

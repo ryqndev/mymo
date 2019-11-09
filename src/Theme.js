@@ -1,7 +1,6 @@
 const Theme = ( dark ) => {
     let root = document.documentElement.style;
     if(dark){
-        console.log("Switching to Dark Mode!");
         root.setProperty('--text-color-1', '#FFFFFF');
         root.setProperty('--text-color-2', '#200F3D;');
         root.setProperty('--logo', `url('/assets/calendar-dark.svg')`);
@@ -11,7 +10,6 @@ const Theme = ( dark ) => {
         root.setProperty('--darker-background-color', '#63539bcc');
         root.setProperty('--background-gradient', 'linear-gradient(230deg, #33685f, #413766)');
     }else{
-        console.log("Switching to Light Mode!");
         root.setProperty('--text-color-1', '#151515');
         root.setProperty('--text-color-2', '#FFFFFF');
         root.setProperty('--logo', `url('/assets/calendar-light.svg')`);

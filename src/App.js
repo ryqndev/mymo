@@ -6,7 +6,6 @@ import Toggle from './components/Toggle';
 import Theme from './Theme'; 
 import './App.css';
 
-
 const App = () => {
     const [dark, toggleDark] = useState(true);
 
