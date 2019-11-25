@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { MemoryRouter as Router, Route, Link} from 'react-router-dom';
 import TextInput from '../../components/TextInput';
-import IconButton, {NavigationButton} from '../../components/IconButton';
+import IconButton, {NavigationButton, TextButton} from '../../components/IconButton';
 import FacebookIcon from '../../assets/social-icons/facebook.svg';
 import GmailIcon from '../../assets/social-icons/gmail.svg';
 import Back from '../../assets/back.svg';
@@ -47,11 +47,9 @@ const Login = () => {
             <span> - or - </span>
             <div className="start-anonymous--padding">
                 <Link to='/user'>
-                    <div className="button-long button--sacnite">
-                        <div className="button--text">
-                            Sign in as Guest
-                        </div>
-                    </div>
+                    <TextButton>
+                        Sign in as Guest
+                    </TextButton>
                 </Link>
             </div>
         </div>
