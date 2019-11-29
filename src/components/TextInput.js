@@ -1,22 +1,23 @@
 import React from 'react';
-import './styles/TextInput.css';
+import './styles/TextInput.scss';
 
 const TextInput = ({id, label, cur, set}) => {
 
-    let filled = cur !== "" ? " input--filled" : "";
+    let filled = cur !== "" ? " filled" : "";
 
     return (
-        <span className={"input input--jiro" + filled}>
-            <input className="input__field input__field--jiro"
+        <form className={"" + filled}>
+            <input
+                className=""
                 type="text"
                 id={id}
                 value={cur}
                 onChange={e => set(e.target.value)}
             />
-            <label className="input__label input__label--jiro" htmlFor={id}>
-                <span className="input__label-content input__label-content--jiro">{label}</span>
+            <label className="" htmlFor={id}>
+                <span className="">{label}</span>
             </label>
-        </span>
+        </form>
     );
 }
 

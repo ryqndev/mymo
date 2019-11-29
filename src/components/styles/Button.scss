@@ -1,0 +1,147 @@
+@keyframes fadeDownIn{
+    from{
+        opacity: 0;
+        top: -8px;
+    }
+    to{
+        opacity: 1;
+        color: var(--text-color-3);
+        top: 0px;
+    }
+}
+@keyframes fadeDownOut{
+    from{ color: var(--text-color-4); }
+    to{ color: var(--text-color-2); }
+}
+@for $i from 1 through 20 {
+    .button{
+        &:hover, &:active{
+            .button-text > span:nth-child(#{$i}) {
+                animation: fadeDownIn 300ms ($i - 1) * 50ms both;
+            }
+        }
+    }
+}
+@for $i from 1 through 20 {
+    .button:not(:hover) .button-text > span:nth-child(#{21 - $i}){
+        animation: fadeDownOut 300ms ($i - 1) * 50ms both;
+    }
+}
+button{
+    border: none;
+}
+.button--icon{
+    height: 100%;
+    width: 100%;
+    transition: height 250ms, width 250ms, transform 250ms;
+}
+.button{
+    position: relative;
+    background-color: #FFFFFF22;
+    font-size: 1em;
+    border-radius: 2px;
+    transition: transform 250ms,
+        background-color 1s;
+    margin: 0 auto;
+    &.long{
+        height: 50px;
+        width: 200px;
+    }
+    &.short{
+        box-sizing: border-box;
+        padding-top: 2px;
+        height: 50px;
+        width: 50px;
+        &::before{
+            transition: all 200ms ease-in;
+        }
+        &::after{
+            transition:
+                left 200ms 400ms ease-out,
+                width 200ms 400ms ease-out,
+                height 200ms 200ms,
+                border-left-color 0s 400ms,
+                border-right-color 0s 400ms,
+        }
+        &:hover, &:active{
+            &::before{
+                width: 26px;
+                border-left: 20px solid var(--text-color-5);
+                border-right: 20px solid var(--text-color-5);
+                transition: all 200ms 400ms ease-out;
+            }
+            &::after{
+                transition:
+                    left 200ms ease-in,
+                    width 200ms ease-in,
+                    height 200ms 200ms,
+                    border-left-color 0s 200ms,
+                    border-right-color 0s 200ms;
+            }
+        }
+    }
+    &:hover, &:active{
+        background-color: transparent;
+        transform: scale(0.98);
+        &.short{
+            background-color: transparent;
+        }
+        .button--icon{
+            transform: scale(1.2);
+        }
+        .button-text > span{
+            position: relative;
+        }
+        &::before{
+            width: 26px;
+            border-left: 95px solid var(--text-color-5);
+            border-right: 95px solid var(--text-color-5);
+            transition: all 350ms 600ms ease-out;
+        }
+        &::after{
+            width: calc( 100% + 10px );
+            height: calc( 100% + 10px );
+            border-left-color: var(--text-color-5);
+            border-right-color: var(--text-color-5);
+            left: -8px;
+            transition:
+                left 350ms ease-in,
+                width 350ms ease-in,
+                height 250ms 350ms,
+                border-left-color 0s 350ms,
+                border-right-color 0s 350ms;
+        }
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        width: calc( 100% + 16px );
+        height: 3px;
+        border-left: 0px solid var(--text-color-5);
+        border-right: 0px solid var(--text-color-5);
+        z-index: 0;
+        transition: all 200ms ease-in;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: calc( 50% - 12px );
+        height: 0px;
+        width: 20px;
+        border: 3px solid var(--text-color-5);
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        z-index: 1;
+        transition:
+            left 350ms 500ms ease-out,
+            width 350ms 500ms ease-out,
+            height 250ms 250ms,
+            border-left-color 0s 500ms,
+            border-right-color 0s 500ms,
+            border-bottom-color 250ms;
+    }
+}

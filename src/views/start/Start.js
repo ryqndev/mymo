@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { MemoryRouter as Router, Route, Link} from 'react-router-dom';
 import TextInput from '../../components/TextInput';
-import IconButton, {NavigationButton, TextButton} from '../../components/IconButton';
+import Button, {IconButton} from '../../components/Button';
 import FacebookIcon from '../../assets/social-icons/facebook.svg';
 import GmailIcon from '../../assets/social-icons/gmail.svg';
 import Back from '../../assets/back.svg';
@@ -47,9 +47,9 @@ const Login = () => {
             <span> - or - </span>
             <div className="start-anonymous--padding">
                 <Link to='/user'>
-                    <TextButton>
+                    <Button>
                         Sign in as Guest
-                    </TextButton>
+                    </Button>
                 </Link>
             </div>
         </div>
@@ -67,8 +67,7 @@ const User = ({name, setName}) => {
                 </div>
                 <div className={name.length ? "show" : "hide"}>
                     <Link to='/plan'>
-                        {/* <IconButton name="Forward" icon={Forward} /> */}
-                        <NavigationButton name="Forward" icon={Forward} />
+                        <IconButton name="Forward" icon={Forward} />
                     </Link>
                 </div>
             </div>
@@ -76,7 +75,7 @@ const User = ({name, setName}) => {
     );
 }
 const Plan = ({plan, setPlan}) => {
-    let [complete, setComplete] = useState(true);
+    let [complete] = useState(true);
     let setValue = (key, val) => {
         setPlan({
             ...plan,

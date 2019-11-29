@@ -1,13 +1,14 @@
 :root{
-    --text-color-1: white;
-    --text-color-2: #200F3D;
-    --highlight: #151515;
+    --dark-mode: 1;
+    --text-color-1: #FFFFFF;
+    --text-color-2: #63539b;
+    --dark--accent: #200F3D;
+    --light--accent: #FF00FF;
     --logo: url('/assets/calendar-dark.svg');
     --background-color: #63539bcc;
     --darker-background-color: #5ac5b3e6;
     --background-highlight: #5ac5b3e6;
     --background-gradient: linear-gradient(230deg, #33685f, #413766);
-    --dark-mode: 1;
 }
 a{
     text-decoration: none;
