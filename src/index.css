@@ -9,6 +9,9 @@ body {
 button{
     border: none;
 }
+input{
+    border: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { MemoryRouter as Router, Route, Link} from 'react-router-dom';
+import PlanSetup from './PlanSetup';
+import Info from './Info';
 import TextInput from '../../components/TextInput';
 import Button, {IconButton} from '../../components/Button';
 import FacebookIcon from '../../assets/social-icons/facebook.svg';
@@ -24,12 +26,13 @@ const Start = () => {
                 <div className="start-info--title">
                     M Y M O
                 </div>
+                <Info />
             </div>
-            <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={0}>
+            <Router initialEntries={[ '/', '/user', '/plan' ]} initialIndex={1}>
                 <div className="start-form--wrapper">
                     <Route exact stric path='/' component={Login} />
                     <Route path='/user' render={() => <User name={name} setName={setName} />} /> 
-                    <Route path='/plan' render={() => <Plan plan={plan} setPlan={setPlan} />} />
+                    <Route path='/plan' render={() => <PlanSetup plan={plan} setPlan={setPlan} />} />
                 </div>
             </Router>
         </div>
@@ -60,11 +63,9 @@ const User = ({name, setName}) => {
         <div className="start--user">
             <TextInput id="user-display" label="Display Name" cur={name} set={setName} />
             <div className="start-form-user--navigation">
-                <div>
-                    <Link to='/'>
-                        <IconButton name="Back" icon={Back} />
-                    </Link>
-                </div>
+                <Link to='/'>
+                    <IconButton name="Back" icon={Back} />
+                </Link>
                 <div className={name.length ? "show" : "hide"}>
                     <Link to='/plan'>
                         <IconButton name="Forward" icon={Forward} />
@@ -74,33 +75,5 @@ const User = ({name, setName}) => {
         </div>
     );
 }
-const Plan = ({plan, setPlan}) => {
-    let [complete] = useState(true);
-    let setValue = (key, val) => {
-        setPlan({
-            ...plan,
-            key: val
-        });
-    }
-
-    return (
-        <div className="start--user">
-            <TextInput id="planname" label="Plan Name" cur={plan} set={setValue.bind(null, 'planname')} />
-            <div className="start-form-user--navigation">
-                <div>
-                    <Link to='/'>
-                        <IconButton name="Back" icon={Back} />
-                    </Link>
-                </div>
-                <div className={complete ? "show" : "hide"}>
-                    <Link to='/'>
-                        <IconButton name="Forward" icon={Forward} />
-                    </Link>
-                </div>
-            </div>
-        </div>
-    );
-}
-
 
 export default Start;

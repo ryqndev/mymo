@@ -21,7 +21,7 @@ const App = () => {
             <Route strict exact path="/">
                 <Start />
             </Route>
-            <Route path="/room">
+            <Route path="/:id">
                 <Calendar />
             </Route>
         </div>

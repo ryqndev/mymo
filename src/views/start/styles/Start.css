@@ -19,7 +19,7 @@
     background-position: 50% 30%;
     background-size: 40%;
     background-repeat: no-repeat;
-    transition: all 400ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 .start-button--wrapper{
     display: grid;
@@ -29,10 +29,11 @@
     margin: 10px auto;
 }
 .start-info--title{
-    margin-top: 37vh;
-    margin-left: 5px;
+    position: absolute;
+    width: 100%;
+    margin-top: 36vh;
+    font-size: 3rem;
     letter-spacing: 4px;
-    font-size: 2rem;
 }
 .start-anonymous--padding{
     padding-top: 10px;
@@ -46,10 +47,15 @@
 }
 .start-form-user--navigation{
     display: grid;
+    width: 180px;
+    margin: 0 auto;
     grid-template-columns: 1fr 1fr;
     grid-row: 1fr;
 }
 .start--user{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     padding-top: calc(15vh - 40px);
 }
 .show{
@@ -70,11 +76,11 @@
         border-radius: 8px 0 0 8px;
     }
     .start-info--title{
-        margin-top: 70%;
-        margin-left: 5px;
-        font-size: 3rem;
+        margin-top: 270px;
+        width: 400px;
+        font-size: 3.5rem;
     }
     .start--user{
-        padding-top: 90px;
+        padding-top: 50px;
     }
 }
