@@ -4,9 +4,15 @@ import TextInput from '../../components/TextInput';
 import {IconButton} from '../../components/Button';
 import Back from '../../assets/back.svg';
 import Forward from '../../assets/forward.svg';
+import './styles/PlanSetup.css';
 
 const PlanSetup = ({plan, setPlan}) => {
     let [complete] = useState(true);
+    let [pn, setpn] = useState(plan.planname);
+    let [sd, setsd] = useState(plan.startdate);
+    let [ed, seted] = useState(plan.enddate);
+    let [st, setst] = useState(plan.starttime);
+    let [et, setet] = useState(plan.endtime);
     let setValue = (key, val) => {
         setPlan({
             ...plan,
@@ -15,9 +21,13 @@ const PlanSetup = ({plan, setPlan}) => {
     }
 
     return (
-        <div className="start--user">
-            <TextInput id="planname" label="Plan Name" cur={plan} set={setValue.bind(null, 'planname')} />
-            <div className="start-form-user--navigation">
+        <div className="start--plan">
+            <TextInput id="pname" label="Plan Name" cur={pn} set={setpn} />
+            <TextInput id="sdate" label="Start Date" cur={sd} set={setsd} />
+            <TextInput id="edate" label="End Date" cur={ed} set={seted} />
+            <TextInput id="stime" label="Start Time" cur={st} set={setst} />
+            <TextInput id="etime" label="End Time" cur={et} set={setet} />
+            <div className="plan-setup--navigation">
                 <div>
                     <Link to='/'>
                         <IconButton name="Back" icon={Back} />

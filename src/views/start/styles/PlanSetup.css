@@ -1,0 +1,8 @@
+.start--plan{
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: 400px;
+}
+.plan-setup--navigation{
+    margin: 20px;
+}

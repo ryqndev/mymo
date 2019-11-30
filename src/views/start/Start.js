@@ -14,10 +14,10 @@ const Start = () => {
     const [name, setName] = useState('');
     const [plan, setPlan] = useState({
         'planname': '',
-        'startDate': '',
-        'endDate': '',
-        'startTime': '',
-        'endTime': '',
+        'startdate': '',
+        'enddate': '',
+        'starttime': '',
+        'endtime': '',
     });
 
     return (
@@ -41,7 +41,7 @@ const Start = () => {
 
 const Login = () => {
     return (
-        <div className="start--user">
+        <div className="start--login">
             <span>Login with:</span>
             <div className="start-button--wrapper">
                 <IconButton name="Facebook" icon={FacebookIcon} />
