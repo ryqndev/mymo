@@ -30,11 +30,25 @@ body{
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background: var(--background-gradient);
+    background: linear-gradient(230deg, #33685f, #413766);
     background-size: 400% 400%;
-    -webkit-animation: dark-bg 18s ease infinite;
-    -moz-animation: dark-bg 18s ease infinite;
-    -o-animation: dark-bg 18s ease infinite;
+    transition: background 3500ms;
+    animation: dark-bg 18s ease infinite;
+}
+.site-wrapper::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(230deg, #FFF8DF, #FF7B7B);
+    background-size: 400% 400%, 400% 400%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: calc( 1 - var(--dark-mode));
+    transition: opacity 350ms;
     animation: dark-bg 18s ease infinite;
 }
 @-webkit-keyframes dark-bg {
