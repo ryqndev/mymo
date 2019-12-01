@@ -29,7 +29,7 @@ const Theme = ( dark ) => {
         setp('--light-accent', '#FF00FF'); // hot pink
         setp('--bg-1', '#FFFFFF');
         setp('--background-color', '#FFF8DFe6');
-        setp('--darker-background-color', '#FFABAB');
+        setp('--darker-background-color', '#E3533D');
         setp('--background-gradient', 'linear-gradient(230deg, #FFF8DF, #FF7B7B)');
         document.getElementById('favicon').href = '/assets/calendar-light.svg'; // change favicon based on theme
     }

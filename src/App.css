@@ -35,6 +35,9 @@ body{
     transition: background 3500ms;
     animation: dark-bg 18s ease infinite;
 }
+.site-wrapper > div {
+    z-index: 1 !important;
+}
 .site-wrapper::before{
     content: '';
     display: block;
